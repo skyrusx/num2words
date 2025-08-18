@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require "bundler/setup"
 require "num2words"
@@ -9,6 +10,11 @@ require "num2words"
 # (If you use this, don't forget to add pry to your Gemfile!)
 # require "pry"
 # Pry.start
+
+# Красивое приветствие
+puts "🔢 Добро пожаловать в консоль num2words!"
+puts "Можете использовать: Num2Words.to_words(#{Time.now.year})"
+puts "-------------------------------------------------------------"
 
 require "irb"
 IRB.start(__FILE__)
