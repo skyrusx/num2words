@@ -16,3 +16,6 @@
 # Ignore Gemfile.lock in libraries (gems)
 # In applications, Gemfile.lock should generally be committed.
 Gemfile.lock
+
+# Build artifacts
+*.gem
