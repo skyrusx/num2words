@@ -1,9 +1,9 @@
 # num2words
 
 [![Gem Version](https://badge.fury.io/rb/num2words.svg)](https://badge.fury.io/rb/num2words)
-[![Build Status](https://github.com/ВАШ_НИК/num2words/actions/workflows/ci.yml/badge.svg)](https://github.com/ВАШ_НИК/num2words/actions)
+[![Build Status](https://github.com/skyrusx/num2words/actions/workflows/ci.yml/badge.svg)](https://github.com/skyrusx/num2words/actions)
 [![Downloads](https://img.shields.io/gem/dt/num2words.svg)](https://rubygems.org/gems/num2words)
-[![Maintainability](https://api.codeclimate.com/v1/badges/ВАШ_BADGE/maintainability)](https://codeclimate.com/github/ВАШ_НИК/num2words/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/ВАШ_BADGE/maintainability)](https://codeclimate.com/github/skyrusx/num2words/maintainability)
 
 📦 **num2words** — Ruby-гем для преобразования чисел в строковое представление (прописью).
 
