@@ -2,29 +2,19 @@
 
 module Num2words
   class Converter
-    ONES_MASC = %w[ноль один два три четыре пять шесть семь восемь девять].freeze
-    ONES_FEM  = %w[ноль одна две три четыре пять шесть семь восемь девять].freeze
+    ONES_MASC = I18n.t("num2words.ones_masc")
+    ONES_FEM  = I18n.t("num2words.ones_fem")
 
-    TEENS = %w[десять одиннадцать двенадцать тринадцать четырнадцать пятнадцать
-               шестнадцать семнадцать восемнадцать девятнадцать].freeze
+    TEENS = I18n.t("num2words.teens")
 
-    TENS = [nil, nil, "двадцать", "тридцать", "сорок", "пятьдесят",
-            "шестьдесят", "семьдесят", "восемьдесят", "девяносто"].freeze
+    TENS = I18n.t("num2words.tens")
 
-    HUNDREDS = [nil, "сто", "двести", "триста", "четыреста", "пятьсот",
-                "шестьсот", "семьсот", "восемьсот", "девятьсот"].freeze
+    HUNDREDS = I18n.t("num2words.hundreds")
 
-    # формы: [one, few, many]
-    SCALES = [
-      ["", "", ""], # 10^0 (единицы)
-      %w[тысяча тысячи тысяч], # 10^3
-      %w[миллион миллиона миллионов], # 10^6
-      %w[миллиард миллиарда миллиардов], # 10^9
-      %w[триллион триллиона триллионов] # 10^12
-    ].freeze
+    SCALES = I18n.t("num2words.scales")
 
-    RUB = %w[рубль рубля рублей].freeze
-    KOP = %w[копейка копейки копеек].freeze
+    RUB = I18n.t("num2words.currencies.RUB.name")
+    KOP = I18n.t("num2words.currencies.RUB.fractional.name")
 
     class << self
       def pluralize(n, one, few, many)
