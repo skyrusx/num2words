@@ -33,13 +33,13 @@ gem install num2words
 ```ruby
 require "num2words"
 
-Num2Words.to_words(21)
+Num2words.to_words(21)
 # => "двадцать один"
 
-Num2Words.to_currency(21.01)
+Num2words.to_currency(21.01)
 # => "двадцать один рубль одна копейка"
 
-Num2Words.to_currency(105.15)
+Num2words.to_currency(105.15)
 # => "сто пять рублей пятнадцать копеек"
 ```
 
@@ -49,19 +49,19 @@ Num2Words.to_currency(105.15)
 
 ### Род числительных
 ```ruby
-Num2Words.to_words(1) 
+Num2words.to_words(1) 
 # => "один"
 
-Num2Words.to_words(1, feminine: true) 
+Num2words.to_words(1, feminine: true) 
 # => "одна"
 ```
 
 ### Поддержка больших чисел
 ```ruby
-Num2Words.to_words(1_000_000)
+Num2words.to_words(1_000_000)
 # => "один миллион"
 
-Num2Words.to_words(2_345_678_901)
+Num2words.to_words(2_345_678_901)
 # => "два миллиарда триста сорок пять миллионов шестьсот семьдесят восемь тысяч девятьсот один"
 ```
 
