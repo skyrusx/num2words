@@ -12,3 +12,7 @@
 
 # Operating system specific files
 .DS_Store
+
+# Ignore Gemfile.lock in libraries (gems)
+# In applications, Gemfile.lock should generally be committed.
+Gemfile.lock
