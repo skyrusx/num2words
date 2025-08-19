@@ -1,0 +1,26 @@
+lv:
+  num2words:
+    ones_masc: ["nulle", "viens", "divi", "trīs", "četri", "pieci", "seši", "septiņi", "astoņi", "deviņi"]
+    ones_fem: ["nulle", "viena", "divas", "trīs", "četras", "piecas", "sešas", "septiņas", "astoņas", "deviņas"]
+    teens: ["desmit", "vienpadsmit", "divpadsmit", "trīspadsmit", "četrpadsmit", "piecpadsmit", "sešpadsmit", "septiņpadsmit", "astoņpadsmit", "deviņpadsmit"]
+    tens: ["", "", "divdesmit", "trīsdesmit", "četrdesmit", "piecdesmit", "sešdesmit", "septiņdesmit", "astoņdesmit", "deviņdesmit"]
+    hundreds: ["", "simts", "divi simti", "trīs simti", "četri simti", "pieci simti", "seši simti", "septiņi simti", "astoņi simti", "deviņi simti"]
+
+    scales:
+      - ["", "", ""]
+      - ["tūkstotis", "tūkstoši", "tūkstošu"]
+      - ["miljons", "miljoni", "miljonu"]
+      - ["miljards", "miljardi", "miljardu"]
+      - ["triljons", "triljoni", "triljonu"]
+
+    currencies:
+      EUR:
+        name: ["eiro", "eiro", "eiro"]
+        fractional:
+          name: ["cents", "centi", "centu"]
+          feminine: false
+      USD:
+        name: ["dolārs", "dolāri", "dolāru"]
+        fractional:
+          name: ["cents", "centi", "centu"]
+          feminine: false
