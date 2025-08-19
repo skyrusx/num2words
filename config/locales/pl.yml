@@ -1,0 +1,36 @@
+pl:
+  num2words:
+    ones: ["zero", "jeden", "dwa", "trzy", "cztery", "pięć", "sześć", "siedem", "osiem", "dziewięć"]
+    ones_fem: ["zero", "jedna", "dwie", "trzy", "cztery", "pięć", "sześć", "siedem", "osiem", "dziewięć"]
+    teens: ["dziesięć", "jedenaście", "dwanaście", "trzynaście", "czternaście", "piętnaście", "szesnaście", "siedemnaście", "osiemnaście", "dziewiętnaście"]
+    tens: ["", "dziesięć", "dwadzieścia", "trzydzieści", "czterdzieści", "pięćdziesiąt", "sześćdziesiąt", "siedemdziesiąt", "osiemdziesiąt", "dziewięćdziesiąt"]
+    hundreds: ["", "sto", "dwieście", "trzysta", "czterysta", "pięćset", "sześćset", "siedemset", "osiemset", "dziewięćset"]
+
+    scales:
+      - ["", "", ""]
+      - ["tysiąc", "tysiące", "tysięcy"]
+      - ["milion", "miliony", "milionów"]
+      - ["miliard", "miliardy", "miliardów"]
+      - ["bilion", "biliony", "bilionów"]
+
+    currencies:
+      PLN:
+        name: ["złoty", "złote", "złotych"]
+        fractional:
+          name: ["grosz", "grosze", "groszy"]
+          feminine: false
+      EUR:
+        name: ["euro", "euro", "euro"]
+        fractional:
+          name: ["cent", "centy", "centów"]
+          feminine: false
+      USD:
+        name: ["dolar", "dolary", "dolarów"]
+        fractional:
+          name: ["cent", "centy", "centów"]
+          feminine: false
+      GBP:
+        name: ["funt", "funty", "funtów"]
+        fractional:
+          name: ["pens", "pensy", "pensów"]
+          feminine: false
