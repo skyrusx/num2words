@@ -15,18 +15,8 @@ en:
       - ["trillion", "trillion", "trillion"]
 
     currencies:
-      RUB:
-        name: ["ruble", "rubles", "rubles"]
-        fractional:
-          name: ["kopek", "kopeks", "kopeks"]
-          feminine: true
       USD:
         name: ["dollar", "dollars", "dollars"]
-        fractional:
-          name: ["cent", "cents", "cents"]
-          feminine: false
-      EUR:
-        name: ["euro", "euros", "euros"]
         fractional:
           name: ["cent", "cents", "cents"]
           feminine: false
