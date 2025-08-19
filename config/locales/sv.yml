@@ -1,0 +1,33 @@
+sv:
+  num2words:
+    ones_masc: ["noll", "ett", "två", "tre", "fyra", "fem", "sex", "sju", "åtta", "nio"]
+    ones_fem: ["noll", "en", "två", "tre", "fyra", "fem", "sex", "sju", "åtta", "nio"]
+    teens: ["tio", "elva", "tolv", "tretton", "fjorton", "femton", "sexton", "sjutton", "arton", "nitton"]
+    tens: ["", "", "tjugo", "trettio", "fyrtio", "femtio", "sextio", "sjuttio", "åttio", "nittio"]
+    hundreds: ["", "hundra", "tvåhundra", "trehundra", "fyrahundra", "femhundra", "sexhundra", "sjuhundra", "åttahundra", "niohundra"]
+
+    scales:
+      - ["", "", ""]
+      - ["tusen", "tusen", "tusen"]
+      - ["miljon", "miljoner", "miljoner"]
+      - ["miljard", "miljarder", "miljarder"]
+      - ["biljon", "biljoner", "biljoner"]
+
+    currencies:
+      SEK:
+        name: ["krona", "kronor", "kronor"]
+        fractional:
+          name: ["öre", "öre", "öre"]
+          feminine: false
+      EUR:
+        name: ["euro", "euro", "euro"]
+        fractional:
+          name: ["cent", "cent", "cent"]
+          feminine: false
+      USD:
+        name: ["dollar", "dollar", "dollar"]
+        fractional:
+          name: ["cent", "cent", "cent"]
+          feminine: false
+      GBP:
+        n
