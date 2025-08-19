@@ -1,0 +1,31 @@
+hu:
+  num2words:
+    ones_masc: ["nulla", "egy", "kettő", "három", "négy", "öt", "hat", "hét", "nyolc", "kilenc"]
+    ones_fem: ["nulla", "egy", "kettő", "három", "négy", "öt", "hat", "hét", "nyolc", "kilenc"]
+    teens: ["tíz", "tizenegy", "tizenkettő", "tizenhárom", "tizennégy", "tizenöt", "tizenhat", "tizenhét", "tizennyolc", "tizenkilenc"]
+    tens: ["", "", "húsz", "harminc", "negyven", "ötven", "hatvan", "hetven", "nyolcvan", "kilencven"]
+    hundreds: ["", "száz", "kétszáz", "háromszáz", "négyszáz", "ötszáz", "hatszáz", "hétszáz", "nyolcszáz", "kilencszáz"]
+
+    scales:
+      - ["", "", ""]
+      - ["ezer", "ezer", "ezer"]
+      - ["millió", "millió", "millió"]
+      - ["milliárd", "milliárd", "milliárd"]
+      - ["billió", "billió", "billió"]
+
+    currencies:
+      HUF:
+        name: ["forint", "forint", "forint"]
+        fractional:
+          name: ["fillér", "fillér", "fillér"]
+          feminine: false
+      EUR:
+        name: ["euró", "euró", "euró"]
+        fractional:
+          name: ["cent", "cent", "cent"]
+          feminine: false
+      USD:
+        name: ["dollár", "dollár", "dollár"]
+        fractional:
+          name: ["cent", "cent", "cent"]
+          feminine: false
