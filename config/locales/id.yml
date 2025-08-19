@@ -1,0 +1,31 @@
+id:
+  num2words:
+    ones_masc: ["nol", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan"]
+    ones_fem: ["nol", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan"]
+    teens: ["sepuluh", "sebelas", "dua belas", "tiga belas", "empat belas", "lima belas", "enam belas", "tujuh belas", "delapan belas", "sembilan belas"]
+    tens: ["", "", "dua puluh", "tiga puluh", "empat puluh", "lima puluh", "enam puluh", "tujuh puluh", "delapan puluh", "sembilan puluh"]
+    hundreds: ["", "seratus", "dua ratus", "tiga ratus", "empat ratus", "lima ratus", "enam ratus", "tujuh ratus", "delapan ratus", "sembilan ratus"]
+
+    scales:
+      - ["", "", ""]
+      - ["ribu", "ribu", "ribu"]
+      - ["juta", "juta", "juta"]
+      - ["miliar", "miliar", "miliar"]
+      - ["triliun", "triliun", "triliun"]
+
+    currencies:
+      IDR:
+        name: ["rupiah", "rupiah", "rupiah"]
+        fractional:
+          name: ["sen", "sen", "sen"]
+          feminine: false
+      USD:
+        name: ["dolar", "dolar", "dolar"]
+        fractional:
+          name: ["sen", "sen", "sen"]
+          feminine: false
+      EUR:
+        name: ["euro", "euro", "euro"]
+        fractional:
+          name: ["sen", "sen", "sen"]
+          feminine: false
