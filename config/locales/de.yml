@@ -1,0 +1,26 @@
+de:
+  num2words:
+    ones_masc: ["null", "eins", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun"]
+    ones_fem:  ["null", "eine", "zwei", "drei", "vier", "fünf", "sechs", "sieben", "acht", "neun"]
+    teens: ["zehn", "elf", "zwölf", "dreizehn", "vierzehn", "fünfzehn", "sechzehn", "siebzehn", "achtzehn", "neunzehn"]
+    tens: ["", "", "zwanzig", "dreißig", "vierzig", "fünfzig", "sechzig", "siebzig", "achtzig", "neunzig"]
+    hundreds: ["", "einhundert", "zweihundert", "dreihundert", "vierhundert", "fünfhundert", "sechshundert", "siebenhundert", "achthundert", "neunhundert"]
+
+    scales:
+      - ["", "", ""]
+      - ["tausend", "tausend", "tausend"]
+      - ["Million", "Millionen", "Millionen"]
+      - ["Milliarde", "Milliarden", "Milliarden"]
+      - ["Billion", "Billionen", "Billionen"]
+
+    currencies:
+      EUR:
+        name: ["Euro", "Euro", "Euro"]
+        fractional:
+          name: ["Cent", "Cent", "Cent"]
+          feminine: false
+      USD:
+        name: ["US-Dollar", "US-Dollar", "US-Dollar"]
+        fractional:
+          name: ["Cent", "Cent", "Cent"]
+          feminine: false
