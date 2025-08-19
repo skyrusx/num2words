@@ -1,0 +1,26 @@
+lt:
+  num2words:
+    ones_masc: ["nulis", "vienas", "du", "trys", "keturi", "penki", "šeši", "septyni", "aštuoni", "devyni"]
+    ones_fem: ["nulis", "viena", "dvi", "trys", "keturios", "penkios", "šešios", "septynios", "aštuonios", "devynios"]
+    teens: ["dešimt", "vienuolika", "dvylika", "trylika", "keturiolika", "penkiolika", "šešiolika", "septyniolika", "aštuoniolika", "devyniolika"]
+    tens: ["", "", "dvidešimt", "trisdešimt", "keturiasdešimt", "penkiasdešimt", "šešiasdešimt", "septyniasdešimt", "aštuoniasdešimt", "devyniasdešimt"]
+    hundreds: ["", "šimtas", "du šimtai", "trys šimtai", "keturi šimtai", "penki šimtai", "šeši šimtai", "septyni šimtai", "aštuoni šimtai", "devyni šimtai"]
+
+    scales:
+      - ["", "", ""]
+      - ["tūkstantis", "tūkstančiai", "tūkstančių"]
+      - ["milijonas", "milijonai", "milijonų"]
+      - ["milijardas", "milijardai", "milijardų"]
+      - ["trilijonas", "trilijonai", "trilijonų"]
+
+    currencies:
+      EUR:
+        name: ["euras", "eurai", "eurų"]
+        fractional:
+          name: ["centas", "centai", "centų"]
+          feminine: false
+      USD:
+        name: ["doleris", "doleriai", "dolerių"]
+        fractional:
+          name: ["centas", "centai", "centų"]
+          feminine: false
