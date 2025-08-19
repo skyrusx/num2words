@@ -1,0 +1,26 @@
+et:
+  num2words:
+    ones_masc: ["null", "üks", "kaks", "kolm", "neli", "viis", "kuus", "seitse", "kaheksa", "üheksa"]
+    ones_fem: ["null", "üks", "kaks", "kolm", "neli", "viis", "kuus", "seitse", "kaheksa", "üheksa"]
+    teens: ["kümme", "üksteist", "üksteist", "kolmteist", "neliteist", "viisteist", "kuusteist", "seitseteist", "kaheksateist", "üheksateist"]
+    tens: ["", "", "kakskümmend", "kolmkümmend", "nelikümmend", "viiskümmend", "kuuskümmend", "seitsekümmend", "kaheksakümmend", "üheksakümmend"]
+    hundreds: ["", "sada", "kakssada", "kolmsada", "nelisada", "viissada", "kuussada", "seitsesada", "kaheksasada", "üheksasada"]
+
+    scales:
+      - ["", "", ""]
+      - ["tuhat", "tuhat", "tuhande"]
+      - ["miljon", "miljonit", "miljoni"]
+      - ["miljard", "miljardit", "miljardi"]
+      - ["triljon", "triljonit", "triljoni"]
+
+    currencies:
+      EUR:
+        name: ["euro", "eurot", "euro"]
+        fractional:
+          name: ["sent", "senti", "sendi"]
+          feminine: false
+      USD:
+        name: ["dollar", "dollarit", "dollari"]
+        fractional:
+          name: ["sent", "senti", "sendi"]
+          feminine: false
