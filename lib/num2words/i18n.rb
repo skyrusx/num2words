@@ -5,7 +5,7 @@ require "i18n"
 module Num2words
   module I18nSetup
     def self.load!
-      locales_path = File.expand_path("../../locales/*.yml", __dir__)
+      locales_path = File.expand_path("../../config/locales/*.yml", __dir__)
       files = Dir[locales_path]
 
       if files.empty?
