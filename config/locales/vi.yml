@@ -1,0 +1,31 @@
+vi:
+  num2words:
+    ones_masc: ["không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"]
+    ones_fem: ["không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"]
+    teens: ["mười", "mười một", "mười hai", "mười ba", "mười bốn", "mười lăm", "mười sáu", "mười bảy", "mười tám", "mười chín"]
+    tens: ["", "", "hai mươi", "ba mươi", "bốn mươi", "năm mươi", "sáu mươi", "bảy mươi", "tám mươi", "chín mươi"]
+    hundreds: ["", "một trăm", "hai trăm", "ba trăm", "bốn trăm", "năm trăm", "sáu trăm", "bảy trăm", "tám trăm", "chín trăm"]
+
+    scales:
+      - ["", "", ""]
+      - ["nghìn", "nghìn", "nghìn"]
+      - ["triệu", "triệu", "triệu"]
+      - ["tỷ", "tỷ", "tỷ"]
+      - ["nghìn tỷ", "nghìn tỷ", "nghìn tỷ"]
+
+    currencies:
+      VND:
+        name: ["đồng", "đồng", "đồng"]
+        fractional:
+          name: ["hào", "hào", "hào"]
+          feminine: false
+      USD:
+        name: ["đô la", "đô la", "đô la"]
+        fractional:
+          name: ["xu", "xu", "xu"]
+          feminine: false
+      EUR:
+        name: ["euro", "euro", "euro"]
+        fractional:
+          name: ["xu", "xu", "xu"]
+          feminine: false
