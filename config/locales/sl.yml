@@ -1,0 +1,26 @@
+sl:
+  num2words:
+    ones_masc: ["nič", "ena", "dva", "tri", "štiri", "pet", "šest", "sedem", "osem", "devet"]
+    ones_fem: ["nič", "ena", "dve", "tri", "štiri", "pet", "šest", "sedem", "osem", "devet"]
+    teens: ["deset", "enajst", "dvanajst", "trinajst", "štirinajst", "petnajst", "šestnajst", "sedemnajst", "osemnajst", "devetnajst"]
+    tens: ["", "", "dvajset", "trideset", "štirideset", "petdeset", "šestdeset", "sedemdeset", "osemdeset", "devetdeset"]
+    hundreds: ["", "sto", "dvesto", "tristo", "štiristo", "petsto", "šeststo", "sedemsto", "osemsto", "devetsto"]
+
+    scales:
+      - ["", "", ""]
+      - ["tisoč", "tisoč", "tisoč"]
+      - ["milijon", "milijona", "milijonov"]
+      - ["milijarda", "milijardi", "milijard"]
+      - ["bilijon", "bilijona", "bilijonov"]
+
+    currencies:
+      EUR:
+        name: ["evro", "evra", "evrov"]
+        fractional:
+          name: ["cent", "centa", "centov"]
+          feminine: false
+      USD:
+        name: ["dolar", "dolarja", "dolarjev"]
+        fractional:
+          name: ["cent", "centa", "centov"]
+          feminine: false
