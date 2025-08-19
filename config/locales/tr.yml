@@ -1,32 +1,31 @@
 tr:
   num2words:
-    ones: ["sıfır", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"]
+    ones_masc: ["sıfır", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"]
+    ones_fem:  ["sıfır", "bir", "iki", "üç", "dört", "beş", "altı", "yedi", "sekiz", "dokuz"]
+    teens: ["on", "on bir", "on iki", "on üç", "on dört", "on beş", "on altı", "on yedi", "on sekiz", "on dokuz"]
     tens: ["", "on", "yirmi", "otuz", "kırk", "elli", "altmış", "yetmiş", "seksen", "doksan"]
     hundreds: ["", "yüz", "iki yüz", "üç yüz", "dört yüz", "beş yüz", "altı yüz", "yedi yüz", "sekiz yüz", "dokuz yüz"]
-    thousands: ["", "bin", "iki bin", "üç bin", "dört bin", "beş bin", "altı bin", "yedi bin", "sekiz bin", "dokuz bin"]
 
-    # Крупные числа
     scales:
-      - ["", "", ""]                            # 1
-      - ["bin", "bin", "bin"]                   # 10^3 (тысяча)
-      - ["milyon", "milyon", "milyon"]          # 10^6
-      - ["milyar", "milyar", "milyar"]          # 10^9
-      - ["trilyon", "trilyon", "trilyon"]       # 10^12
-      - ["katrilyon", "katrilyon", "katrilyon"] # 10^15
+      - ["", "", ""]
+      - ["bin", "bin", "bin"]
+      - ["milyon", "milyon", "milyon"]
+      - ["milyar", "milyar", "milyar"]
+      - ["trilyon", "trilyon", "trilyon"]
 
     currencies:
       TRY:
-        name: ["Türk lirası", "Türk lirası", "Türk lirası"]
+        name: ["lira", "lira", "lira"]
         fractional:
           name: ["kuruş", "kuruş", "kuruş"]
           feminine: false
-      EUR:
-        name: ["euro", "euro", "euro"]
+      USD:
+        name: ["dolar", "dolar", "dolar"]
         fractional:
           name: ["sent", "sent", "sent"]
           feminine: false
-      USD:
-        name: ["dolar", "dolar", "dolar"]
+      EUR:
+        name: ["euro", "euro", "euro"]
         fractional:
           name: ["sent", "sent", "sent"]
           feminine: false
