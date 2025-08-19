@@ -7,11 +7,11 @@ require_relative "num2words/core_ext"
 require_relative "num2words/locales"
 
 module Num2words
-  def self.to_words(number, feminine: false)
-    Converter.to_words(number, feminine: feminine)
+  def self.to_words(number, *args, **opts)
+    Converter.to_words(number, *args, **opts)
   end
 
-  def self.to_currency(amount)
-    Converter.to_currency(amount)
+  def self.to_currency(amount, *args, **opts)
+    Converter.to_currency(amount, *args, **opts)
   end
 end
