@@ -1,4 +1,4 @@
-no:
+nb:
   num2words:
     ones_masc: ["null", "en", "to", "tre", "fire", "fem", "seks", "sju", "åtte", "ni"]
     ones_fem: ["null", "ei", "to", "tre", "fire", "fem", "seks", "sju", "åtte", "ni"]

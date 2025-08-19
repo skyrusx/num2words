@@ -106,7 +106,7 @@ bin/console
 | Греческий     | el      | EUR (€)     | el.yml |
 | Иврит         | he      | ILS (₪)     | he.yml |
 | Шведский      | sv      | SEK (kr)    | sv.yml |
-| Норвежский    | no      | NOK (kr)    | no.yml |
+| Норвежский    | nb      | NOK (kr)    | nb.yml |
 | Датский       | da      | DKK (kr)    | da.yml |
 | Финский       | fi      | EUR (€)     | fi.yml |
 | Венгерский    | hu      | HUF (Ft)    | hu.yml |

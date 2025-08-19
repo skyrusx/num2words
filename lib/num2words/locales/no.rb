@@ -2,18 +2,18 @@
 
 module Num2words
   module Locales
-    module NO
-      ONES_MASC = I18n.t("num2words.ones_masc", locale: :no)
-      ONES_FEM = I18n.t("num2words.ones_fem", locale: :no)
-      TEENS = I18n.t("num2words.teens", locale: :no)
-      TENS = I18n.t("num2words.tens", locale: :no)
-      HUNDREDS = I18n.t("num2words.hundreds", locale: :no)
-      SCALES = I18n.t("num2words.scales", locale: :no)
+    module NB
+      ONES_MASC = I18n.t("num2words.ones_masc", locale: :nb)
+      ONES_FEM = I18n.t("num2words.ones_fem", locale: :nb)
+      TEENS = I18n.t("num2words.teens", locale: :nb)
+      TENS = I18n.t("num2words.tens", locale: :nb)
+      HUNDREDS = I18n.t("num2words.hundreds", locale: :nb)
+      SCALES = I18n.t("num2words.scales", locale: :nb)
 
-      RUB = I18n.t("num2words.currencies.NOK.name", locale: :no)
-      KOP = I18n.t("num2words.currencies.NOK.fractional.name", locale: :no)
+      RUB = I18n.t("num2words.currencies.NOK.name", locale: :nb)
+      KOP = I18n.t("num2words.currencies.NOK.fractional.name", locale: :nb)
     end
 
-    register :no, NO
+    register :nb, NB
   end
 end
