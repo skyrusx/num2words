@@ -1,7 +1,7 @@
 pt:
   num2words:
     ones_masc: ["zero", "um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove"]
-    ones_fem:  ["zero", "uma", "duas", "três", "quatro", "cinco", "seis", "sete", "oito", "nove"]
+    ones_fem: ["zero", "uma", "duas", "três", "quatro", "cinco", "seis", "sete", "oito", "nove"]
     teens: ["dez", "onze", "doze", "treze", "catorze", "quinze", "dezesseis", "dezessete", "dezoito", "dezenove"]
     tens: ["", "", "vinte", "trinta", "quarenta", "cinquenta", "sessenta", "setenta", "oitenta", "noventa"]
     hundreds: ["", "cem", "duzentos", "trezentos", "quatrocentos", "quinhentos", "seiscentos", "setecentos", "oitocentos", "novecentos"]
@@ -19,13 +19,13 @@ pt:
         fractional:
           name: ["cêntimo", "cêntimos", "cêntimos"]
           feminine: false
-      BRL:
-        name: ["real", "reais", "reais"]
-        fractional:
-          name: ["centavo", "centavos", "centavos"]
-          feminine: false
       USD:
         name: ["dólar", "dólares", "dólares"]
+        fractional:
+          name: ["cêntimo", "cêntimos", "cêntimos"]
+          feminine: false
+      BRL:
+        name: ["real", "reais", "reais"]
         fractional:
           name: ["centavo", "centavos", "centavos"]
           feminine: false
