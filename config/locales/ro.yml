@@ -1,0 +1,31 @@
+ro:
+  num2words:
+    ones_masc: ["zero", "unu", "doi", "trei", "patru", "cinci", "șase", "șapte", "opt", "nouă"]
+    ones_fem: ["zero", "una", "două", "trei", "patru", "cinci", "șase", "șapte", "opt", "nouă"]
+    teens: ["zece", "unsprezece", "douăsprezece", "treisprezece", "paisprezece", "cincisprezece", "șaisprezece", "șaptesprezece", "optsprezece", "nouăsprezece"]
+    tens: ["", "", "douăzeci", "treizeci", "patruzeci", "cincizeci", "șaizeci", "șaptezeci", "optzeci", "nouăzeci"]
+    hundreds: ["", "o sută", "două sute", "trei sute", "patru sute", "cinci sute", "șase sute", "șapte sute", "opt sute", "nouă sute"]
+
+    scales:
+      - ["", "", ""]
+      - ["mie", "mii", "mii"]
+      - ["milion", "milioane", "milioane"]
+      - ["miliard", "miliarde", "miliarde"]
+      - ["bilion", "bilioane", "bilioane"]
+
+    currencies:
+      RON:
+        name: ["leu", "lei", "lei"]
+        fractional:
+          name: ["ban", "bani", "bani"]
+          feminine: false
+      EUR:
+        name: ["euro", "euro", "euro"]
+        fractional:
+          name: ["cent", "cenți", "cenți"]
+          feminine: false
+      USD:
+        name: ["dolar", "dolari", "dolari"]
+        fractional:
+          name: ["cent", "cenți", "cenți"]
+          feminine: false
