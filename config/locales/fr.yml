@@ -24,3 +24,8 @@ fr:
         fractional:
           name: ["cent", "cents", "cents"]
           feminine: false
+      CHF:
+        name: ["franc", "francs", "francs"]
+        fractional:
+          name: ["centime", "centimes", "centimes"]
+          feminine: false
