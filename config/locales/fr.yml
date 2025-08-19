@@ -1,0 +1,29 @@
+fr:
+  num2words:
+    ones_masc: ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf"]
+    ones_fem:  ["zéro", "une", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf"]
+
+    teens: ["dix", "onze", "douze", "treize", "quatorze", "quinze", "seize", "dix-sept", "dix-huit", "dix-neuf"]
+
+    tens: ["", "", "vingt", "trente", "quarante", "cinquante", "soixante", "soixante-dix", "quatre-vingt", "quatre-vingt-dix"]
+
+    hundreds: ["", "cent", "deux cents", "trois cents", "quatre cents", "cinq cents", "six cents", "sept cents", "huit cents", "neuf cents"]
+
+    scales:
+      - ["", "", ""]
+      - ["mille", "mille", "mille"]
+      - ["million", "millions", "millions"]
+      - ["milliard", "milliards", "milliards"]
+      - ["billion", "billions", "billions"]
+
+    currencies:
+      EUR:
+        name: ["euro", "euros", "euros"]
+        fractional:
+          name: ["centime", "centimes", "centimes"]
+          feminine: false
+      USD:
+        name: ["dollar", "dollars", "dollars"]
+        fractional:
+          name: ["cent", "cents", "cents"]
+          feminine: false
