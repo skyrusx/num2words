@@ -1,0 +1,31 @@
+da:
+  num2words:
+    ones_masc: ["nul", "en", "to", "tre", "fire", "fem", "seks", "syv", "otte", "ni"]
+    ones_fem: ["nul", "en", "to", "tre", "fire", "fem", "seks", "syv", "otte", "ni"]
+    teens: ["ti", "elleve", "tolv", "tretten", "fjorten", "femten", "seksten", "sytten", "atten", "nitten"]
+    tens: ["", "", "tyve", "tredive", "fyrre", "halvtreds", "tres", "halvfjerds", "firs", "halvfems"]
+    hundreds: ["", "hundrede", "to hundrede", "tre hundrede", "fire hundrede", "fem hundrede", "seks hundrede", "syv hundrede", "otte hundrede", "ni hundrede"]
+
+    scales:
+      - ["", "", ""]
+      - ["tusind", "tusind", "tusind"]
+      - ["million", "millioner", "millioner"]
+      - ["milliard", "milliarder", "milliarder"]
+      - ["billion", "billioner", "billioner"]
+
+    currencies:
+      DKK:
+        name: ["krone", "kroner", "kroner"]
+        fractional:
+          name: ["øre", "øre", "øre"]
+          feminine: false
+      EUR:
+        name: ["euro", "euro", "euro"]
+        fractional:
+          name: ["cent", "cent", "cent"]
+          feminine: false
+      USD:
+        name: ["dollar", "dollars", "dollars"]
+        fractional:
+          name: ["cent", "cent", "cent"]
+          feminine: false
