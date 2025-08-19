@@ -1,0 +1,31 @@
+hr:
+  num2words:
+    ones_masc: ["nula", "jedan", "dva", "tri", "četiri", "pet", "šest", "sedam", "osam", "devet"]
+    ones_fem: ["nula", "jedna", "dvije", "tri", "četiri", "pet", "šest", "sedam", "osam", "devet"]
+    teens: ["deset", "jedanaest", "dvanaest", "trinaest", "četrnaest", "petnaest", "šesnaest", "sedamnaest", "osamnaest", "devetnaest"]
+    tens: ["", "", "dvadeset", "trideset", "četrdeset", "pedeset", "šezdeset", "sedamdeset", "osamdeset", "devedeset"]
+    hundreds: ["", "sto", "dvjesto", "tristo", "četiristo", "petsto", "šesto", "sedamsto", "osamsto", "devetsto"]
+
+    scales:
+      - ["", "", ""]
+      - ["tisuća", "tisuće", "tisuća"]
+      - ["milijun", "milijuna", "milijuna"]
+      - ["milijarda", "milijarde", "milijardi"]
+      - ["bilijun", "bilijuna", "bilijuna"]
+
+    currencies:
+      HRK:
+        name: ["kuna", "kune", "kuna"]
+        fractional:
+          name: ["lipa", "lipe", "lipa"]
+          feminine: true
+      EUR:
+        name: ["euro", "eura", "eura"]
+        fractional:
+          name: ["cent", "centa", "centi"]
+          feminine: false
+      USD:
+        name: ["dolar", "dolara", "dolara"]
+        fractional:
+          name: ["cent", "centa", "centi"]
+          feminine: false
