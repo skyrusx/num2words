@@ -1,17 +1,17 @@
 nl:
   num2words:
-    ones: ["nul", "één", "twee", "drie", "vier", "vijf", "zes", "zeven", "acht", "negen"]
-    tens: ["", "tien", "twintig", "dertig", "veertig", "vijftig", "zestig", "zeventig", "tachtig", "negentig"]
+    ones_masc: ["nul", "één", "twee", "drie", "vier", "vijf", "zes", "zeven", "acht", "negen"]
+    ones_fem: ["nul", "één", "twee", "drie", "vier", "vijf", "zes", "zeven", "acht", "negen"]
     teens: ["tien", "elf", "twaalf", "dertien", "veertien", "vijftien", "zestien", "zeventien", "achttien", "negentien"]
+    tens: ["", "", "twintig", "dertig", "veertig", "vijftig", "zestig", "zeventig", "tachtig", "negentig"]
+    hundreds: ["", "honderd", "tweehonderd", "driehonderd", "vierhonderd", "vijfhonderd", "zeshonderd", "zevenhonderd", "achthonderd", "negenhonderd"]
 
     scales:
-      - ["", "", ""]                         # 1
-      - ["duizend", "duizend", "duizend"]    # 10^3
-      - ["miljoen", "miljoen", "miljoen"]    # 10^6
-      - ["miljard", "miljard", "miljard"]    # 10^9
-      - ["biljoen", "biljoen", "biljoen"]    # 10^12
-      - ["biljard", "biljard", "biljard"]    # 10^15
-      - ["triljoen", "triljoen", "triljoen"] # 10^18
+      - ["", "", ""]
+      - ["duizend", "duizend", "duizend"]
+      - ["miljoen", "miljoen", "miljoen"]
+      - ["miljard", "miljard", "miljard"]
+      - ["biljoen", "biljoen", "biljoen"]
 
     currencies:
       EUR:
