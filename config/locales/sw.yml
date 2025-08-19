@@ -1,0 +1,26 @@
+sw:
+  num2words:
+    ones_masc: ["sifuri", "moja", "mbili", "tatu", "nne", "tano", "sita", "saba", "nane", "tisa"]
+    ones_fem: ["sifuri", "moja", "mbili", "tatu", "nne", "tano", "sita", "saba", "nane", "tisa"]
+    teens: ["kumi", "kumi na moja", "kumi na mbili", "kumi na tatu", "kumi na nne", "kumi na tano", "kumi na sita", "kumi na saba", "kumi na nane", "kumi na tisa"]
+    tens: ["", "", "ishirini", "thelathini", "arobaini", "hamsini", "sitini", "sabini", "themanini", "tisini"]
+    hundreds: ["", "mia moja", "mia mbili", "mia tatu", "mia nne", "mia tano", "mia sita", "mia saba", "mia nane", "mia tisa"]
+
+    scales:
+      - ["", "", ""]
+      - ["elfu", "elfu", "elfu"]
+      - ["milioni", "milioni", "milioni"]
+      - ["bilioni", "bilioni", "bilioni"]
+      - ["trilioni", "trilioni", "trilioni"]
+
+    currencies:
+      KES:
+        name: ["shilingi", "shilingi", "shilingi"]
+        fractional:
+          name: ["senti", "senti", "senti"]
+          feminine: false
+      USD:
+        name: ["dola", "dola", "dola"]
+        fractional:
+          name: ["senti", "senti", "senti"]
+          feminine: false
