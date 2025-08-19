@@ -1,7 +1,7 @@
 it:
   num2words:
     ones_masc: ["zero", "uno", "due", "tre", "quattro", "cinque", "sei", "sette", "otto", "nove"]
-    ones_fem:  ["zero", "una", "due", "tre", "quattro", "cinque", "sei", "sette", "otto", "nove"]
+    ones_fem: ["zero", "una", "due", "tre", "quattro", "cinque", "sei", "sette", "otto", "nove"]
     teens: ["dieci", "undici", "dodici", "tredici", "quattordici", "quindici", "sedici", "diciassette", "diciotto", "diciannove"]
     tens: ["", "", "venti", "trenta", "quaranta", "cinquanta", "sessanta", "settanta", "ottanta", "novanta"]
     hundreds: ["", "cento", "duecento", "trecento", "quattrocento", "cinquecento", "seicento", "settecento", "ottocento", "novecento"]
@@ -21,6 +21,11 @@ it:
           feminine: false
       USD:
         name: ["dollaro", "dollari", "dollari"]
+        fractional:
+          name: ["centesimo", "centesimi", "centesimi"]
+          feminine: false
+      CHF:
+        name: ["franco", "franchi", "franchi"]
         fractional:
           name: ["centesimo", "centesimi", "centesimi"]
           feminine: false
