@@ -1,0 +1,31 @@
+nl:
+  num2words:
+    ones: ["nul", "één", "twee", "drie", "vier", "vijf", "zes", "zeven", "acht", "negen"]
+    tens: ["", "tien", "twintig", "dertig", "veertig", "vijftig", "zestig", "zeventig", "tachtig", "negentig"]
+    teens: ["tien", "elf", "twaalf", "dertien", "veertien", "vijftien", "zestien", "zeventien", "achttien", "negentien"]
+
+    scales:
+      - ["", "", ""]                         # 1
+      - ["duizend", "duizend", "duizend"]    # 10^3
+      - ["miljoen", "miljoen", "miljoen"]    # 10^6
+      - ["miljard", "miljard", "miljard"]    # 10^9
+      - ["biljoen", "biljoen", "biljoen"]    # 10^12
+      - ["biljard", "biljard", "biljard"]    # 10^15
+      - ["triljoen", "triljoen", "triljoen"] # 10^18
+
+    currencies:
+      EUR:
+        name: ["euro", "euro", "euro"]
+        fractional:
+          name: ["cent", "cent", "cent"]
+          feminine: false
+      USD:
+        name: ["dollar", "dollar", "dollar"]
+        fractional:
+          name: ["cent", "cent", "cent"]
+          feminine: false
+      GBP:
+        name: ["pond", "pond", "pond"]
+        fractional:
+          name: ["penny", "pence", "pence"]
+          feminine: false
