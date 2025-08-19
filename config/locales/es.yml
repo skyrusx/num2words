@@ -19,3 +19,13 @@ es:
         fractional:
           name: ["céntimo", "céntimos", "céntimos"]
           feminine: false
+      USD:
+        name: ["dólar", "dólares", "dólares"]
+        fractional:
+          name: ["centavo", "centavos", "centavos"]
+          feminine: false
+      MXN:
+        name: ["peso", "pesos", "pesos"]
+        fractional:
+          name: ["centavo", "centavos", "centavos"]
+          feminine: false
