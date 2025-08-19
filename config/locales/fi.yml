@@ -1,0 +1,26 @@
+fi:
+  num2words:
+    ones_masc: ["nolla", "yksi", "kaksi", "kolme", "neljä", "viisi", "kuusi", "seitsemän", "kahdeksan", "yhdeksän"]
+    ones_fem: ["nolla", "yksi", "kaksi", "kolme", "neljä", "viisi", "kuusi", "seitsemän", "kahdeksan", "yhdeksän"]
+    teens: ["kymmenen", "yksitoista", "kaksitoista", "kolmetoista", "neljätoista", "viisitoista", "kuusitoista", "seitsemäntoista", "kahdeksantoista", "yhdeksäntoista"]
+    tens: ["", "", "kaksikymmentä", "kolmekymmentä", "neljäkymmentä", "viisikymmentä", "kuusikymmentä", "seitsemänkymmentä", "kahdeksankymmentä", "yhdeksänkymmentä"]
+    hundreds: ["", "sata", "kaksisataa", "kolmesataa", "neljäsataa", "viisisataa", "kuusisataa", "seitsemänsataa", "kahdeksansataa", "yhdeksänsataa"]
+
+    scales:
+      - ["", "", ""]
+      - ["tuhat", "tuhatta", "tuhatta"]
+      - ["miljoona", "miljoonaa", "miljoonaa"]
+      - ["miljardi", "miljardia", "miljardia"]
+      - ["biljoona", "biljoonaa", "biljoonaa"]
+
+    currencies:
+      EUR:
+        name: ["euro", "euroa", "euroa"]
+        fractional:
+          name: ["sentti", "senttiä", "senttiä"]
+          feminine: false
+      USD:
+        name: ["dollari", "dollaria", "dollaria"]
+        fractional:
+          name: ["sentti", "senttiä", "senttiä"]
+          feminine: false
