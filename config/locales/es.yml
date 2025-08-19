@@ -1,0 +1,22 @@
+es:
+  num2words:
+    ones_masc: ["cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"]
+    ones_fem:  ["cero", "una", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve"]
+
+    teens: ["diez", "once", "doce", "trece", "catorce", "quince", "dieciséis", "diecisiete", "dieciocho", "diecinueve"]
+    tens: ["", "", "veinte", "treinta", "cuarenta", "cincuenta", "sesenta", "setenta", "ochenta", "noventa"]
+    hundreds: ["", "cien", "doscientos", "trescientos", "cuatrocientos", "quinientos", "seiscientos", "setecientos", "ochocientos", "novecientos"]
+
+    scales:
+      - ["", "", ""]
+      - ["mil", "mil", "mil"]
+      - ["millón", "millones", "millones"]
+      - ["mil millones", "mil millones", "mil millones"]
+      - ["billón", "billones", "billones"]
+
+    currencies:
+      EUR:
+        name: ["euro", "euros", "euros"]
+        fractional:
+          name: ["céntimo", "céntimos", "céntimos"]
+          feminine: false
