@@ -4,13 +4,19 @@ module Num2words
   class Converter
     class << self
       def to_words(number, *args, **opts)
-        locale   = args.first.is_a?(Symbol) ? args.first : opts[:locale] || I18n.default_locale
-        feminine = opts[:feminine] || false
-        style    = opts[:style] || :fraction
+        locale    = args.first.is_a?(Symbol) ? args.first : opts[:locale] || I18n.default_locale
+        feminine  = opts[:feminine] || false
+        style     = opts[:style] || :fraction
+        word_case = opts[:word_case] || :downcase
         locale_data = Locales[locale]
 
-        return to_words_fractional(number, locale, feminine, locale_data, style: style) if number.is_a?(Float)
-        return to_words_integer(number, locale, feminine, locale_data)
+        result = if number.is_a?(Float)
+                   to_words_fractional(number, locale, feminine, locale_data, style: style)
+                 else
+                   to_words_integer(number, locale, feminine, locale_data)
+                 end
+
+        apply_case(result, word_case)
       end
 
       def to_currency(amount, *args, **opts)
