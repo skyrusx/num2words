@@ -92,7 +92,7 @@ module Num2words
 
         if locale.to_sym == :en && style == :decimal
           fraction_digits = fraction_string.chars.map { |d| to_words_integer(d.to_i, locale, feminine, locale_data) }
-          full_string = [sign_word, integer_words, "point", fraction_digits.join(" ")].join(" ")
+          full_string = [sign_word, integer_words, "point", fraction_digits.join(" ")].reject(&:empty?).join(" ")
           return full_string
         end
 
