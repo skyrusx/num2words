@@ -1,4 +1,4 @@
-# num2words
+# num2words [![Gem Version](https://badge.fury.io/rb/num2words.svg)](https://badge.fury.io/rb/num2words)
 
 📦 **num2words** — Ruby-гем для преобразования чисел в строковое представление (прописью).
 
