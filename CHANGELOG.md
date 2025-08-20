@@ -15,6 +15,39 @@
 
 ---
 
+## [0.1.3] – 2025-08-20
+### Added
+- Параметр **`word_case:`** для методов `to_words`, `to_currency` со значениями:
+    - `:upper`, `:capitalize`, `:title`, `:downcase`.
+- В английской локали:
+    - Поддержка опции **`style: :decimal`**, которая выводит дробную часть через `point` по-цифровому (например: `"twelve point one two"`).
+    - Улучшена поддержка стиля **`:fraction`** — дроби преобразуются в слова с корректными окончаниями (`"tenths"`, `"hundredths"` и т.д.).
+- Улучшена читаемость кода:
+    - Унифицированные имена переменных (`major_value`, `minor_value`).
+    - Вынес функционал `apply_case` для управления регистром.
+
+###  Examples after 0.1.3
+
+```ruby
+10.1.to_words(locale: :ru, word_case: :capitalize)
+# => "Десять целых одна десятая"
+
+5.5.to_words(locale: :en, style: :fraction) # По умолчанию: style = fraction
+# => "five and five tenths"
+
+123.01.to_words(:en, style: :decimal, word_case: :upper)
+# => "ONE HUNDRED TWENTY THREE POINT ZERO ONE" 
+
+99.99.to_currency(locale: :ru, word_case: :upper)
+# => "ДЕВЯНОСТО ДЕВЯТЬ РУБЛЕЙ ДЕВЯНОСТО ДЕВЯТЬ КОПЕЕК"
+
+42.to_words(locale: :en, word_case: :title)
+# => "Forty Two"
+
+76.03.to_words(word_case: :downcase) # По умолчанию: word_case = downcase
+"семьдесят шесть целых три сотые"
+```
+
 ## [0.1.2] - 2025-08-19
 ### Fixed
 - Исправлена ошибка с локалью `no` → заменена на корректную `nb` (Norwegian Bokmål).
