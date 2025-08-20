@@ -32,12 +32,13 @@ module Num2words
 
       private
 
-      def pluralize(n, one, few, many)
-        return many if (11..14).include?(n % 100)
-        case n % 10
-        when 1 then one
+      def pluralize(number, singular, few, plural)
+        return plural if (11..14).include?(number % 100)
+
+        case number % 10
+        when 1 then singular
         when 2..4 then few
-        else many
+        else plural
         end
       end
 
