@@ -114,6 +114,16 @@ module Num2words
 
         words.join(" ")
       end
+
+      def apply_case(text, word_case)
+        case word_case
+        when :upper then text.upcase
+        when :capitalize then text.capitalize
+        when :title then text.split.map(&:capitalize).join(" ")
+        when :downcase then text.downcase
+        else text
+        end
+      end
     end
   end
 end
