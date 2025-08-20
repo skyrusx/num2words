@@ -14,22 +14,20 @@ module Num2words
       end
 
       def to_currency(amount, *args, **opts)
-        locale = args.first.is_a?(Symbol) ? args.first : opts[:locale] || :ru
+        locale      = args.first.is_a?(Symbol) ? args.first : opts[:locale] || I18n.default_locale
         locale_data = Locales[locale]
 
-        str = amount.to_s
-        rub_str, kop_str = str.split(".")
-        rub = Integer(rub_str)
-        # всегда 2 знака для копеек; обрезаем лишние, дополняем недостающие
-        kop = (kop_str || "0")[0, 2].ljust(2, "0").to_i
+        major_str, minor_str = sprintf('%.2f', amount).split('.')
+        major_value = major_str.to_i
+        minor_value = minor_str.to_i
 
-        rub_words = to_words(rub, locale: locale)
-        rub_name  = pluralize(rub, *locale_data::MAJOR_UNIT)
+        major_words = to_words(major_value, locale: locale)
+        major_name  = pluralize(major_value, *locale_data::MAJOR_UNIT)
 
-        kop_words = to_words(kop, locale: locale, feminine: true)
-        kop_name  = pluralize(kop, *locale_data::MINOR_UNIT)
+        minor_words = to_words(minor_value, locale: locale, feminine: true)
+        minor_name  = pluralize(minor_value, *locale_data::MINOR_UNIT)
 
-        "#{rub_words} #{rub_name} #{kop_words} #{kop_name}"
+        [major_words, major_name, minor_words, minor_name].join(" ")
       end
 
       private
