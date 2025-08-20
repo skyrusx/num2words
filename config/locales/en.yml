@@ -24,3 +24,18 @@ en:
         fractional:
           name: ["cent", "cents", "cents"]
           feminine: false
+
+    grammar:
+      minus: "minus"
+      conjunction: "and"
+      default_fraction: "parts"
+    fractions:
+      10: ["tenth", "tenths", "tenths"]
+      100: ["hundredth", "hundredths", "hundredths"]
+      1000: ["thousandth", "thousandths", "thousandths"]
+      10000: ["ten-thousandth", "ten-thousandths", "ten-thousandths"]
+      100000: ["hundred-thousandth", "hundred-thousandths", "hundred-thousandths"]
+      1000000: ["millionth", "millionths", "millionths"]
+      10000000: ["ten-millionth", "ten-millionths", "ten-millionths"]
+      100000000: ["hundred-millionth", "hundred-millionths", "hundred-millionths"]
+      1000000000: ["billionth", "billionths", "billionths"]

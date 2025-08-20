@@ -3,30 +3,16 @@
 module Num2words
   class Converter
     class << self
-      # number — целое число (0..10^12-1)
       def to_words(number, *args, **opts)
-        locale = args.first.is_a?(Symbol) ? args.first : opts[:locale] || :ru
+        locale   = args.first.is_a?(Symbol) ? args.first : opts[:locale] || I18n.default_locale
         feminine = opts.delete(:feminine) || false
-
+        style = opts.delete(:style) || :fraction
         locale_data = Locales[locale]
 
-        number = Integer(number)
-        return (feminine ? locale_data::ONES_FEM[0] : locale_data::ONES_MASC[0]) if number.zero?
-
-        groups = number.to_s
-                       .chars.reverse.each_slice(3).map(&:reverse)
-                       .map(&:join).map!(&:to_i).reverse
-
-        words = []
-        groups.each_with_index do |grp, idx|
-          scale_idx = groups.size - idx - 1
-          fem = (scale_idx == 1) || feminine # тысячи — жен. род
-          words.concat triple_to_words(grp, scale_idx, locale_data, feminine: fem)
-        end
-        words.join(" ")
+        return to_words_fractional(number, locale, feminine, locale_data, style: style) if number.is_a?(Float)
+        return to_words_integer(number, locale, feminine, locale_data)
       end
 
-      # amount может быть String, Integer, Float, BigDecimal
       def to_currency(amount, *args, **opts)
         locale = args.first.is_a?(Symbol) ? args.first : opts[:locale] || :ru
         locale_data = Locales[locale]
@@ -76,6 +62,58 @@ module Num2words
 
         words << pluralize(n, *local_data::SCALES[scale_idx]) unless scale_idx.zero?
         words.compact
+      end
+
+      def to_words_fractional(number, locale, feminine, locale_data, style: :fraction)
+        minus_word       = locale_data::GRAMMAR[:minus] || "minus"
+        conjunction_word = locale_data::GRAMMAR[:conjunction] || "and"
+        default_fraction = locale_data::GRAMMAR[:default_fraction] || "parts"
+        fractions_data   = locale_data::FRACTIONS || {}
+
+        sign_word = number.negative? ? minus_word : ""
+
+        integer_string, fraction_string = number.abs.to_s.split('.', 2)
+        integer_value = integer_string.to_i
+
+        return to_words_integer(integer_value, locale, feminine, locale_data) if fraction_string.to_i.zero?
+
+        fraction_string = fraction_string.sub(/0+\z/, "")
+        numerator   = fraction_string.to_i
+        denominator = 10 ** fraction_string.length
+
+        integer_words = to_words_integer(integer_value, locale, feminine, locale_data)
+
+        if locale.to_sym == :en && style == :decimal
+          fraction_digits = fraction_string.chars.map { |d| to_words_integer(d.to_i, locale, feminine, locale_data) }
+          full_string = [sign_word, integer_words, "point", fraction_digits.join(" ")].join(" ")
+          return full_string
+        end
+
+        numerator_words = to_words_integer(numerator, locale, (locale.to_sym == :ru ? true : feminine), locale_data)
+
+        denom_forms = fractions_data[denominator] || fractions_data[denominator.to_s] # массив склонений
+        denominator_words = denom_forms.is_a?(Array) ? pluralize(numerator, *denom_forms) : default_fraction
+
+        [sign_word, integer_words, conjunction_word, numerator_words, denominator_words].reject(&:empty?).join(" ")
+      end
+
+      def to_words_integer(number, locale, feminine, locale_data)
+        integer_value = Integer(number)
+
+        return (feminine ? locale_data::ONES_FEM[0] : locale_data::ONES_MASC[0]) if integer_value.zero?
+
+        groups = integer_value.to_s
+                              .chars.reverse.each_slice(3).map(&:reverse)
+                              .map(&:join).map!(&:to_i).reverse
+
+        words = []
+        groups.each_with_index do |group_value, index|
+          scale_index = groups.size - index - 1
+          group_feminine = (scale_index == 1) || feminine
+          words.concat triple_to_words(group_value, scale_index, locale_data, feminine: group_feminine)
+        end
+
+        words.join(" ")
       end
     end
   end

@@ -12,6 +12,9 @@ module Num2words
 
       RUB = I18n.t("num2words.currencies.USD.name", locale: :en)
       KOP = I18n.t("num2words.currencies.USD.fractional.name", locale: :en)
+
+      FRACTIONS = I18n.t("num2words.fractions", locale: :en)
+      GRAMMAR = I18n.t("num2words.grammar", locale: :en)
     end
 
     register :en, EN
