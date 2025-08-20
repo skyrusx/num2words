@@ -15,6 +15,7 @@ module Num2words
 
       def to_currency(amount, *args, **opts)
         locale      = args.first.is_a?(Symbol) ? args.first : opts[:locale] || I18n.default_locale
+        word_case   = opts[:word_case] || :downcase
         locale_data = Locales[locale]
 
         major_str, minor_str = sprintf('%.2f', amount).split('.')
@@ -27,7 +28,8 @@ module Num2words
         minor_words = to_words(minor_value, locale: locale, feminine: true)
         minor_name  = pluralize(minor_value, *locale_data::MINOR_UNIT)
 
-        [major_words, major_name, minor_words, minor_name].join(" ")
+        result = [major_words, major_name, minor_words, minor_name].join(" ")
+        apply_case(result, word_case)
       end
 
       private
