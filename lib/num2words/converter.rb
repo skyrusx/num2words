@@ -5,8 +5,8 @@ module Num2words
     class << self
       def to_words(number, *args, **opts)
         locale   = args.first.is_a?(Symbol) ? args.first : opts[:locale] || I18n.default_locale
-        feminine = opts.delete(:feminine) || false
-        style = opts.delete(:style) || :fraction
+        feminine = opts[:feminine] || false
+        style    = opts[:style] || :fraction
         locale_data = Locales[locale]
 
         return to_words_fractional(number, locale, feminine, locale_data, style: style) if number.is_a?(Float)
