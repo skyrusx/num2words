@@ -10,8 +10,8 @@ module Num2words
       HUNDREDS = I18n.t("num2words.hundreds", locale: :nl)
       SCALES = I18n.t("num2words.scales", locale: :nl)
 
-      RUB = I18n.t("num2words.currencies.EUR.name", locale: :nl)
-      KOP = I18n.t("num2words.currencies.EUR.fractional.name", locale: :nl)
+      MAJOR_UNIT = I18n.t("num2words.currencies.EUR.name", locale: :nl)
+      MINOR_UNIT = I18n.t("num2words.currencies.EUR.fractional.name", locale: :nl)
     end
 
     register :nl, NL

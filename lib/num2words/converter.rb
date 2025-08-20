@@ -24,10 +24,10 @@ module Num2words
         kop = (kop_str || "0")[0, 2].ljust(2, "0").to_i
 
         rub_words = to_words(rub, locale: locale)
-        rub_name  = pluralize(rub, *locale_data::RUB)
+        rub_name  = pluralize(rub, *locale_data::MAJOR_UNIT)
 
         kop_words = to_words(kop, locale: locale, feminine: true)
-        kop_name  = pluralize(kop, *locale_data::KOP)
+        kop_name  = pluralize(kop, *locale_data::MINOR_UNIT)
 
         "#{rub_words} #{rub_name} #{kop_words} #{kop_name}"
       end
