@@ -17,7 +17,10 @@ module Num2words
       GRAMMAR = I18n.t("num2words.grammar", locale: :ru)
 
       DATE = I18n.t("num2words.date", locale: :ru)
-      TEMPLATE = I18n.t("num2words.date.template", locale: :ru)
+      DATE_TEMPLATE = I18n.t("num2words.date.template", locale: :ru)
+      TIME = I18n.t("num2words.time", locale: :ru)
+      TIME_TEMPLATE = I18n.t("num2words.time.template", locale: :ru)
+      DATETIME_TEMPLATE = I18n.t("num2words.datetime.template", locale: :ru)
 
       ORDINALS = I18n.t("num2words.numbers.ordinals", locale: :ru)
     end
