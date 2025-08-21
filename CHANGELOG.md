@@ -15,6 +15,33 @@
 
 ---
 
+## [0.1.4] - 2025-08-21
+### Added
+- Расширение `String#to_words`, возможность преобразовать строки с датами
+```ruby
+"21.08.2025".to_words(:ru)
+# => "двадцать первое августа две тысячи двадцать пятого года"
+
+"21.08.2025".to_words(:en)
+# => "the twenty-first of August, two thousand twenty five" 
+```
+- Расширение `Date#to_words`, добавлена возможность преобразовывать объекты Date и DateTime
+```ruby
+Date.new(2025, 8, 21).to_words(:ru)
+# => "двадцать первого августа две тысячи двадцать пятого года"
+
+Date.new(2025, 8, 21).to_words(:en)
+# => "the twenty-first of August, two thousand twenty-five"
+```
+- Поддержка параметра `format: :nominative`, можно получать даты в именительном падеже.
+```ruby
+Date.new(2025, 8, 21).to_words(:ru, format: :nominative)
+# => "двадцать первое августа две тысячи двадцать пятый год"
+
+"19.07.2012".to_words(:ru, format: :nominative)
+# => "девятнадцатое июля две тысячи двенадцатый год"
+```
+
 ## [0.1.3] – 2025-08-20
 ### Added
 - Параметр **`word_case:`** для методов `to_words`, `to_currency` со значениями:
