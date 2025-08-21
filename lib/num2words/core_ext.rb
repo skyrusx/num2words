@@ -19,3 +19,15 @@ class Float
     Num2words::Converter.to_currency(self, *args, **opts)
   end
 end
+
+class String
+  def to_words(*args, **opts)
+    Num2words::Converter.to_words(self, *args, **opts)
+  end
+end
+
+class Date
+  def to_words(*args, **opts)
+    Num2words::Converter.to_words(self.strftime("%d.%m.%Y"), *args, **opts)
+  end
+end
