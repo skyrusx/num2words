@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "date"
+require "time"
 
 module Num2words
   class Converter
@@ -16,7 +17,9 @@ module Num2words
         result = case detect_type(number)
                  when :float then to_words_fractional(number, locale, feminine, locale_data, style: style)
                  when :integer then to_words_integer(number, locale, feminine, locale_data)
+                 when :datetime then to_words_datetime(number, locale, locale_data, format: date_format)
                  when :date then to_words_date(number, locale, locale_data, format: date_format)
+                 when :time then to_words_time(number, locale, locale_data)
                  else nil
                  end
 
@@ -47,6 +50,7 @@ module Num2words
       private
 
       def pluralize(number, singular, few, plural)
+        number = number.abs
         return plural if (11..14).include?(number % 100)
 
         case number % 10
@@ -135,7 +139,7 @@ module Num2words
         day, month, year = [date.day, date.month, date.year]
 
         months = locale_data::DATE[:months][format] || locale_data::DATE[:months][:default]
-        template = locale_data::TEMPLATE[format] || locale_data::TEMPLATE[:default]
+        template = locale_data::DATE_TEMPLATE[format] || locale_data::DATE_TEMPLATE[:default]
 
         raise ArgumentError, "Months not found for locale #{locale}" unless months
         raise ArgumentError, "Template not found for locale #{locale}" unless template
@@ -170,6 +174,56 @@ module Num2words
         to_words_integer(value, locale, false, locale_data)
       end
 
+      def to_words_time(time, locale, locale_data, format: :default)
+        time = Time.parse(time) if time.is_a?(String)
+
+        words = locale_data::TIME[:words]
+        template = locale_data::TIME_TEMPLATE
+
+        hours = to_words_integer(time.hour, locale, false, locale_data)
+        minutes = to_words_integer(time.min, locale, true, locale_data)
+        seconds = to_words_integer(time.sec, locale, true, locale_data)
+
+        if format == :default
+          format = case
+                   when time.min.zero? && time.sec.zero? then :hours_only
+                   when time.sec.zero? then :hours_minutes
+                   else :hours_minutes_seconds
+                   end
+        end
+
+        case format
+        when :hours_only
+          template[:hours_only] % {
+            hours: "#{hours} #{pluralize(time.hour, *words[:hour])}"
+          }
+        when :hours_minutes
+          template[:hours_minutes] % {
+            hours: "#{hours} #{pluralize(time.hour, *words[:hour])}",
+            minutes: "#{minutes} #{pluralize(time.min, *words[:minute])}"
+          }
+        when :hours_minutes_seconds
+          template[:hours_minutes_seconds] % {
+            hours: "#{hours} #{pluralize(time.hour, *words[:hour])}",
+            minutes: "#{minutes} #{pluralize(time.min, *words[:minute])}",
+            seconds: "#{seconds} #{pluralize(time.sec, *words[:second])}"
+          }
+        else
+          raise ArgumentError, "Unsupported time format: #{format}"
+        end
+      end
+
+      def to_words_datetime(datetime, locale, locale_data, format: :default)
+        datetime = DateTime.parse(datetime) if datetime.is_a?(String)
+
+        date_part = to_words_date(datetime.to_date, locale, locale_data, format: format)
+        time_part = to_words_time(datetime.to_time, locale, locale_data, format: :default)
+
+        template = locale_data::DATETIME_TEMPLATE
+
+        template % { date: date_part, time: time_part }
+      end
+
       def apply_case(text, word_case)
         case word_case
         when :upper then text.upcase
@@ -182,20 +236,30 @@ module Num2words
 
       def detect_type(value)
         case value
-        when Integer then :integer
-        when Float then :float
-        when Date, Time, ::DateTime then :date
+        when Integer   then :integer
+        when Float     then :float
+        when Date      then :date
+        when Time      then :time
+        when DateTime  then :datetime
         when String
-          return :integer if /\A-?\d+\z/.match?(value)
-          return :float if /\A-?\d+\.\d+\z/.match?(value)
+          return :integer if value.match?(/\A-?\d+\z/)
+          return :float   if value.match?(/\A-?\d+\.\d+\z/)
+          return :time    if value.match?(/\A\d{1,2}:\d{2}(:\d{2})?\z/)
+
+          # Форматы даты
+          return :date     if value.match?(/\A\d{1,2}[.\-]\d{1,2}[.\-]\d{2,4}\z/)
+          return :date     if value.match?(/\A\d{4}-\d{2}-\d{2}\z/)
+          return :datetime if value.match?(/\A\d{1,2}[.\-]\d{1,2}[.\-]\d{2,4}\s+\d{1,2}:\d{2}(:\d{2})?\z/)
+          return :datetime if value.match?(/\A\d{4}-\d{2}-\d{2}[ T]\d{2}:\d{2}(:\d{2})?([.,]\d+)?(Z|[+\-]\d{2}:?\d{2})?\z/)
 
           begin
-            Date.parse(value)
-            :date
+            date_time = DateTime.parse(value)
+            (date_time.hour != 0 || date_time.min != 0 || date_time.sec != 0) ? :datetime : :date
           rescue ArgumentError
             :string
           end
-        else :unknown
+        else
+          :unknown
         end
       end
     end
