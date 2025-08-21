@@ -15,6 +15,11 @@ module Num2words
 
       FRACTIONS = I18n.t("num2words.fractions", locale: :ru)
       GRAMMAR = I18n.t("num2words.grammar", locale: :ru)
+
+      DATE = I18n.t("num2words.date", locale: :ru)
+      TEMPLATE = I18n.t("num2words.date.template", locale: :ru)
+
+      ORDINALS = I18n.t("num2words.numbers.ordinals", locale: :ru)
     end
 
     register :ru, RU
