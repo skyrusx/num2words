@@ -31,3 +31,15 @@ class Date
     Num2words::Converter.to_words(self.strftime("%d.%m.%Y"), *args, **opts)
   end
 end
+
+class Time
+  def to_words(*args, **opts)
+    Num2words::Converter.to_words(self.strftime("%H:%M:%S"), *args, **opts)
+  end
+end
+
+class DateTime
+  def to_words(*args, **opts)
+    Num2words::Converter.to_words(self.strftime("%d.%m.%Y %H:%M:%S"), *args, **opts)
+  end
+end
