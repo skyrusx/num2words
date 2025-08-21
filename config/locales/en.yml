@@ -40,12 +40,6 @@ en:
       100000000: ["hundred-millionth", "hundred-millionths", "hundred-millionths"]
       1000000000: ["billionth", "billionths", "billionths"]
 
-    date:
-      template:
-        default: "the %{day} of %{month}, %{year}"
-      months:
-        default: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-
     numbers:
       ordinals:
         default:
@@ -53,3 +47,19 @@ en:
                       "tenth", "eleventh", "twelfth", "thirteenth", "fourteenth" ,"fifteenth", "sixteenth", "seventeenth", "eighteenth", "nineteenth",
                       "twentieth", "twenty-first", "twenty-second", "twenty-third", "twenty-fourth", "twenty-fifth", "twenty-sixth", "twenty-seventh", "twenty-eighth", "twenty-ninth",
                       "thirtieth","thirty-first"]
+    datetime:
+      template: "%{date} at %{time}"
+    date:
+      template:
+        default: "the %{day} of %{month}, %{year}"
+      months:
+        default: [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ]
+    time:
+      template:
+        hours_only: "%{hours}"
+        hours_minutes: "%{hours} %{minutes}"
+        hours_minutes_seconds: "%{hours} %{minutes} %{seconds}"
+      words:
+        hour: ["hour", "hours", "hours"]
+        minute: ["minute", "minutes", "minutes"]
+        second: ["second", "seconds", "seconds"]
