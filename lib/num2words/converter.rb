@@ -7,19 +7,23 @@ module Num2words
   class Converter
     class << self
       def to_words(number, *args, **opts)
-        locale    = args.first.is_a?(Symbol) ? args.first : opts[:locale] || I18n.default_locale
-        feminine  = opts[:feminine] || false
-        style     = opts[:style] || :fraction
-        word_case = opts[:word_case] || :default
+        locale      = args[0].is_a?(Symbol) ? args[0] : opts[:locale] || I18n.default_locale
+        type_only   = args[1].is_a?(Symbol) ? args[1] : opts[:only]
+        type_short  = args[2].is_a?(TrueClass) || args[2].is_a?(FalseClass) ? args[2] : opts[:short] || false
+
+        feminine    = opts[:feminine] || false
+        style       = opts[:style] || :fraction
+        word_case   = opts[:word_case] || :default
         date_format = opts[:format] || :default
+
         locale_data = Locales[locale]
 
         result = case detect_type(number)
                  when :float then to_words_fractional(number, locale, feminine, locale_data, style: style)
                  when :integer then to_words_integer(number, locale, feminine, locale_data)
-                 when :datetime then to_words_datetime(number, locale, locale_data, format: date_format)
+                 when :datetime then to_words_datetime(number, locale, locale_data, format: date_format, only: type_only, short: type_short)
                  when :date then to_words_date(number, locale, locale_data, format: date_format)
-                 when :time then to_words_time(number, locale, locale_data)
+                 when :time then to_words_time(number, locale, locale_data, short: type_short)
                  else nil
                  end
 
@@ -138,6 +142,8 @@ module Num2words
 
         day, month, year = [date.day, date.month, date.year]
 
+        return date.strftime("%d.%m.%Y") if format == :short
+
         months = locale_data::DATE[:months][format] || locale_data::DATE[:months][:default]
         template = locale_data::DATE_TEMPLATE[format] || locale_data::DATE_TEMPLATE[:default]
 
@@ -174,53 +180,61 @@ module Num2words
         to_words_integer(value, locale, false, locale_data)
       end
 
-      def to_words_time(time, locale, locale_data, format: :default)
+      def to_words_time(time, locale, locale_data, format: :default, short: false)
         time = Time.parse(time) if time.is_a?(String)
 
-        words = locale_data::TIME[:words]
+        return time.strftime("%H:%M") if format == :short
+
+        words    = locale_data::TIME[:words]
         template = locale_data::TIME_TEMPLATE
 
-        hours = to_words_integer(time.hour, locale, false, locale_data)
-        minutes = to_words_integer(time.min, locale, true, locale_data)
-        seconds = to_words_integer(time.sec, locale, true, locale_data)
+        hours = [
+          to_words_integer(time.hour, locale, false, locale_data),
+          pluralize(time.hour, *words[:hour])
+        ].join(" ")
+        minutes = [
+          to_words_integer(time.min, locale, true, locale_data),
+          pluralize(time.min, *words[:minute])
+        ].join(" ")
+        seconds = [
+          to_words_integer(time.sec, locale, true, locale_data),
+          pluralize(time.sec, *words[:second])
+        ].join(" ")
 
-        if format == :default
-          format = case
-                   when time.min.zero? && time.sec.zero? then :hours_only
-                   when time.sec.zero? then :hours_minutes
-                   else :hours_minutes_seconds
-                   end
-        end
+        format = if short
+                   time.min.zero? && time.sec.zero? ? :hours_only : :hours_minutes
+                 else
+                   format
+                 end
 
         case format
         when :hours_only
-          template[:hours_only] % {
-            hours: "#{hours} #{pluralize(time.hour, *words[:hour])}"
-          }
+          template[:hours_only] % { hours: hours }
         when :hours_minutes
-          template[:hours_minutes] % {
-            hours: "#{hours} #{pluralize(time.hour, *words[:hour])}",
-            minutes: "#{minutes} #{pluralize(time.min, *words[:minute])}"
-          }
-        when :hours_minutes_seconds
-          template[:hours_minutes_seconds] % {
-            hours: "#{hours} #{pluralize(time.hour, *words[:hour])}",
-            minutes: "#{minutes} #{pluralize(time.min, *words[:minute])}",
-            seconds: "#{seconds} #{pluralize(time.sec, *words[:second])}"
-          }
+          template[:hours_minutes] % { hours: hours, minutes: minutes }
+        when :hours_minutes_seconds, :default
+          template[:hours_minutes_seconds] % { hours: hours, minutes: minutes, seconds: seconds }
         else
           raise ArgumentError, "Unsupported time format: #{format}"
         end
       end
 
-      def to_words_datetime(datetime, locale, locale_data, format: :default)
+
+      def to_words_datetime(datetime, locale, locale_data, format: :default, only: nil, short: false)
         datetime = DateTime.parse(datetime) if datetime.is_a?(String)
 
-        date_part = to_words_date(datetime.to_date, locale, locale_data, format: format)
-        time_part = to_words_time(datetime.to_time, locale, locale_data, format: :default)
+        date_format = short && only == :date ? :short : format
+        time_format = short && only == :time ? :short : :default
+
+        date_part = to_words_date(datetime.to_date, locale, locale_data, format: date_format)
+        time_part = to_words_time(datetime.to_time, locale, locale_data, format: time_format, short: short)
+
+        return date_part if only == :date
+        return time_part if only == :time
+
+        return "#{date_part}, #{time_part}" if short
 
         template = locale_data::DATETIME_TEMPLATE
-
         template % { date: date_part, time: time_part }
       end
 
