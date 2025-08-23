@@ -74,38 +74,126 @@ bn:
 
     currencies:
       BDT:
-        major_unit: ["টাকা", "টাকা", "টাকা"]
-        minor_unit: ["পয়শা", "পয়শা", "পয়শা"]
+        major_unit: [ "টাকা", "টাকা", "টাকা" ]
+        minor_unit: [ "পয়সা", "পয়সা", "পয়সা" ]
         symbol: "৳"
       USD:
-        major_unit: ["ডলার", "ডলার", "ডলার"]
-        minor_unit: ["সেন্ট", "সেন্ট", "সেন্ট"]
+        major_unit: [ "ডলার", "ডলার", "ডলার" ]
+        minor_unit: [ "সেন্ট", "সেন্ট", "সেন্ট" ]
         symbol: "$"
       EUR:
-        major_unit: ["ইউরো", "ইউরো", "ইউরো"]
-        minor_unit: ["সেন্ট", "সেন্ট", "সেন্ট"]
+        major_unit: [ "ইউরো", "ইউরো", "ইউরো" ]
+        minor_unit: [ "সেন্ট", "সেন্ট", "সেন্ট" ]
         symbol: "€"
-      INR:
-        major_unit: ["রুপি", "রুপি", "রুপি"]
-        minor_unit: ["পয়সা", "পয়সা", "পয়সা"]
-        symbol: "₹"
       GBP:
-        major_unit: ["পাউন্ড", "পাউন্ড", "পাউন্ড"]
-        minor_unit: ["পেন্স", "পেন্স", "পেন্স"]
+        major_unit: [ "পাউন্ড", "পাউন্ড", "পাউন্ড" ]
+        minor_unit: [ "পেন্স", "পেন্স", "পেন্স" ]
         symbol: "£"
       CNY:
-        major_unit: ["ইউয়ান", "ইউয়ান", "ইউয়ান"]
-        minor_unit: ["ফেন", "ফেন", "ফেন"]
+        major_unit: [ "ইউয়ান", "ইউয়ান", "ইউয়ান" ]
+        minor_unit: [ "ফেন", "ফেন", "ফেন" ]
         symbol: "¥"
       JPY:
-        major_unit: ["ইয়েন", "ইয়েন", "ইয়েন"]
-        minor_unit: ["সেন", "সেন", "সেন"]
+        major_unit: [ "ইয়েন", "ইয়েন", "ইয়েন" ]
+        minor_unit: [ "সেন", "সেন", "সেন" ]
         symbol: "¥"
       RUB:
-        major_unit: ["রুবল", "রুবল", "রুবল"]
-        minor_unit: ["কোপেক", "কোপেক", "কোপেক"]
+        major_unit: [ "রুবল", "রুবল", "রুবল" ]
+        minor_unit: [ "কোপেক", "কোপেক", "কোপেক" ]
         symbol: "₽"
+      UAH:
+        major_unit: [ "হ্রিভনিয়া", "হ্রিভনিয়া", "হ্রিভনিয়া" ]
+        minor_unit: [ "কোপেক", "কোপেক", "কোপেক" ]
+        symbol: "₴"
+      PLN:
+        major_unit: [ "জ্লোটি", "জ্লোটি", "জ্লোটি" ]
+        minor_unit: [ "গ্রোশ", "গ্রোশ", "গ্রোশ" ]
+        symbol: "zł"
+      CZK:
+        major_unit: [ "ক্রোনা", "ক্রোনা", "ক্রোনা" ]
+        minor_unit: [ "হেলার", "হেলার", "হেলার" ]
+        symbol: "Kč"
+      RON:
+        major_unit: [ "লেউ", "লেউ", "লেউ" ]
+        minor_unit: [ "বান", "বান", "বান" ]
+        symbol: "lei"
+      BGN:
+        major_unit: [ "লেভ", "লেভ", "লেভ" ]
+        minor_unit: [ "স্টোটিনকা", "স্টোটিনকি", "স্টোটিনকি" ]
+        symbol: "лв"
+      BYN:
+        major_unit: [ "বেলারুশিয়ান রুবল", "বেলারুশিয়ান রুবল", "বেলারুশিয়ান রুবল" ]
+        minor_unit: [ "কোপেক", "কোপেক", "কোপেক" ]
+        symbol: "Br"
       KZT:
-        major_unit: ["তেঙ্গে", "তেঙ্গে", "তেঙ্গে"]
-        minor_unit: ["তিিন", "তিিন", "তিিন"]
+        major_unit: [ "তেঙ্গে", "তেঙ্গে", "তেঙ্গে" ]
+        minor_unit: [ "তিয়িন", "তিয়িন", "তিয়িন" ]
         symbol: "₸"
+      ILS:
+        major_unit: [ "শেকেল", "শেকেল", "শেকেল" ]
+        minor_unit: [ "আগোরা", "আগোরা", "আগোরা" ]
+        symbol: "₪"
+      SEK:
+        major_unit: [ "ক্রোনা", "ক্রোনা", "ক্রোনা" ]
+        minor_unit: [ "ওরে", "ওরে", "ওরে" ]
+        symbol: "kr"
+      NOK:
+        major_unit: [ "ক্রোনা", "ক্রোনা", "ক্রোনা" ]
+        minor_unit: [ "ওরে", "ওরে", "ওরে" ]
+        symbol: "kr"
+      DKK:
+        major_unit: [ "ক্রোনা", "ক্রোনা", "ক্রোনা" ]
+        minor_unit: [ "ওরে", "ওরে", "ওরে" ]
+        symbol: "kr"
+      HUF:
+        major_unit: [ "ফরিন্ট", "ফরিন্ট", "ফরিন্ট" ]
+        minor_unit: [ "ফিলার", "ফিলার", "ফিলার" ]
+        symbol: "Ft"
+      SAR:
+        major_unit: [ "রিয়াল", "রিয়াল", "রিয়াল" ]
+        minor_unit: [ "হালালা", "হালালা", "হালালা" ]
+        symbol: "﷼"
+      INR:
+        major_unit: [ "রুপি", "রুপি", "রুপি" ]
+        minor_unit: [ "পয়সা", "পয়সা", "পয়সা" ]
+        symbol: "₹"
+      THB:
+        major_unit: [ "ভাট", "ভাট", "ভাট" ]
+        minor_unit: [ "সাতাং", "সাতাং", "সাতাং" ]
+        symbol: "฿"
+      VND:
+        major_unit: [ "ডং", "ডং", "ডং" ]
+        minor_unit: [ "সু", "সু", "সু" ]
+        symbol: "₫"
+      IDR:
+        major_unit: [ "রুপি", "রুপি", "রুপি" ]
+        minor_unit: [ "সেন", "সেন", "সেন" ]
+        symbol: "Rp"
+      IRR:
+        major_unit: [ "রিয়াল", "রিয়াল", "রিয়াল" ]
+        minor_unit: [ "দিনার", "দিনার", "দিনার" ]
+        symbol: "﷼"
+      RSD:
+        major_unit: [ "দিনার", "দিনার", "দিনার" ]
+        minor_unit: [ "পারা", "পারা", "পারা" ]
+        symbol: "дин"
+      MYR:
+        major_unit: [ "রিঙ্গিত", "রিঙ্গিত", "রিঙ্গিত" ]
+        minor_unit: [ "সেন", "সেন", "সেন" ]
+        symbol: "RM"
+      PKR:
+        major_unit: [ "রুপি", "রুপি", "রুপি" ]
+        minor_unit: [ "পয়সা", "পয়সা", "পয়সা" ]
+        symbol: "₨"
+      KES:
+        major_unit: [ "শিলিং", "শিলিং", "শিলিং" ]
+        minor_unit: [ "সেন্ট", "সেন্ট", "সেন্ট" ]
+        symbol: "Sh"
+      TRY:
+        major_unit: [ "লিরা", "লিরা", "লিরা" ]
+        minor_unit: [ "কুরুশ", "কুরুশ", "কুরুশ" ]
+        symbol: "₺"
+      KRW:
+        major_unit: [ "উওন", "উওন", "উওন" ]
+        minor_unit: [ "জিওন", "জিওন", "জিওন" ]
+        symbol: "₩"
