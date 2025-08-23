@@ -4,7 +4,7 @@ hr:
     ones_fem: ["nula", "jedna", "dvije", "tri", "četiri", "pet", "šest", "sedam", "osam", "devet"]
     teens: ["deset", "jedanaest", "dvanaest", "trinaest", "četrnaest", "petnaest", "šesnaest", "sedamnaest", "osamnaest", "devetnaest"]
     tens: ["", "", "dvadeset", "trideset", "četrdeset", "pedeset", "šezdeset", "sedamdeset", "osamdeset", "devedeset"]
-    hundreds: ["", "sto", "dvjesto", "tristo", "četiristo", "petsto", "šesto", "sedamsto", "osamsto", "devetsto"]
+    hundreds: ["", "sto", "dvjesto", "tristo", "četiristo", "petsto", "šeststo", "sedamsto", "osamsto", "devetsto"]
 
     scales:
       - ["", "", ""]
@@ -13,19 +13,186 @@ hr:
       - ["milijarda", "milijarde", "milijardi"]
       - ["bilijun", "bilijuna", "bilijuna"]
 
+    grammar:
+      minus: "minus"
+      conjunction: "i"
+      default_fraction: "dijela"
+    fractions:
+      10: ["desetina", "desetine", "desetina"]
+      100: ["stotina", "stotine", "stotina"]
+      1000: ["tisućinka", "tisućinke", "tisućinki"]
+      10000: ["desettisućinka", "desettisućinke", "desettisućinki"]
+      100000: ["stotisućinka", "stotisućinke", "stotisućinki"]
+      1000000: ["milijuntina", "milijuntine", "milijuntina"]
+      10000000: ["desetmilijuntina", "desetmilijuntine", "desetmilijuntina"]
+      100000000: ["stomilijuntina", "stomilijuntine", "stomilijuntina"]
+      1000000000: ["milijardinka", "milijardinke", "milijardinki"]
+
+    numbers:
+      ordinals:
+        nominative:
+          masculine: ["prvi", "drugi", "treći", "četvrti", "peti", "šesti", "sedmi", "osmi", "deveti", "deseti",
+                      "jedanaesti", "dvanaesti", "trinaesti", "četrnaesti", "petnaesti", "šesnaesti", "sedamnaesti", "osamnaesti", "devetnaesti",
+                      "dvadeseti", "dvadeset prvi", "dvadeset drugi", "dvadeset treći", "dvadeset četvrti", "dvadeset peti", "dvadeset šesti", "dvadeset sedmi", "dvadeset osmi", "dvadeset deveti",
+                      "trideseti", "trideset prvi"]
+          feminine: ["prva", "druga", "treća", "četvrta", "peta", "šesta", "sedma", "osma", "deveta",
+                     "deseta", "jedanaesta", "dvanaesta", "trinaesta", "četrnaesta", "petnaesta", "šesnaesta", "sedamnaesta", "osamnaesta", "devetnaesta",
+                     "dvadeseta", "dvadeset prva", "dvadeset druga", "dvadeset treća", "dvadeset četvrta", "dvadeset peta", "dvadeset šesta", "dvadeset sedma", "dvadeset osma", "dvadeset deveta",
+                     "trideseta", "trideset prva"]
+          neuter: ["prvo", "drugo", "treće", "četvrto", "peto", "šesto", "sedmo", "osmo", "deveto",
+                   "deseto", "jedanaesto", "dvanaesto", "trinaesto", "četrnaesto", "petnaesto", "šesnaesto", "sedamnaesto", "osamnaesto", "devetnaesto",
+                   "dvadeseto", "dvadeset prvo", "dvadeset drugo", "dvadeset treće", "dvadeset četvrto", "dvadeset peto", "dvadeset šesto", "dvadeset sedmo", "dvadeset osmo", "dvadeset deveto",
+                   "trideseto", "trideset prvo"]
+        default:
+          masculine: ["prvog", "drugog", "trećeg", "četvrtog", "petog", "šestog", "sedmog", "osmog", "devetog",
+                      "desetog", "jedanaestog", "dvanaestog", "trinaestog", "četrnaestog", "petnaestog", "šesnaestog", "sedamnaestog", "osamnaestog", "devetnaestog",
+                      "dvadesetog", "dvadeset prvog", "dvadeset drugog", "dvadeset trećeg", "dvadeset četvrtog", "dvadeset petog", "dvadeset šestog", "dvadeset sedmog", "dvadeset osmog", "dvadeset devetog",
+                      "tridesetog", "trideset prvog"]
+
+    datetime:
+      template: "%{date}, %{time}"
+    date:
+      template:
+        default: "%{day}. %{month} %{year}."
+        nominative: "%{day}. %{month} %{year}."
+      months:
+        default: ["siječnja", "veljače", "ožujka", "travnja", "svibnja", "lipnja", "srpnja", "kolovoza", "rujna", "listopada", "studenoga", "prosinca"]
+        nominative: ["siječanj", "veljača", "ožujak", "travanj", "svibanj", "lipanj", "srpanj", "kolovoz", "rujan", "listopad", "studeni", "prosinac"]
+    time:
+      template:
+        hours_only: "%{hours}"
+        hours_minutes: "%{hours}:%{minutes}"
+        hours_minutes_seconds: "%{hours}:%{minutes}:%{seconds}"
+      words:
+        hour: ["sat", "sata", "sati"]
+        minute: ["minuta", "minute", "minuta"]
+        second: ["sekunda", "sekunde", "sekundi"]
+
+    warnings:
+      currency_not_available: "Valuta %{currency} nije dostupna za lokal %{lang}, koristi se trenutna."
+
     currencies:
-      HRK:
-        name: ["kuna", "kune", "kuna"]
-        fractional:
-          name: ["lipa", "lipe", "lipa"]
-          feminine: true
       EUR:
-        name: ["euro", "eura", "eura"]
-        fractional:
-          name: ["cent", "centa", "centi"]
-          feminine: false
+        major_unit: [ "euro", "eura", "eura" ]
+        minor_unit: [ "cent", "centa", "centi" ]
+        symbol: "€"
       USD:
-        name: ["dolar", "dolara", "dolara"]
-        fractional:
-          name: ["cent", "centa", "centi"]
-          feminine: false
+        major_unit: [ "dolar", "dolara", "dolara" ]
+        minor_unit: [ "cent", "centa", "centi" ]
+        symbol: "$"
+      GBP:
+        major_unit: [ "funta", "funte", "funti" ]
+        minor_unit: [ "penny", "pennya", "pennyja" ]
+        symbol: "£"
+      RUB:
+        major_unit: [ "rublja", "rublje", "rublji" ]
+        minor_unit: [ "kopjejka", "kopjejke", "kopjejki" ]
+        symbol: "₽"
+      CNY:
+        major_unit: [ "juan", "juana", "juana" ]
+        minor_unit: [ "fen", "fena", "fena" ]
+        symbol: "¥"
+      JPY:
+        major_unit: [ "jen", "jena", "jena" ]
+        minor_unit: [ "sen", "sena", "sena" ]
+        symbol: "¥"
+      KRW:
+        major_unit: [ "von", "vona", "vona" ]
+        minor_unit: [ "čon", "čona", "čona" ]
+        symbol: "₩"
+      TRY:
+        major_unit: [ "lira", "lire", "lira" ]
+        minor_unit: [ "kuruš", "kuruša", "kuruša" ]
+        symbol: "₺"
+      PLN:
+        major_unit: [ "zlot", "zlota", "zlota" ]
+        minor_unit: [ "groš", "groša", "groša" ]
+        symbol: "zł"
+      UAH:
+        major_unit: [ "hrivnja", "hrivnje", "hrivnji" ]
+        minor_unit: [ "kopjejka", "kopjejke", "kopjejki" ]
+        symbol: "₴"
+      CZK:
+        major_unit: [ "kruna", "krune", "kruna" ]
+        minor_unit: [ "haler", "halera", "halera" ]
+        symbol: "Kč"
+      RON:
+        major_unit: [ "lej", "leja", "leja" ]
+        minor_unit: [ "ban", "bana", "bana" ]
+        symbol: "lei"
+      BGN:
+        major_unit: [ "lev", "leva", "leva" ]
+        minor_unit: [ "stotinka", "stotinke", "stotinki" ]
+        symbol: "лв"
+      BYN:
+        major_unit: [ "bjeloruska rublja", "bjeloruske rublje", "bjeloruskih rublji" ]
+        minor_unit: [ "kopjejka", "kopjejke", "kopjejki" ]
+        symbol: "Br"
+      KZT:
+        major_unit: [ "tenge", "tengea", "tengea" ]
+        minor_unit: [ "tiyn", "tiyna", "tiyna" ]
+        symbol: "₸"
+      ILS:
+        major_unit: [ "šekel", "šekela", "šekela" ]
+        minor_unit: [ "agora", "agore", "agora" ]
+        symbol: "₪"
+      SEK:
+        major_unit: [ "kruna", "krune", "kruna" ]
+        minor_unit: [ "öra", "öre", "öre" ]
+        symbol: "kr"
+      NOK:
+        major_unit: [ "kruna", "krune", "kruna" ]
+        minor_unit: [ "øre", "øre", "øre" ]
+        symbol: "kr"
+      DKK:
+        major_unit: [ "kruna", "krune", "kruna" ]
+        minor_unit: [ "øre", "øre", "øre" ]
+        symbol: "kr"
+      HUF:
+        major_unit: [ "forinta", "forinte", "forinti" ]
+        minor_unit: [ "filer", "filera", "filera" ]
+        symbol: "Ft"
+      SAR:
+        major_unit: [ "rijal", "rijala", "rijala" ]
+        minor_unit: [ "halala", "halale", "halala" ]
+        symbol: "﷼"
+      INR:
+        major_unit: [ "rupija", "rupije", "rupija" ]
+        minor_unit: [ "paisa", "paise", "paisā" ]
+        symbol: "₹"
+      THB:
+        major_unit: [ "bat", "bata", "bata" ]
+        minor_unit: [ "satang", "satanga", "satanga" ]
+        symbol: "฿"
+      VND:
+        major_unit: [ "dong", "donga", "donga" ]
+        minor_unit: [ "su", "su", "su" ]
+        symbol: "₫"
+      IDR:
+        major_unit: [ "rupija", "rupije", "rupija" ]
+        minor_unit: [ "sen", "sena", "sena" ]
+        symbol: "Rp"
+      IRR:
+        major_unit: [ "rijal", "rijala", "rijala" ]
+        minor_unit: [ "dinam", "dinama", "dinama" ]
+        symbol: "﷼"
+      RSD:
+        major_unit: [ "dinar", "dinara", "dinara" ]
+        minor_unit: [ "para", "pare", "para" ]
+        symbol: "дин"
+      MYR:
+        major_unit: [ "ringit", "ringita", "ringita" ]
+        minor_unit: [ "sen", "sena", "sena" ]
+        symbol: "RM"
+      BDT:
+        major_unit: [ "taka", "take", "taka" ]
+        minor_unit: [ "poisha", "poishe", "poisha" ]
+        symbol: "৳"
+      PKR:
+        major_unit: [ "rupija", "rupije", "rupija" ]
+        minor_unit: [ "paisa", "paise", "paisā" ]
+        symbol: "₨"
+      KES:
+        major_unit: [ "šiling", "šilinga", "šilinga" ]
+        minor_unit: [ "cent", "centa", "centi" ]
+        symbol: "Sh"
