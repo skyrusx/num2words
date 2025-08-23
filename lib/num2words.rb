@@ -5,6 +5,7 @@ require_relative "num2words/version"
 require_relative "num2words/converter"
 require_relative "num2words/core_ext"
 require_relative "num2words/locales"
+require_relative "num2words/config"
 
 module Num2words
   def self.to_words(number, *args, **opts)
