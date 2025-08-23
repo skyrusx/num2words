@@ -10,8 +10,16 @@ module Num2words
       HUNDREDS = I18n.t("num2words.hundreds", locale: :hu)
       SCALES = I18n.t("num2words.scales", locale: :hu)
 
-      MAJOR_UNIT = I18n.t("num2words.currencies.HUF.name", locale: :hu)
-      MINOR_UNIT = I18n.t("num2words.currencies.HUF.fractional.name", locale: :hu)
+      FRACTIONS = I18n.t("num2words.fractions", locale: :hu)
+      GRAMMAR = I18n.t("num2words.grammar", locale: :hu)
+
+      DATE = I18n.t("num2words.date", locale: :hu)
+      DATE_TEMPLATE = I18n.t("num2words.date.template", locale: :hu)
+      TIME = I18n.t("num2words.time", locale: :hu)
+      TIME_TEMPLATE = I18n.t("num2words.time.template", locale: :hu)
+      DATETIME_TEMPLATE = I18n.t("num2words.datetime.template", locale: :hu)
+
+      ORDINALS = I18n.t("num2words.numbers.ordinals", locale: :hu)
     end
 
     register :hu, HU

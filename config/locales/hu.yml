@@ -13,19 +13,186 @@ hu:
       - ["milliárd", "milliárd", "milliárd"]
       - ["billió", "billió", "billió"]
 
+    grammar:
+      minus: "mínusz"
+      conjunction: "egész"
+      default_fraction: "tört"
+    fractions:
+      10: ["tized", "tizedek", "tizedek"]
+      100: ["század", "századok", "századok"]
+      1000: ["ezred", "ezredek", "ezredek"]
+      10000: ["tízezred", "tízezredek", "tízezredek"]
+      100000: ["százezred", "százezredek", "százezredek"]
+      1000000: ["milliomod", "milliomodok", "milliomodok"]
+      10000000: ["tízmilliomod", "tízmilliomodok", "tízmilliomodok"]
+      100000000: ["százmilliomod", "százmilliomodok", "százmilliomodok"]
+      1000000000: ["milliárdod", "milliárdok", "milliárdok"]
+
+    numbers:
+      ordinals:
+        nominative:
+          masculine: ["első", "második", "harmadik", "negyedik", "ötödik", "hatodik", "hetedik", "nyolcadik", "kilencedik", "tizedik",
+                      "tizenegyedik", "tizenkettedik", "tizenharmadik", "tizennegyedik", "tizenötödik", "tizenhatodik", "tizenhetedik", "tizennyolcadik", "tizenkilencedik",
+                      "huszadik", "huszonegyedik", "huszonkettedik", "huszonharmadik", "huszonnegyedik", "huszonötödik", "huszonhatodik", "huszonhetedik", "huszonnyolcadik", "huszonkilencedik",
+                      "harmincadik", "harmincegyedik"]
+          feminine: ["első", "második", "harmadik", "negyedik", "ötödik", "hatodik", "hetedik", "nyolcadik", "kilencedik", "tizedik",
+                     "tizenegyedik", "tizenkettedik", "tizenharmadik", "tizennegyedik", "tizenötödik", "tizenhatodik", "tizenhetedik", "tizennyolcadik", "tizenkilencedik",
+                     "huszadik", "huszonegyedik", "huszonkettedik", "huszonharmadik", "huszonnegyedik", "huszonötödik", "huszonhatodik", "huszonhetedik", "huszonnyolcadik", "huszonkilencedik",
+                     "harmincadik", "harmincegyedik"]
+          neuter: ["első", "második", "harmadik", "negyedik", "ötödik", "hatodik", "hetedik", "nyolcadik", "kilencedik", "tizedik",
+                   "tizenegyedik", "tizenkettedik", "tizenharmadik", "tizennegyedik", "tizenötödik", "tizenhatodik", "tizenhetedik", "tizennyolcadik", "tizenkilencedik",
+                   "huszadik", "huszonegyedik", "huszonkettedik", "huszonharmadik", "huszonnegyedik", "huszonötödik", "huszonhatodik", "huszonhetedik", "huszonnyolcadik", "huszonkilencedik",
+                   "harmincadik", "harmincegyedik"]
+        default:
+          masculine: ["első", "második", "harmadik", "negyedik", "ötödik", "hatodik", "hetedik", "nyolcadik", "kilencedik",
+                      "tizedik", "tizenegyedik", "tizenkettedik", "tizenharmadik", "tizennegyedik", "tizenötödik", "tizenhatodik", "tizenhetedik", "tizennyolcadik", "tizenkilencedik",
+                      "huszadik", "huszonegyedik", "huszonkettedik", "huszonharmadik", "huszonnegyedik", "huszonötödik", "huszonhatodik", "huszonhetedik", "huszonnyolcadik", "huszonkilencedik",
+                      "harmincadik", "harmincegyedik"]
+
+    datetime:
+      template: "%{date}, %{time}"
+    date:
+      template:
+        default: "%{year}. %{month} %{day}"
+        nominative: "%{year}. %{month} %{day}"
+      months:
+        default: ["január", "február", "március", "április", "május", "június", "július", "augusztus", "szeptember", "október", "november", "december"]
+        nominative: ["január", "február", "március", "április", "május", "június", "július", "augusztus", "szeptember", "október", "november", "december"]
+    time:
+      template:
+        hours_only: "%{hours}"
+        hours_minutes: "%{hours}:%{minutes}"
+        hours_minutes_seconds: "%{hours}:%{minutes}:%{seconds}"
+      words:
+        hour: ["óra", "óra", "óra"]
+        minute: ["perc", "perc", "perc"]
+        second: ["másodperc", "másodperc", "másodperc"]
+
+    warnings:
+      currency_not_available: "A %{currency} valuta nem érhető el a(z) %{lang} nyelvhez, az aktuális kerül felhasználásra."
+
     currencies:
       HUF:
-        name: ["forint", "forint", "forint"]
-        fractional:
-          name: ["fillér", "fillér", "fillér"]
-          feminine: false
-      EUR:
-        name: ["euró", "euró", "euró"]
-        fractional:
-          name: ["cent", "cent", "cent"]
-          feminine: false
+        major_unit: [ "forint", "forint", "forint" ]
+        minor_unit: [ "fillér", "fillér", "fillér" ]
+        symbol: "Ft"
       USD:
-        name: ["dollár", "dollár", "dollár"]
-        fractional:
-          name: ["cent", "cent", "cent"]
-          feminine: false
+        major_unit: [ "dollár", "dollár", "dollár" ]
+        minor_unit: [ "cent", "cent", "cent" ]
+        symbol: "$"
+      EUR:
+        major_unit: [ "euró", "euró", "euró" ]
+        minor_unit: [ "cent", "cent", "cent" ]
+        symbol: "€"
+      GBP:
+        major_unit: [ "font", "font", "font" ]
+        minor_unit: [ "penny", "penny", "penny" ]
+        symbol: "£"
+      RUB:
+        major_unit: [ "rubel", "rubel", "rubel" ]
+        minor_unit: [ "kopejka", "kopejka", "kopejka" ]
+        symbol: "₽"
+      CNY:
+        major_unit: [ "jüan", "jüan", "jüan" ]
+        minor_unit: [ "fen", "fen", "fen" ]
+        symbol: "¥"
+      JPY:
+        major_unit: [ "jen", "jen", "jen" ]
+        minor_unit: [ "szen", "szen", "szen" ]
+        symbol: "¥"
+      KRW:
+        major_unit: [ "von", "von", "von" ]
+        minor_unit: [ "dzson", "dzson", "dzson" ]
+        symbol: "₩"
+      TRY:
+        major_unit: [ "líra", "líra", "líra" ]
+        minor_unit: [ "kuruş", "kuruş", "kuruş" ]
+        symbol: "₺"
+      PLN:
+        major_unit: [ "złoty", "złoty", "złoty" ]
+        minor_unit: [ "grosz", "grosz", "grosz" ]
+        symbol: "zł"
+      UAH:
+        major_unit: [ "hrivnya", "hrivnya", "hrivnya" ]
+        minor_unit: [ "kopejka", "kopejka", "kopejka" ]
+        symbol: "₴"
+      CZK:
+        major_unit: [ "korona", "korona", "korona" ]
+        minor_unit: [ "haléř", "haléř", "haléř" ]
+        symbol: "Kč"
+      RON:
+        major_unit: [ "lej", "lej", "lej" ]
+        minor_unit: [ "ban", "ban", "ban" ]
+        symbol: "lei"
+      BGN:
+        major_unit: [ "leva", "leva", "leva" ]
+        minor_unit: [ "stotinka", "stotinka", "stotinka" ]
+        symbol: "лв"
+      BYN:
+        major_unit: [ "fehérorosz rubel", "fehérorosz rubel", "fehérorosz rubel" ]
+        minor_unit: [ "kopejka", "kopejka", "kopejka" ]
+        symbol: "Br"
+      KZT:
+        major_unit: [ "tenge", "tenge", "tenge" ]
+        minor_unit: [ "tiyn", "tiyn", "tiyn" ]
+        symbol: "₸"
+      ILS:
+        major_unit: [ "sékel", "sékel", "sékel" ]
+        minor_unit: [ "agóra", "agóra", "agóra" ]
+        symbol: "₪"
+      SEK:
+        major_unit: [ "korona", "korona", "korona" ]
+        minor_unit: [ "öre", "öre", "öre" ]
+        symbol: "kr"
+      NOK:
+        major_unit: [ "korona", "korona", "korona" ]
+        minor_unit: [ "öre", "öre", "öre" ]
+        symbol: "kr"
+      DKK:
+        major_unit: [ "korona", "korona", "korona" ]
+        minor_unit: [ "öre", "öre", "öre" ]
+        symbol: "kr"
+      SAR:
+        major_unit: [ "riál", "riál", "riál" ]
+        minor_unit: [ "halála", "halála", "halála" ]
+        symbol: "﷼"
+      INR:
+        major_unit: [ "rúpia", "rúpia", "rúpia" ]
+        minor_unit: [ "paise", "paise", "paise" ]
+        symbol: "₹"
+      THB:
+        major_unit: [ "baht", "baht", "baht" ]
+        minor_unit: [ "satang", "satang", "satang" ]
+        symbol: "฿"
+      VND:
+        major_unit: [ "dong", "dong", "dong" ]
+        minor_unit: [ "xu", "xu", "xu" ]
+        symbol: "₫"
+      IDR:
+        major_unit: [ "rúpia", "rúpia", "rúpia" ]
+        minor_unit: [ "sen", "sen", "sen" ]
+        symbol: "Rp"
+      IRR:
+        major_unit: [ "riál", "riál", "riál" ]
+        minor_unit: [ "dinar", "dinar", "dinar" ]
+        symbol: "﷼"
+      RSD:
+        major_unit: [ "dínár", "dínár", "dínár" ]
+        minor_unit: [ "para", "para", "para" ]
+        symbol: "дин"
+      MYR:
+        major_unit: [ "ringgit", "ringgit", "ringgit" ]
+        minor_unit: [ "sen", "sen", "sen" ]
+        symbol: "RM"
+      BDT:
+        major_unit: [ "taka", "taka", "taka" ]
+        minor_unit: [ "poisha", "poisha", "poisha" ]
+        symbol: "৳"
+      PKR:
+        major_unit: [ "rúpia", "rúpia", "rúpia" ]
+        minor_unit: [ "paise", "paise", "paise" ]
+        symbol: "₨"
+      KES:
+        major_unit: [ "shilling", "shilling", "shilling" ]
+        minor_unit: [ "cent", "cent", "cent" ]
+        symbol: "Sh"
