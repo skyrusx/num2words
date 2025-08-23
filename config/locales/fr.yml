@@ -13,19 +13,186 @@ fr:
       - ["milliard", "milliards", "milliards"]
       - ["billion", "billions", "billions"]
 
+    grammar:
+      minus: "moins"
+      conjunction: "et"
+      default_fraction: "fractionnaires"
+    fractions:
+      10: ["dixième", "dixièmes", "dixièmes"]
+      100: ["centième", "centièmes", "centièmes"]
+      1000: ["millième", "millièmes", "millièmes"]
+      10000: ["dix-millième", "dix-millièmes", "dix-millièmes"]
+      100000: ["cent-millième", "cent-millièmes", "cent-millièmes"]
+      1000000: ["millionième", "millionièmes", "millionièmes"]
+      10000000: ["dix-millionième", "dix-millionièmes", "dix-millionièmes"]
+      100000000: ["cent-millionième", "cent-millionièmes", "cent-millionièmes"]
+      1000000000: ["milliardième", "milliardièmes", "milliardièmes"]
+
+    numbers:
+      ordinals:
+        nominative:
+          masculine: ["premier", "deuxième", "troisième", "quatrième", "cinquième", "sixième", "septième", "huitième", "neuvième", "dixième",
+                      "onzième", "douzième", "treizième", "quatorzième", "quinzième", "seizième", "dix-septième", "dix-huitième", "dix-neuvième",
+                      "vingtième", "vingt et unième", "vingt-deuxième", "vingt-troisième", "vingt-quatrième", "vingt-cinquième", "vingt-sixième", "vingt-septième", "vingt-huitième", "vingt-neuvième",
+                      "trentième", "trente et unième"]
+          feminine: ["première", "deuxième", "troisième", "quatrième", "cinquième", "sixième", "septième", "huitième", "neuvième", "dixième",
+                     "onzième", "douzième", "treizième", "quatorzième", "quinzième", "seizième", "dix-septième", "dix-huitième", "dix-neuvième",
+                     "vingtième", "vingt et unième", "vingt-deuxième", "vingt-troisième", "vingt-quatrième", "vingt-cinquième", "vingt-sixième", "vingt-septième", "vingt-huitième", "vingt-neuvième",
+                     "trentième", "trente et unième"]
+          neuter: ["premier", "deuxième", "troisième", "quatrième", "cinquième", "sixième", "septième", "huitième", "neuvième", "dixième",
+                   "onzième", "douzième", "treizième", "quatorzième", "quinzième", "seizième", "dix-septième", "dix-huitième", "dix-neuvième",
+                   "vingtième", "vingt et unième", "vingt-deuxième", "vingt-troisième", "vingt-quatrième", "vingt-cinquième", "vingt-sixième", "vingt-septième", "vingt-huitième", "vingt-neuvième",
+                   "trentième", "trente et unième"]
+        default:
+          masculine: ["premier", "deuxième", "troisième", "quatrième", "cinquième", "sixième", "septième", "huitième", "neuvième", "dixième",
+                      "onzième", "douzième", "treizième", "quatorzième", "quinzième", "seizième", "dix-septième", "dix-huitième", "dix-neuvième",
+                      "vingtième", "vingt et unième", "vingt-deuxième", "vingt-troisième", "vingt-quatrième", "vingt-cinquième", "vingt-sixième", "vingt-septième", "vingt-huitième", "vingt-neuvième",
+                      "trentième", "trente et unième"]
+
+    datetime:
+      template: "%{date}, %{time}"
+    date:
+      template:
+        default: "%{day} %{month} %{year}"
+        nominative: "%{day} %{month} %{year}"
+      months:
+        default: ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
+        nominative: ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
+    time:
+      template:
+        hours_only: "%{hours}"
+        hours_minutes: "%{hours} %{minutes}"
+        hours_minutes_seconds: "%{hours} %{minutes} %{seconds}"
+      words:
+        hour: ["heure", "heures", "heures"]
+        minute: ["minute", "minutes", "minutes"]
+        second: ["seconde", "secondes", "secondes"]
+
+    warnings:
+      currency_not_available: "La devise %{currency} n’est pas disponible pour la langue %{lang}, la devise actuelle est utilisée."
+
     currencies:
       EUR:
-        name: ["euro", "euros", "euros"]
-        fractional:
-          name: ["centime", "centimes", "centimes"]
-          feminine: false
+        major_unit: ["euro", "euros", "euros"]
+        minor_unit: ["centime", "centimes", "centimes"]
+        symbol: "€"
+      RUB:
+        major_unit: ["rouble", "roubles", "roubles"]
+        minor_unit: ["kopeck", "kopecks", "kopecks"]
+        symbol: "₽"
       USD:
-        name: ["dollar", "dollars", "dollars"]
-        fractional:
-          name: ["cent", "cents", "cents"]
-          feminine: false
-      CHF:
-        name: ["franc", "francs", "francs"]
-        fractional:
-          name: ["centime", "centimes", "centimes"]
-          feminine: false
+        major_unit: ["dollar", "dollars", "dollars"]
+        minor_unit: ["cent", "cents", "cents"]
+        symbol: "$"
+      GBP:
+        major_unit: ["livre", "livres", "livres"]
+        minor_unit: ["penny", "pence", "pence"]
+        symbol: "£"
+      CNY:
+        major_unit: ["yuan", "yuans", "yuans"]
+        minor_unit: ["fen", "fens", "fens"]
+        symbol: "¥"
+      JPY:
+        major_unit: ["yen", "yens", "yens"]
+        minor_unit: ["sen", "sen", "sen"]
+        symbol: "¥"
+      KRW:
+        major_unit: ["won", "wons", "wons"]
+        minor_unit: ["jeon", "jeons", "jeons"]
+        symbol: "₩"
+      TRY:
+        major_unit: ["livre turque", "livres turques", "livres turques"]
+        minor_unit: ["kuruş", "kuruş", "kuruş"]
+        symbol: "₺"
+      PLN:
+        major_unit: ["zloty", "zlotys", "zlotys"]
+        minor_unit: ["grosz", "groszy", "groszy"]
+        symbol: "zł"
+      UAH:
+        major_unit: ["hryvnia", "hryvnias", "hryvnias"]
+        minor_unit: ["kopeck", "kopecks", "kopecks"]
+        symbol: "₴"
+      CZK:
+        major_unit: ["couronne", "couronnes", "couronnes"]
+        minor_unit: ["haléř", "haléře", "haléřů"]
+        symbol: "Kč"
+      RON:
+        major_unit: ["leu", "lei", "lei"]
+        minor_unit: ["ban", "bani", "bani"]
+        symbol: "lei"
+      BGN:
+        major_unit: ["lev", "leva", "levs"]
+        minor_unit: ["stotinka", "stotinki", "stotinki"]
+        symbol: "лв"
+      BYN:
+        major_unit: ["rouble biélorusse", "roubles biélorusses", "roubles biélorusses"]
+        minor_unit: ["kopeck", "kopecks", "kopecks"]
+        symbol: "Br"
+      KZT:
+        major_unit: ["tenge", "tenge", "tenge"]
+        minor_unit: ["tiyn", "tiyns", "tiyns"]
+        symbol: "₸"
+      ILS:
+        major_unit: ["shekel", "shekels", "shekels"]
+        minor_unit: ["agora", "agorot", "agorot"]
+        symbol: "₪"
+      SEK:
+        major_unit: ["couronne", "couronnes", "couronnes"]
+        minor_unit: ["öre", "öre", "öre"]
+        symbol: "kr"
+      NOK:
+        major_unit: ["couronne", "couronnes", "couronnes"]
+        minor_unit: ["øre", "øre", "øre"]
+        symbol: "kr"
+      DKK:
+        major_unit: ["couronne", "couronnes", "couronnes"]
+        minor_unit: ["øre", "øre", "øre"]
+        symbol: "kr"
+      HUF:
+        major_unit: ["forint", "forints", "forints"]
+        minor_unit: ["fillér", "fillérs", "fillérs"]
+        symbol: "Ft"
+      SAR:
+        major_unit: ["rial", "rials", "rials"]
+        minor_unit: ["halala", "halalas", "halalas"]
+        symbol: "﷼"
+      INR:
+        major_unit: ["roupie", "roupies", "roupies"]
+        minor_unit: ["paisa", "paise", "paise"]
+        symbol: "₹"
+      THB:
+        major_unit: ["baht", "bahts", "bahts"]
+        minor_unit: ["satang", "satangs", "satangs"]
+        symbol: "฿"
+      VND:
+        major_unit: ["dong", "dongs", "dongs"]
+        minor_unit: ["su", "su", "su"]
+        symbol: "₫"
+      IDR:
+        major_unit: ["roupie", "roupies", "roupies"]
+        minor_unit: ["sen", "sens", "sens"]
+        symbol: "Rp"
+      IRR:
+        major_unit: ["rial", "rials", "rials"]
+        minor_unit: ["dinar", "dinars", "dinars"]
+        symbol: "﷼"
+      RSD:
+        major_unit: ["dinar", "dinars", "dinars"]
+        minor_unit: ["para", "paras", "paras"]
+        symbol: "дин"
+      MYR:
+        major_unit: ["ringgit", "ringgits", "ringgits"]
+        minor_unit: ["sen", "sens", "sens"]
+        symbol: "RM"
+      BDT:
+        major_unit: ["taka", "takas", "takas"]
+        minor_unit: ["poisha", "poishas", "poishas"]
+        symbol: "৳"
+      PKR:
+        major_unit: ["roupie", "roupies", "roupies"]
+        minor_unit: ["paisa", "paise", "paise"]
+        symbol: "₨"
+      KES:
+        major_unit: ["shilling", "shillings", "shillings"]
+        minor_unit: ["cent", "cents", "cents"]
+        symbol: "Sh"
