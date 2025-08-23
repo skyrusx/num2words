@@ -33,22 +33,29 @@ module Num2words
       end
 
       def to_currency(amount, *args, **opts)
-        locale      = args.first.is_a?(Symbol) ? args.first : opts[:locale] || I18n.default_locale
-        word_case   = opts[:word_case] || :downcase
-        locale_data = Locales[locale]
+        locale    = args.first.is_a?(Symbol) ? args.first : opts[:locale] || I18n.default_locale
+        word_case = opts[:word_case] || :downcase
+        currency  = (opts[:currency] || Num2words.default_currency(locale)).to_s.upcase.to_sym
 
-        major_str, minor_str = sprintf('%.2f', amount).split('.')
-        major_value = major_str.to_i
-        minor_value = minor_str.to_i
+        unless Num2words.available_currencies(locale).include?(currency)
+          warn I18n.t("num2words.warnings.currency_not_available",
+                      currency: currency, locale: locale) if Num2words.currency_warnings
+          currency = Num2words.default_currency(locale)
+        end
 
-        major_words = to_words(major_value, locale: locale)
-        major_name  = pluralize(major_value, *locale_data::MAJOR_UNIT)
+        currency_data = I18n.t("num2words.currencies.#{currency}", locale: locale) or
+          raise ArgumentError, "Currency #{currency} not defined in locale #{locale}"
 
-        minor_words = to_words(minor_value, locale: locale, feminine: true)
-        minor_name  = pluralize(minor_value, *locale_data::MINOR_UNIT)
+        major_value, minor_value = sprintf('%.2f', amount).split('.').map(&:to_i)
 
-        result = [major_words, major_name, minor_words, minor_name].join(" ")
-        apply_case(result, word_case)
+        parts = [
+          to_words(major_value, locale: locale),
+          pluralize(major_value, *currency_data[:major_unit]),
+          to_words(minor_value, locale: locale, feminine: true),
+          pluralize(minor_value, *currency_data[:minor_unit])
+        ]
+
+        apply_case(parts.join(" "), word_case)
       end
 
       private
