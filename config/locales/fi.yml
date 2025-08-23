@@ -13,14 +13,186 @@ fi:
       - ["miljardi", "miljardia", "miljardia"]
       - ["biljoona", "biljoonaa", "biljoonaa"]
 
+    grammar:
+      minus: "miinus"
+      conjunction: "kokonaista"
+      default_fraction: "desimaalia"
+    fractions:
+      10: ["kymmenesosa", "kymmenesosaa", "kymmenesosaa"]
+      100: ["sadasosa", "sadasosaa", "sadasosaa"]
+      1000: ["tuhannesosa", "tuhannesosaa", "tuhannesosaa"]
+      10000: ["kymmenestuhannesosa", "kymmenestuhannesosaa", "kymmenestuhannesosaa"]
+      100000: ["sadas­tuhannesosa", "sadas­tuhannesosaa", "sadas­tuhannesosaa"]
+      1000000: ["miljoonasosa", "miljoonasosaa", "miljoonasosaa"]
+      10000000: ["kymmenenmiljoonasosa", "kymmenenmiljoonasosaa", "kymmenenmiljoonasosaa"]
+      100000000: ["sadasmiljoonasosa", "sadasmiljoonasosaa", "sadasmiljoonasosaa"]
+      1000000000: ["miljardisosa", "miljardisosaa", "miljardisosaa"]
+
+    numbers:
+      ordinals:
+        nominative:
+          masculine: ["ensimmäinen", "toinen", "kolmas", "neljäs", "viides", "kuudes", "seitsemäs", "kahdeksas", "yhdeksäs", "kymmenes",
+                      "yhdestoista", "kahdestoista", "kolmastoista", "neljästoista", "viidestoista", "kuudestoista", "seitsemästoista", "kahdeksastoista", "yhdeksästoista",
+                      "kahdeskymmenes", "kahdeskymmenes ensimmäinen", "kahdeskymmenes toinen", "kahdeskymmenes kolmas", "kahdeskymmenes neljäs", "kahdeskymmenes viides", "kahdeskymmenes kuudes", "kahdeskymmenes seitsemäs", "kahdeskymmenes kahdeksas", "kahdeskymmenes yhdeksäs",
+                      "kolmaskymmenes", "kolmaskymmenes ensimmäinen"]
+          feminine: ["ensimmäinen", "toinen", "kolmas", "neljäs", "viides", "kuudes", "seitsemäs", "kahdeksas", "yhdeksäs",
+                     "kymmenes", "yhdestoista", "kahdestoista", "kolmastoista", "neljästoista", "viidestoista", "kuudestoista", "seitsemästoista", "kahdeksastoista", "yhdeksästoista",
+                     "kahdeskymmenes", "kahdeskymmenes ensimmäinen", "kahdeskymmenes toinen", "kahdeskymmenes kolmas", "kahdeskymmenes neljäs", "kahdeskymmenes viides", "kahdeskymmenes kuudes", "kahdeskymmenes seitsemäs", "kahdeskymmenes kahdeksas", "kahdeskymmenes yhdeksäs",
+                     "kolmaskymmenes", "kolmaskymmenes ensimmäinen"]
+          neuter: ["ensimmäinen", "toinen", "kolmas", "neljäs", "viides", "kuudes", "seitsemäs", "kahdeksas", "yhdeksäs",
+                   "kymmenes", "yhdestoista", "kahdestoista", "kolmastoista", "neljästoista", "viidestoista", "kuudestoista", "seitsemästoista", "kahdeksastoista", "yhdeksästoista",
+                   "kahdeskymmenes", "kahdeskymmenes ensimmäinen", "kahdeskymmenes toinen", "kahdeskymmenes kolmas", "kahdeskymmenes neljäs", "kahdeskymmenes viides", "kahdeskymmenes kuudes", "kahdeskymmenes seitsemäs", "kahdeskymmenes kahdeksas", "kahdeskymmenes yhdeksäs",
+                   "kolmaskymmenes", "kolmaskymmenes ensimmäinen"]
+        default:
+          masculine: ["ensimmäisen", "toisen", "kolmannen", "neljännen", "viidennen", "kuudennen", "seitsemännen", "kahdeksannen", "yhdeksännen",
+                      "kymmenennen", "yhdennentoista", "kahdennentoista", "kolmannentoista", "neljännentoista", "viidennentoista", "kuudennentoista", "seitsemännentoista", "kahdeksannentoista", "yhdeksännentoista",
+                      "kahdennenkymmenennen", "kahdennenkymmenennen ensimmäisen", "kahdennenkymmenennen toisen", "kahdennenkymmenennen kolmannen", "kahdennenkymmenennen neljännen", "kahdennenkymmenennen viidennen", "kahdennenkymmenennen kuudennen", "kahdennenkymmenennen seitsemännen", "kahdennenkymmenennen kahdeksannen", "kahdennenkymmenennen yhdeksännen",
+                      "kolmannenkymmenennen", "kolmannenkymmenennen ensimmäisen"]
+
+    datetime:
+      template: "%{date}, %{time}"
+    date:
+      template:
+        default: "%{day}. %{month} %{year}"
+        nominative: "%{day}. %{month} %{year}"
+      months:
+        default: ["tammikuuta", "helmikuuta", "maaliskuuta", "huhtikuuta", "toukokuuta", "kesäkuuta", "heinäkuuta", "elokuuta", "syyskuuta", "lokakuuta", "marraskuuta", "joulukuuta"]
+        nominative: ["tammikuu", "helmikuu", "maaliskuu", "huhtikuu", "toukokuu", "kesäkuu", "heinäkuu", "elokuu", "syyskuu", "lokakuu", "marraskuu", "joulukuu"]
+    time:
+      template:
+        hours_only: "%{hours}"
+        hours_minutes: "%{hours}.%{minutes}"
+        hours_minutes_seconds: "%{hours}.%{minutes}.%{seconds}"
+      words:
+        hour: ["tunti", "tuntia", "tuntia"]
+        minute: ["minuutti", "minuuttia", "minuuttia"]
+        second: ["sekunti", "sekuntia", "sekuntia"]
+
+    warnings:
+      currency_not_available: "Valuutta %{currency} ei ole käytettävissä kielelle %{lang}, nykyistä käytetään."
+
     currencies:
       EUR:
-        name: ["euro", "euroa", "euroa"]
-        fractional:
-          name: ["sentti", "senttiä", "senttiä"]
-          feminine: false
+        major_unit: ["euro", "euroa", "euroa"]
+        minor_unit: ["sentti", "senttiä", "senttiä"]
+        symbol: "€"
       USD:
-        name: ["dollari", "dollaria", "dollaria"]
-        fractional:
-          name: ["sentti", "senttiä", "senttiä"]
-          feminine: false
+        major_unit: ["dollari", "dollaria", "dollaria"]
+        minor_unit: ["sentti", "senttiä", "senttiä"]
+        symbol: "$"
+      GBP:
+        major_unit: ["punta", "puntaa", "puntaa"]
+        minor_unit: ["penny", "penceä", "penceä"]
+        symbol: "£"
+      JPY:
+        major_unit: ["jeni", "jeniä", "jeniä"]
+        minor_unit: ["sen", "sen", "sen"]
+        symbol: "¥"
+      CNY:
+        major_unit: ["juani", "juania", "juania"]
+        minor_unit: ["fen", "feniä", "feniä"]
+        symbol: "¥"
+      RUB:
+        major_unit: ["rupla", "ruplaa", "ruplaa"]
+        minor_unit: ["kopeekka", "kopeekkaa", "kopeekkaa"]
+        symbol: "₽"
+      KRW:
+        major_unit: ["won", "wonia", "wonia"]
+        minor_unit: ["jeon", "jeonia", "jeonia"]
+        symbol: "₩"
+      TRY:
+        major_unit: ["liira", "liiraa", "liiraa"]
+        minor_unit: ["kurssi", "kurssia", "kurssia"]
+        symbol: "₺"
+      PLN:
+        major_unit: ["zloty", "zlotya", "zlotya"]
+        minor_unit: ["grosz", "groszia", "groszia"]
+        symbol: "zł"
+      UAH:
+        major_unit: ["hryvnia", "hryvniaa", "hryvniaa"]
+        minor_unit: ["kopeekka", "kopeekkaa", "kopeekkaa"]
+        symbol: "₴"
+      CZK:
+        major_unit: ["koruna", "korunaa", "korunaa"]
+        minor_unit: ["haler", "haleria", "haleria"]
+        symbol: "Kč"
+      RON:
+        major_unit: ["leu", "leitä", "leitä"]
+        minor_unit: ["ban", "bania", "bania"]
+        symbol: "lei"
+      BGN:
+        major_unit: ["lev", "leviä", "leviä"]
+        minor_unit: ["stotinka", "stotinkaa", "stotinkaa"]
+        symbol: "лв"
+      BYN:
+        major_unit: ["valkovenäjän rupla", "valkovenäjän ruplaa", "valkovenäjän ruplaa"]
+        minor_unit: ["kopeekka", "kopeekkaa", "kopeekkaa"]
+        symbol: "Br"
+      KZT:
+        major_unit: ["tenge", "tengeä", "tengeä"]
+        minor_unit: ["tiyn", "tiyniä", "tiyniä"]
+        symbol: "₸"
+      ILS:
+        major_unit: ["sekeli", "sekeliä", "sekeliä"]
+        minor_unit: ["agora", "agoraa", "agoraa"]
+        symbol: "₪"
+      SEK:
+        major_unit: ["kruunu", "kruunua", "kruunua"]
+        minor_unit: ["äyri", "äyriä", "äyriä"]
+        symbol: "kr"
+      NOK:
+        major_unit: ["kruunu", "kruunua", "kruunua"]
+        minor_unit: ["äyri", "äyriä", "äyriä"]
+        symbol: "kr"
+      DKK:
+        major_unit: ["kruunu", "kruunua", "kruunua"]
+        minor_unit: ["äyri", "äyriä", "äyriä"]
+        symbol: "kr"
+      HUF:
+        major_unit: ["forintti", "forinttia", "forinttia"]
+        minor_unit: ["filleri", "filleriä", "filleriä"]
+        symbol: "Ft"
+      SAR:
+        major_unit: ["riyal", "riyalia", "riyalia"]
+        minor_unit: ["halala", "halalaa", "halalaa"]
+        symbol: "﷼"
+      INR:
+        major_unit: ["rupia", "rupiaa", "rupiaa"]
+        minor_unit: ["paise", "paisia", "paisia"]
+        symbol: "₹"
+      THB:
+        major_unit: ["baht", "bahtia", "bahtia"]
+        minor_unit: ["satang", "satangia", "satangia"]
+        symbol: "฿"
+      VND:
+        major_unit: ["dong", "dongia", "dongia"]
+        minor_unit: ["xu", "xua", "xua"]
+        symbol: "₫"
+      IDR:
+        major_unit: ["rupia", "rupiaa", "rupiaa"]
+        minor_unit: ["sen", "seniä", "seniä"]
+        symbol: "Rp"
+      IRR:
+        major_unit: ["rial", "rialia", "rialia"]
+        minor_unit: ["dinam", "dinamia", "dinamia"]
+        symbol: "﷼"
+      RSD:
+        major_unit: ["dinaari", "dinaaria", "dinaaria"]
+        minor_unit: ["para", "paraa", "paraa"]
+        symbol: "дин"
+      MYR:
+        major_unit: ["ringgit", "ringgitiä", "ringgitiä"]
+        minor_unit: ["sen", "seniä", "seniä"]
+        symbol: "RM"
+      BDT:
+        major_unit: ["taka", "takoa", "takoa"]
+        minor_unit: ["poisha", "poishaa", "poishaa"]
+        symbol: "৳"
+      PKR:
+        major_unit: ["rupia", "rupiaa", "rupiaa"]
+        minor_unit: ["paise", "paisia", "paisia"]
+        symbol: "₨"
+      KES:
+        major_unit: ["šillinki", "šillinkiä", "šillinkiä"]
+        minor_unit: ["sentti", "senttiä", "senttiä"]
+        symbol: "Sh"
