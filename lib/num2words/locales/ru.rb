@@ -10,9 +10,6 @@ module Num2words
       HUNDREDS = I18n.t("num2words.hundreds", locale: :ru)
       SCALES = I18n.t("num2words.scales", locale: :ru)
 
-      MAJOR_UNIT = I18n.t("num2words.currencies.RUB.name", locale: :ru)
-      MINOR_UNIT = I18n.t("num2words.currencies.RUB.fractional.name", locale: :ru)
-
       FRACTIONS = I18n.t("num2words.fractions", locale: :ru)
       GRAMMAR = I18n.t("num2words.grammar", locale: :ru)
 
