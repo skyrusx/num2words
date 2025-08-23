@@ -2,25 +2,197 @@ et:
   num2words:
     ones_masc: ["null", "üks", "kaks", "kolm", "neli", "viis", "kuus", "seitse", "kaheksa", "üheksa"]
     ones_fem: ["null", "üks", "kaks", "kolm", "neli", "viis", "kuus", "seitse", "kaheksa", "üheksa"]
-    teens: ["kümme", "üksteist", "üksteist", "kolmteist", "neliteist", "viisteist", "kuusteist", "seitseteist", "kaheksateist", "üheksateist"]
+    teens: ["kümme", "üksteist", "kaksteist", "kolmteist", "neliteist", "viisteist", "kuusteist", "seitseteist", "kaheksateist", "üheksateist"]
     tens: ["", "", "kakskümmend", "kolmkümmend", "nelikümmend", "viiskümmend", "kuuskümmend", "seitsekümmend", "kaheksakümmend", "üheksakümmend"]
     hundreds: ["", "sada", "kakssada", "kolmsada", "nelisada", "viissada", "kuussada", "seitsesada", "kaheksasada", "üheksasada"]
 
     scales:
       - ["", "", ""]
-      - ["tuhat", "tuhat", "tuhande"]
-      - ["miljon", "miljonit", "miljoni"]
-      - ["miljard", "miljardit", "miljardi"]
-      - ["triljon", "triljonit", "triljoni"]
+      - ["tuhat", "tuhat", "tuhat"]
+      - ["miljon", "miljonit", "miljonit"]
+      - ["miljard", "miljardit", "miljardit"]
+      - ["triljon", "triljonit", "triljonit"]
+
+    grammar:
+      minus: "miinus"
+      conjunction: "ja"
+      default_fraction: "kümnendik"
+    fractions:
+      10: ["kümnendik", "kümnendikud", "kümnendikku"]
+      100: ["sajandik", "sajandikud", "sajandikku"]
+      1000: ["tuhandik", "tuhandikud", "tuhandikku"]
+      10000: ["kümnetuhandik", "kümnetuhandikud", "kümnetuhandikku"]
+      100000: ["sajattuhandik", "sajattuhandikud", "sajattuhandikku"]
+      1000000: ["miljonindik", "miljonindikud", "miljonindikku"]
+      10000000: ["kümnemiljonindik", "kümnemiljonindikud", "kümnemiljonindikku"]
+      100000000: ["sajamiljonindik", "sajamiljonindikud", "sajamiljonindikku"]
+      1000000000: ["miljardindik", "miljardindikud", "miljardindikku"]
+
+    numbers:
+      ordinals:
+        nominative:
+          masculine: ["esimene", "teine", "kolmas", "neljas", "viies", "kuues", "seitsmes", "kaheksas", "üheksas", "kümnes",
+                      "üheteistkümnes", "kaheteistkümnes", "kolmeteistkümnes", "neljateistkümnes", "viieteistkümnes", "kuueteistkümnes", "seitsmeteistkümnes", "kaheksateistkümnes", "üheksateistkümnes",
+                      "kahekümnes", "kahekümne esimene", "kahekümne teine", "kahekümne kolmas", "kahekümne neljas", "kahekümne viies", "kahekümne kuues", "kahekümne seitsmes", "kahekümne kaheksas", "kahekümne üheksas",
+                      "kolmekümnes", "kolmekümne esimene"]
+          feminine: ["esimene", "teine", "kolmas", "neljas", "viies", "kuues", "seitsmes", "kaheksas", "üheksas",
+                     "kümnes", "üheteistkümnes", "kaheteistkümnes", "kolmeteistkümnes", "neljateistkümnes", "viieteistkümnes", "kuueteistkümnes", "seitsmeteistkümnes", "kaheksateistkümnes", "üheksateistkümnes",
+                     "kahekümnes", "kahekümne esimene", "kahekümne teine", "kahekümne kolmas", "kahekümne neljas", "kahekümne viies", "kahekümne kuues", "kahekümne seitsmes", "kahekümne kaheksas", "kahekümne üheksas",
+                     "kolmekümnes", "kolmekümne esimene"]
+          neuter: ["esimene", "teine", "kolmas", "neljas", "viies", "kuues", "seitsmes", "kaheksas", "üheksas",
+                   "kümnes", "üheteistkümnes", "kaheteistkümnes", "kolmeteistkümnes", "neljateistkümnes", "viieteistkümnes", "kuueteistkümnes", "seitsmeteistkümnes", "kaheksateistkümnes", "üheksateistkümnes",
+                   "kahekümnes", "kahekümne esimene", "kahekümne teine", "kahekümne kolmas", "kahekümne neljas", "kahekümne viies", "kahekümne kuues", "kahekümne seitsmes", "kahekümne kaheksas", "kahekümne üheksas",
+                   "kolmekümnes", "kolmekümne esimene"]
+        default:
+          masculine: ["esimese", "teise", "kolmanda", "neljanda", "viienda", "kuuenda", "seitsmenda", "kaheksanda", "üheksanda",
+                      "kümnenda", "üheteistkümnenda", "kaheteistkümnenda", "kolmeteistkümnenda", "neljateistkümnenda", "viieteistkümnenda", "kuueteistkümnenda", "seitsmeteistkümnenda", "kaheksateistkümnenda", "üheksateistkümnenda",
+                      "kahekümnenda", "kahekümne esimese", "kahekümne teise", "kahekümne kolmanda", "kahekümne neljanda", "kahekümne viienda", "kahekümne kuuenda", "kahekümne seitsmenda", "kahekümne kaheksanda", "kahekümne üheksanda",
+                      "kolmekümnenda", "kolmekümne esimese"]
+
+    datetime:
+      template: "%{date}, %{time}"
+    date:
+      template:
+        default: "%{day}. %{month} %{year}"
+        nominative: "%{day}. %{month} %{year}"
+      months:
+        default: ["jaanuar", "veebruar", "märts", "aprill", "mai", "juuni", "juuli", "august", "september", "oktoober", "november", "detsember"]
+        nominative: ["jaanuar", "veebruar", "märts", "aprill", "mai", "juuni", "juuli", "august", "september", "oktoober", "november", "detsember"]
+    time:
+      template:
+        hours_only: "%{hours}"
+        hours_minutes: "%{hours} %{minutes}"
+        hours_minutes_seconds: "%{hours} %{minutes} %{seconds}"
+      words:
+        hour: ["tund", "tundi", "tundi"]
+        minute: ["minut", "minutit", "minutit"]
+        second: ["sekund", "sekundit", "sekundit"]
+
+    warnings:
+      currency_not_available: "Valuuta %{currency} ei ole lokaadis %{lang} saadaval, kasutatakse vaikimisi."
 
     currencies:
       EUR:
-        name: ["euro", "eurot", "euro"]
-        fractional:
-          name: ["sent", "senti", "sendi"]
-          feminine: false
+        major_unit: [ "euro", "euro", "eurot" ]
+        minor_unit: [ "sent", "senti", "sente" ]
+        symbol: "€"
       USD:
-        name: ["dollar", "dollarit", "dollari"]
-        fractional:
-          name: ["sent", "senti", "sendi"]
-          feminine: false
+        major_unit: [ "dollar", "dollari", "dollarit" ]
+        minor_unit: [ "sent", "senti", "sente" ]
+        symbol: "$"
+      GBP:
+        major_unit: [ "nael", "naela", "naela" ]
+        minor_unit: [ "penn", "penni", "penni" ]
+        symbol: "£"
+      CNY:
+        major_unit: [ "yuan", "yuani", "yuani" ]
+        minor_unit: [ "fen", "feni", "feni" ]
+        symbol: "¥"
+      JPY:
+        major_unit: [ "jeen", "jeeni", "jeeni" ]
+        minor_unit: [ "sen", "seni", "seni" ]
+        symbol: "¥"
+      RUB:
+        major_unit: [ "rubla", "rubla", "rubla" ]
+        minor_unit: [ "kopeek", "kopeeki", "kopeeki" ]
+        symbol: "₽"
+      KRW:
+        major_unit: [ "won", "woni", "woni" ]
+        minor_unit: [ "chon", "choni", "choni" ]
+        symbol: "₩"
+      TRY:
+        major_unit: [ "liir", "liiri", "liiri" ]
+        minor_unit: [ "kuruş", "kuruşi", "kuruşi" ]
+        symbol: "₺"
+      PLN:
+        major_unit: [ "zloty", "zloty", "zlotyt" ]
+        minor_unit: [ "grosz", "groszi", "groszi" ]
+        symbol: "zł"
+      UAH:
+        major_unit: [ "grivna", "grivna", "grivnat" ]
+        minor_unit: [ "kopeek", "kopeeki", "kopeeki" ]
+        symbol: "₴"
+      CZK:
+        major_unit: [ "kroon", "krooni", "krooni" ]
+        minor_unit: [ "haler", "haleri", "halerit" ]
+        symbol: "Kč"
+      RON:
+        major_unit: [ "leu", "leu", "leut" ]
+        minor_unit: [ "ban", "bani", "bani" ]
+        symbol: "lei"
+      BGN:
+        major_unit: [ "lev", "levi", "levi" ]
+        minor_unit: [ "stotinka", "stotinka", "stotinkat" ]
+        symbol: "лв"
+      BYN:
+        major_unit: [ "Valgevene rubla", "Valgevene rubla", "Valgevene rubla" ]
+        minor_unit: [ "kopeek", "kopeeki", "kopeeki" ]
+        symbol: "Br"
+      KZT:
+        major_unit: [ "tenge", "tenge", "tenget" ]
+        minor_unit: [ "tiyn", "tiyni", "tiyni" ]
+        symbol: "₸"
+      ILS:
+        major_unit: [ "seekel", "seekli", "seeklit" ]
+        minor_unit: [ "agora", "agora", "agorat" ]
+        symbol: "₪"
+      SEK:
+        major_unit: [ "kroon", "krooni", "krooni" ]
+        minor_unit: [ "öre", "öre", "öre" ]
+        symbol: "kr"
+      NOK:
+        major_unit: [ "kroon", "krooni", "krooni" ]
+        minor_unit: [ "öre", "öre", "öre" ]
+        symbol: "kr"
+      DKK:
+        major_unit: [ "kroon", "krooni", "krooni" ]
+        minor_unit: [ "öre", "öre", "öre" ]
+        symbol: "kr"
+      HUF:
+        major_unit: [ "forint", "forinti", "forintit" ]
+        minor_unit: [ "fillér", "filléri", "fillérit" ]
+        symbol: "Ft"
+      SAR:
+        major_unit: [ "riyal", "riyali", "riyali" ]
+        minor_unit: [ "halala", "halala", "halalat" ]
+        symbol: "﷼"
+      INR:
+        major_unit: [ "ruupia", "ruupia", "ruupiat" ]
+        minor_unit: [ "paisa", "paisa", "paisat" ]
+        symbol: "₹"
+      THB:
+        major_unit: [ "baht", "bahti", "bahti" ]
+        minor_unit: [ "satang", "satangi", "satangi" ]
+        symbol: "฿"
+      VND:
+        major_unit: [ "dong", "dongi", "dongi" ]
+        minor_unit: [ "xu", "xu", "xu" ]
+        symbol: "₫"
+      IDR:
+        major_unit: [ "ruupia", "ruupia", "ruupiat" ]
+        minor_unit: [ "sen", "seni", "seni" ]
+        symbol: "Rp"
+      IRR:
+        major_unit: [ "riyal", "riyali", "riyali" ]
+        minor_unit: [ "dinam", "dinami", "dinamit" ]
+        symbol: "﷼"
+      RSD:
+        major_unit: [ "dinaar", "dinaari", "dinaari" ]
+        minor_unit: [ "para", "para", "parat" ]
+        symbol: "дин"
+      MYR:
+        major_unit: [ "ringgit", "ringgiti", "ringgitit" ]
+        minor_unit: [ "sen", "seni", "seni" ]
+        symbol: "RM"
+      BDT:
+        major_unit: [ "taka", "taka", "takat" ]
+        minor_unit: [ "poisha", "poisha", "poishat" ]
+        symbol: "৳"
+      PKR:
+        major_unit: [ "ruupia", "ruupia", "ruupiat" ]
+        minor_unit: [ "paisa", "paisa", "paisat" ]
+        symbol: "₨"
+      KES:
+        major_unit: [ "šilling", "šillingi", "šillingit" ]
+        minor_unit: [ "sent", "senti", "sente" ]
+        symbol: "Sh"
