@@ -16,7 +16,7 @@ module Num2words
         if available.include?(currency)
           locale ? @local_currency[locale] = currency : @global_currency = currency
         elsif currency_warnings
-          warn "[num2words] Currency #{currency} not available for locale #{locale.inspect}, keeping current."
+          warn I18n.t("num2words.warnings.currency_not_available", lang: locale, currency: currency, locale: locale)
         end
       end
 

@@ -63,3 +63,6 @@ en:
         hour: ["hour", "hours", "hours"]
         minute: ["minute", "minutes", "minutes"]
         second: ["second", "seconds", "seconds"]
+
+    warnings:
+      currency_not_available: "Currency %{currency} not available for locale %{lang}, keeping current."
