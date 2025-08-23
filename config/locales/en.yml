@@ -13,18 +13,6 @@ en:
       - ["billion", "billion", "billion"]
       - ["trillion", "trillion", "trillion"]
 
-    currencies:
-      USD:
-        name: ["dollar", "dollars", "dollars"]
-        fractional:
-          name: ["cent", "cents", "cents"]
-          feminine: false
-      EUR:
-        name: ["euro", "euros", "euros"]
-        fractional:
-          name: ["cent", "cents", "cents"]
-          feminine: false
-
     grammar:
       minus: "minus"
       conjunction: "and"
@@ -66,3 +54,129 @@ en:
 
     warnings:
       currency_not_available: "Currency %{currency} not available for locale %{lang}, keeping current."
+
+    currencies:
+      USD:
+        major_unit: ["dollar", "dollars", "dollars"]
+        minor_unit: ["cent", "cents", "cents"]
+        symbol: "$"
+      EUR:
+        major_unit: ["euro", "euros", "euros"]
+        minor_unit: ["cent", "cents", "cents"]
+        symbol: "€"
+      GBP:
+        major_unit: ["pound", "pounds", "pounds"]
+        minor_unit: ["penny", "pence", "pence"]
+        symbol: "£"
+      RUB:
+        major_unit: ["ruble", "rubles", "rubles"]
+        minor_unit: ["kopek", "kopeks", "kopeks"]
+        symbol: "₽"
+      CNY:
+        major_unit: ["yuan", "yuan", "yuan"]
+        minor_unit: ["fen", "fen", "fen"]
+        symbol: "¥"
+      JPY:
+        major_unit: ["yen", "yen", "yen"]
+        minor_unit: ["sen", "sen", "sen"]
+        symbol: "¥"
+      KRW:
+        major_unit: ["won", "won", "won"]
+        minor_unit: ["jeon", "jeon", "jeon"]
+        symbol: "₩"
+      TRY:
+        major_unit: ["lira", "liras", "liras"]
+        minor_unit: ["kurus", "kurus", "kurus"]
+        symbol: "₺"
+      PLN:
+        major_unit: ["zloty", "zlotys", "zlotys"]
+        minor_unit: ["grosz", "groszy", "groszy"]
+        symbol: "zł"
+      UAH:
+        major_unit: ["hryvnia", "hryvnias", "hryvnias"]
+        minor_unit: ["kopiyka", "kopiyky", "kopiyok"]
+        symbol: "₴"
+      CZK:
+        major_unit: ["crown", "crowns", "crowns"]
+        minor_unit: ["haler", "halers", "halers"]
+        symbol: "Kč"
+      RON:
+        major_unit: ["leu", "lei", "lei"]
+        minor_unit: ["ban", "bani", "bani"]
+        symbol: "lei"
+      BGN:
+        major_unit: ["lev", "leva", "leva"]
+        minor_unit: ["stotinka", "stotinki", "stotinki"]
+        symbol: "лв"
+      BYN:
+        major_unit: ["Belarusian ruble", "Belarusian rubles", "Belarusian rubles"]
+        minor_unit: ["kopek", "kopeks", "kopeks"]
+        symbol: "Br"
+      KZT:
+        major_unit: ["tenge", "tenges", "tenges"]
+        minor_unit: ["tiyn", "tiyns", "tiyns"]
+        symbol: "₸"
+      ILS:
+        major_unit: ["shekel", "shekels", "shekels"]
+        minor_unit: ["agora", "agorot", "agorot"]
+        symbol: "₪"
+      SEK:
+        major_unit: ["krona", "kronor", "kronor"]
+        minor_unit: ["öre", "öre", "öre"]
+        symbol: "kr"
+      NOK:
+        major_unit: ["krone", "kroner", "kroner"]
+        minor_unit: ["øre", "øre", "øre"]
+        symbol: "kr"
+      DKK:
+        major_unit: ["krone", "kroner", "kroner"]
+        minor_unit: ["øre", "øre", "øre"]
+        symbol: "kr"
+      HUF:
+        major_unit: ["forint", "forints", "forints"]
+        minor_unit: ["filler", "fillers", "fillers"]
+        symbol: "Ft"
+      SAR:
+        major_unit: ["riyal", "riyals", "riyals"]
+        minor_unit: ["halala", "halalas", "halalas"]
+        symbol: "﷼"
+      INR:
+        major_unit: ["rupee", "rupees", "rupees"]
+        minor_unit: ["paise", "paise", "paise"]
+        symbol: "₹"
+      THB:
+        major_unit: ["baht", "bahts", "bahts"]
+        minor_unit: ["satang", "satang", "satang"]
+        symbol: "฿"
+      VND:
+        major_unit: ["dong", "dongs", "dongs"]
+        minor_unit: ["xu", "xu", "xu"]
+        symbol: "₫"
+      IDR:
+        major_unit: ["rupiah", "rupiahs", "rupiahs"]
+        minor_unit: ["sen", "sens", "sens"]
+        symbol: "Rp"
+      IRR:
+        major_unit: ["rial", "rials", "rials"]
+        minor_unit: ["dinar", "dinars", "dinars"]
+        symbol: "﷼"
+      RSD:
+        major_unit: ["dinar", "dinars", "dinars"]
+        minor_unit: ["para", "paras", "paras"]
+        symbol: "дин"
+      MYR:
+        major_unit: ["ringgit", "ringgits", "ringgits"]
+        minor_unit: ["sen", "sens", "sens"]
+        symbol: "RM"
+      BDT:
+        major_unit: ["taka", "takas", "takas"]
+        minor_unit: ["poisha", "poishas", "poishas"]
+        symbol: "৳"
+      PKR:
+        major_unit: ["rupee", "rupees", "rupees"]
+        minor_unit: ["paisa", "paisas", "paisas"]
+        symbol: "₨"
+      KES:
+        major_unit: ["shilling", "shillings", "shillings"]
+        minor_unit: ["cent", "cents", "cents"]
+        symbol: "Sh"
