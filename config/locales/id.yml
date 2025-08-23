@@ -13,19 +13,186 @@ id:
       - ["miliar", "miliar", "miliar"]
       - ["triliun", "triliun", "triliun"]
 
+    grammar:
+      minus: "minus"
+      conjunction: "koma"
+      default_fraction: "pecahan"
+    fractions:
+      10: ["persepuluh", "persepuluh", "persepuluh"]
+      100: ["perseratus", "perseratus", "perseratus"]
+      1000: ["perseribu", "perseribu", "perseribu"]
+      10000: ["persepuluh ribu", "persepuluh ribu", "persepuluh ribu"]
+      100000: ["perseratus ribu", "perseratus ribu", "perseratus ribu"]
+      1000000: ["persejuta", "persejuta", "persejuta"]
+      10000000: ["persepuluh juta", "persepuluh juta", "persepuluh juta"]
+      100000000: ["perseratus juta", "perseratus juta", "perseratus juta"]
+      1000000000: ["permiliar", "permiliar", "permiliar"]
+
+    numbers:
+      ordinals:
+        nominative:
+          masculine: ["pertama", "kedua", "ketiga", "keempat", "kelima", "keenam", "ketujuh", "kedelapan", "kesembilan", "kesepuluh",
+                      "kesebelas", "keduabelas", "ketigabelas", "keempatbelas", "kelimabelas", "keenambelas", "ketujuhbelas", "kedelapanbelas", "kesembilanbelas",
+                      "kedua puluh", "kedua puluh satu", "kedua puluh dua", "kedua puluh tiga", "kedua puluh empat", "kedua puluh lima", "kedua puluh enam", "kedua puluh tujuh", "kedua puluh delapan", "kedua puluh sembilan",
+                      "ketiga puluh", "ketiga puluh satu"]
+          feminine: ["pertama", "kedua", "ketiga", "keempat", "kelima", "keenam", "ketujuh", "kedelapan", "kesembilan",
+                     "kesepuluh", "kesebelas", "keduabelas", "ketigabelas", "keempatbelas", "kelimabelas", "keenambelas", "ketujuhbelas", "kedelapanbelas", "kesembilanbelas",
+                     "kedua puluh", "kedua puluh satu", "kedua puluh dua", "kedua puluh tiga", "kedua puluh empat", "kedua puluh lima", "kedua puluh enam", "kedua puluh tujuh", "kedua puluh delapan", "kedua puluh sembilan",
+                     "ketiga puluh", "ketiga puluh satu"]
+          neuter: ["pertama", "kedua", "ketiga", "keempat", "kelima", "keenam", "ketujuh", "kedelapan", "kesembilan",
+                   "kesepuluh", "kesebelas", "keduabelas", "ketigabelas", "keempatbelas", "kelimabelas", "keenambelas", "ketujuhbelas", "kedelapanbelas", "kesembilanbelas",
+                   "kedua puluh", "kedua puluh satu", "kedua puluh dua", "kedua puluh tiga", "kedua puluh empat", "kedua puluh lima", "kedua puluh enam", "kedua puluh tujuh", "kedua puluh delapan", "kedua puluh sembilan",
+                   "ketiga puluh", "ketiga puluh satu"]
+        default:
+          masculine: ["pertama", "kedua", "ketiga", "keempat", "kelima", "keenam", "ketujuh", "kedelapan", "kesembilan",
+                      "kesepuluh", "kesebelas", "keduabelas", "ketigabelas", "keempatbelas", "kelimabelas", "keenambelas", "ketujuhbelas", "kedelapanbelas", "kesembilanbelas",
+                      "kedua puluh", "kedua puluh satu", "kedua puluh dua", "kedua puluh tiga", "kedua puluh empat", "kedua puluh lima", "kedua puluh enam", "kedua puluh tujuh", "kedua puluh delapan", "kedua puluh sembilan",
+                      "ketiga puluh", "ketiga puluh satu"]
+
+    datetime:
+      template: "%{date}, %{time}"
+    date:
+      template:
+        default: "%{day} %{month} %{year}"
+        nominative: "%{day} %{month} %{year}"
+      months:
+        default: ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
+        nominative: ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"]
+    time:
+      template:
+        hours_only: "%{hours}"
+        hours_minutes: "%{hours} %{minutes}"
+        hours_minutes_seconds: "%{hours} %{minutes} %{seconds}"
+      words:
+        hour: ["jam", "jam", "jam"]
+        minute: ["menit", "menit", "menit"]
+        second: ["detik", "detik", "detik"]
+
+    warnings:
+      currency_not_available: "Mata uang %{currency} tidak tersedia untuk lokal %{lang}, menggunakan yang sekarang."
+
     currencies:
       IDR:
-        name: ["rupiah", "rupiah", "rupiah"]
-        fractional:
-          name: ["sen", "sen", "sen"]
-          feminine: false
+        major_unit: [ "rupiah", "rupiah", "rupiah" ]
+        minor_unit: [ "sen", "sen", "sen" ]
+        symbol: "Rp"
       USD:
-        name: ["dolar", "dolar", "dolar"]
-        fractional:
-          name: ["sen", "sen", "sen"]
-          feminine: false
+        major_unit: [ "dolar", "dolar", "dolar" ]
+        minor_unit: [ "sen", "sen", "sen" ]
+        symbol: "$"
       EUR:
-        name: ["euro", "euro", "euro"]
-        fractional:
-          name: ["sen", "sen", "sen"]
-          feminine: false
+        major_unit: [ "euro", "euro", "euro" ]
+        minor_unit: [ "sen", "sen", "sen" ]
+        symbol: "€"
+      GBP:
+        major_unit: [ "pound", "pound", "pound" ]
+        minor_unit: [ "pence", "pence", "pence" ]
+        symbol: "£"
+      RUB:
+        major_unit: [ "ruble", "ruble", "ruble" ]
+        minor_unit: [ "kopeck", "kopeck", "kopeck" ]
+        symbol: "₽"
+      CNY:
+        major_unit: [ "yuan", "yuan", "yuan" ]
+        minor_unit: [ "fen", "fen", "fen" ]
+        symbol: "¥"
+      JPY:
+        major_unit: [ "yen", "yen", "yen" ]
+        minor_unit: [ "sen", "sen", "sen" ]
+        symbol: "¥"
+      KRW:
+        major_unit: [ "won", "won", "won" ]
+        minor_unit: [ "jeon", "jeon", "jeon" ]
+        symbol: "₩"
+      TRY:
+        major_unit: [ "lira", "lira", "lira" ]
+        minor_unit: [ "kuruş", "kuruş", "kuruş" ]
+        symbol: "₺"
+      PLN:
+        major_unit: [ "zloty", "zloty", "zloty" ]
+        minor_unit: [ "grosz", "grosz", "grosz" ]
+        symbol: "zł"
+      UAH:
+        major_unit: [ "hryvnia", "hryvnia", "hryvnia" ]
+        minor_unit: [ "kopeck", "kopeck", "kopeck" ]
+        symbol: "₴"
+      CZK:
+        major_unit: [ "koruna", "koruna", "koruna" ]
+        minor_unit: [ "haléř", "haléř", "haléř" ]
+        symbol: "Kč"
+      RON:
+        major_unit: [ "leu", "leu", "lei" ]
+        minor_unit: [ "ban", "ban", "ban" ]
+        symbol: "lei"
+      BGN:
+        major_unit: [ "lev", "lev", "lev" ]
+        minor_unit: [ "stotinka", "stotinka", "stotinka" ]
+        symbol: "лв"
+      BYN:
+        major_unit: [ "rubel Belarusia", "rubel Belarusia", "rubel Belarusia" ]
+        minor_unit: [ "kopeck", "kopeck", "kopeck" ]
+        symbol: "Br"
+      KZT:
+        major_unit: [ "tenge", "tenge", "tenge" ]
+        minor_unit: [ "tiyn", "tiyn", "tiyn" ]
+        symbol: "₸"
+      ILS:
+        major_unit: [ "shekel", "shekel", "shekel" ]
+        minor_unit: [ "agora", "agora", "agora" ]
+        symbol: "₪"
+      SEK:
+        major_unit: [ "krona", "krona", "krona" ]
+        minor_unit: [ "öre", "öre", "öre" ]
+        symbol: "kr"
+      NOK:
+        major_unit: [ "krone", "krone", "krone" ]
+        minor_unit: [ "øre", "øre", "øre" ]
+        symbol: "kr"
+      DKK:
+        major_unit: [ "krone", "krone", "krone" ]
+        minor_unit: [ "øre", "øre", "øre" ]
+        symbol: "kr"
+      HUF:
+        major_unit: [ "forint", "forint", "forint" ]
+        minor_unit: [ "fillér", "fillér", "fillér" ]
+        symbol: "Ft"
+      SAR:
+        major_unit: [ "riyal", "riyal", "riyal" ]
+        minor_unit: [ "halala", "halala", "halala" ]
+        symbol: "﷼"
+      INR:
+        major_unit: [ "rupee", "rupee", "rupee" ]
+        minor_unit: [ "paisa", "paisa", "paisa" ]
+        symbol: "₹"
+      THB:
+        major_unit: [ "baht", "baht", "baht" ]
+        minor_unit: [ "satang", "satang", "satang" ]
+        symbol: "฿"
+      VND:
+        major_unit: [ "dong", "dong", "dong" ]
+        minor_unit: [ "xu", "xu", "xu" ]
+        symbol: "₫"
+      IRR:
+        major_unit: [ "rial", "rial", "rial" ]
+        minor_unit: [ "dinam", "dinam", "dinam" ]
+        symbol: "﷼"
+      RSD:
+        major_unit: [ "dinar", "dinar", "dinar" ]
+        minor_unit: [ "para", "para", "para" ]
+        symbol: "дин"
+      MYR:
+        major_unit: [ "ringgit", "ringgit", "ringgit" ]
+        minor_unit: [ "sen", "sen", "sen" ]
+        symbol: "RM"
+      BDT:
+        major_unit: [ "taka", "taka", "taka" ]
+        minor_unit: [ "poisha", "poisha", "poisha" ]
+        symbol: "৳"
+      PKR:
+        major_unit: [ "rupee", "rupee", "rupee" ]
+        minor_unit: [ "paisa", "paisa", "paisa" ]
+        symbol: "₨"
+      KES:
+        major_unit: [ "shilling", "shilling", "shilling" ]
+        minor_unit: [ "sen", "sen", "sen" ]
+        symbol: "Sh"
