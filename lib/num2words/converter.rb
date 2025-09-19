@@ -55,7 +55,9 @@ module Num2words
           pluralize(minor_value, *currency_data[:minor_unit])
         ]
 
-        apply_case(parts.join(" "), word_case)
+        parts.unshift(Locales[locale]::GRAMMAR[:minus] || "minus") if amount.negative?
+
+        apply_case(parts.join(" ").strip, word_case)
       end
 
       private
