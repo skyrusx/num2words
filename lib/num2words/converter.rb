@@ -35,7 +35,7 @@ module Num2words
       def to_currency(amount, *args, **opts)
         locale = args.first.is_a?(Symbol) ? args.first : opts[:locale] || I18n.default_locale
         word_case = opts[:word_case] || :downcase
-        currency = (opts[:currency] || Num2words.default_currency(locale)).to_s.upcase.to_sym
+        currency = (opts[:code] || Num2words.default_currency(locale)).to_s.upcase.to_sym
 
         unless Num2words.available_currencies(locale).include?(currency)
           warn I18n.t("num2words.warnings.currency_not_available",
