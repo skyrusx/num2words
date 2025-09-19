@@ -46,7 +46,7 @@ module Num2words
         currency_data = I18n.t("num2words.currencies.#{currency}", locale: locale) or
           raise ArgumentError, "Currency #{currency} not defined in locale #{locale}"
 
-        major_value, minor_value = sprintf('%.2f', amount).split('.').map(&:to_i)
+        major_value, minor_value = sprintf('%.2f', amount.abs).split('.').map(&:to_i)
 
         parts = [
           to_words(major_value, locale: locale),
