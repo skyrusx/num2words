@@ -7,13 +7,13 @@ module Num2words
   class Converter
     class << self
       def to_words(number, *args, **opts)
-        locale      = args[0].is_a?(Symbol) ? args[0] : opts[:locale] || I18n.default_locale
-        type_only   = args[1].is_a?(Symbol) ? args[1] : opts[:only]
-        type_short  = args[2].is_a?(TrueClass) || args[2].is_a?(FalseClass) ? args[2] : opts[:short] || false
+        locale = args[0].is_a?(Symbol) ? args[0] : opts[:locale] || I18n.default_locale
+        type_only = args[1].is_a?(Symbol) ? args[1] : opts[:only]
+        type_short = args[2].is_a?(TrueClass) || args[2].is_a?(FalseClass) ? args[2] : opts[:short] || false
 
-        feminine    = opts[:feminine] || false
-        style       = opts[:style] || :fraction
-        word_case   = opts[:word_case] || :default
+        feminine = opts[:feminine] || false
+        style = opts[:style] || :fraction
+        word_case = opts[:word_case] || :default
         date_format = opts[:format] || :default
 
         locale_data = Locales[locale]
@@ -33,9 +33,9 @@ module Num2words
       end
 
       def to_currency(amount, *args, **opts)
-        locale    = args.first.is_a?(Symbol) ? args.first : opts[:locale] || I18n.default_locale
+        locale = args.first.is_a?(Symbol) ? args.first : opts[:locale] || I18n.default_locale
         word_case = opts[:word_case] || :downcase
-        currency  = (opts[:currency] || Num2words.default_currency(locale)).to_s.upcase.to_sym
+        currency = (opts[:currency] || Num2words.default_currency(locale)).to_s.upcase.to_sym
 
         unless Num2words.available_currencies(locale).include?(currency)
           warn I18n.t("num2words.warnings.currency_not_available",
@@ -93,10 +93,10 @@ module Num2words
       end
 
       def to_words_fractional(number, locale, feminine, locale_data, style: :fraction)
-        minus_word       = locale_data::GRAMMAR[:minus] || "minus"
+        minus_word = locale_data::GRAMMAR[:minus] || "minus"
         conjunction_word = locale_data::GRAMMAR[:conjunction] || "and"
         default_fraction = locale_data::GRAMMAR[:default_fraction] || "parts"
-        fractions_data   = locale_data::FRACTIONS || {}
+        fractions_data = locale_data::FRACTIONS || {}
 
         sign_word = number.negative? ? minus_word : ""
 
@@ -106,7 +106,7 @@ module Num2words
         return to_words_integer(integer_value, locale, feminine, locale_data) if fraction_string.to_i.zero?
 
         fraction_string = fraction_string.sub(/0+\z/, "")
-        numerator   = fraction_string.to_i
+        numerator = fraction_string.to_i
         denominator = 10 ** fraction_string.length
 
         integer_words = to_words_integer(integer_value, locale, feminine, locale_data)
@@ -157,9 +157,9 @@ module Num2words
         raise ArgumentError, "Months not found for locale #{locale}" unless months
         raise ArgumentError, "Template not found for locale #{locale}" unless template
 
-        day_words   = to_words_ordinal(day, locale, format, locale_data, gender: :neuter)
+        day_words = to_words_ordinal(day, locale, format, locale_data, gender: :neuter)
         month_words = months[month - 1]
-        year_words  = to_words_ordinal(year, locale, format, locale_data)
+        year_words = to_words_ordinal(year, locale, format, locale_data)
 
         template % { day: day_words, month: month_words, year: year_words }
       end
@@ -175,9 +175,9 @@ module Num2words
 
         if value > 31
           thousands = (value / 100) * 100
-          last_two  = value % 100
+          last_two = value % 100
 
-          base_year   = to_words_integer(thousands, locale, false, locale_data)
+          base_year = to_words_integer(thousands, locale, false, locale_data)
           last_ordinal = gender_data[last_two - 1] || to_words_integer(last_two, locale, false, locale_data)
           last_ordinal = to_words_integer(last_two, locale, false, locale_data) if locale == :en
 
@@ -192,7 +192,7 @@ module Num2words
 
         return time.strftime("%H:%M") if format == :short
 
-        words    = locale_data::TIME[:words]
+        words = locale_data::TIME[:words]
         template = locale_data::TIME_TEMPLATE
 
         hours = [
@@ -226,7 +226,6 @@ module Num2words
         end
       end
 
-
       def to_words_datetime(datetime, locale, locale_data, format: :default, only: nil, short: false)
         datetime = DateTime.parse(datetime) if datetime.is_a?(String)
 
@@ -257,19 +256,19 @@ module Num2words
 
       def detect_type(value)
         case value
-        when Integer   then :integer
-        when Float     then :float
-        when Date      then :date
-        when Time      then :time
-        when DateTime  then :datetime
+        when Integer then :integer
+        when Float then :float
+        when Date then :date
+        when Time then :time
+        when DateTime then :datetime
         when String
           return :integer if value.match?(/\A-?\d+\z/)
-          return :float   if value.match?(/\A-?\d+\.\d+\z/)
-          return :time    if value.match?(/\A\d{1,2}:\d{2}(:\d{2})?\z/)
+          return :float if value.match?(/\A-?\d+\.\d+\z/)
+          return :time if value.match?(/\A\d{1,2}:\d{2}(:\d{2})?\z/)
 
           # Форматы даты
-          return :date     if value.match?(/\A\d{1,2}[.\-]\d{1,2}[.\-]\d{2,4}\z/)
-          return :date     if value.match?(/\A\d{4}-\d{2}-\d{2}\z/)
+          return :date if value.match?(/\A\d{1,2}[.\-]\d{1,2}[.\-]\d{2,4}\z/)
+          return :date if value.match?(/\A\d{4}-\d{2}-\d{2}\z/)
           return :datetime if value.match?(/\A\d{1,2}[.\-]\d{1,2}[.\-]\d{2,4}\s+\d{1,2}:\d{2}(:\d{2})?\z/)
           return :datetime if value.match?(/\A\d{4}-\d{2}-\d{2}[ T]\d{2}:\d{2}(:\d{2})?([.,]\d+)?(Z|[+\-]\d{2}:?\d{2})?\z/)
 
