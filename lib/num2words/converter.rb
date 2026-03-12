@@ -130,6 +130,10 @@ module Num2words
       def to_words_integer(number, locale, feminine, locale_data)
         integer_value = Integer(number)
 
+        minus_word = locale_data::GRAMMAR[:minus] || "minus"
+        negative = integer_value.negative?
+        integer_value = integer_value.abs
+
         return (feminine ? locale_data::ONES_FEM[0] : locale_data::ONES_MASC[0]) if integer_value.zero?
 
         groups = integer_value.to_s
@@ -143,6 +147,7 @@ module Num2words
           words.concat triple_to_words(group_value, scale_index, locale_data, feminine: group_feminine)
         end
 
+        words.unshift(minus_word) if negative
         words.join(" ")
       end
 
