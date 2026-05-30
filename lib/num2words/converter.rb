@@ -16,11 +16,12 @@ module Num2words
         word_case = opts[:word_case] || :default
         date_format = opts[:format] || :default
         date_case = opts[:date_case] || :default
+        joiner = opts[:joiner] || :default
 
         locale_data = Locales[locale]
 
         result = case detect_type(number)
-                 when :float then to_words_fractional(number, locale, feminine, locale_data, style: style)
+                 when :float then to_words_fractional(number, locale, feminine, locale_data, style: style, joiner: joiner)
                  when :integer then to_words_integer(number, locale, feminine, locale_data)
                  when :datetime then to_words_datetime(number, locale, locale_data, format: date_format, only: type_only, short: type_short, date_case: date_case)
                  when :date then to_words_date(number, locale, locale_data, format: date_format, date_case: date_case)
@@ -95,9 +96,9 @@ module Num2words
         words.compact
       end
 
-      def to_words_fractional(number, locale, feminine, locale_data, style: :fraction)
+      def to_words_fractional(number, locale, feminine, locale_data, style: :fraction, joiner: :default)
         minus_word = locale_data::GRAMMAR[:minus] || "minus"
-        conjunction_word = locale_data::GRAMMAR[:conjunction] || "and"
+        conjunction_word = joiner.to_sym == :and ? "и" : locale_data::GRAMMAR[:conjunction] || "and"
         default_fraction = locale_data::GRAMMAR[:default_fraction] || "parts"
         fractions_data = locale_data::FRACTIONS || {}
 
