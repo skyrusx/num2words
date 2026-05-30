@@ -100,9 +100,11 @@ module Num2words
         default_fraction = locale_data::GRAMMAR[:default_fraction] || "parts"
         fractions_data = locale_data::FRACTIONS || {}
 
-        sign_word = number.negative? ? minus_word : ""
+        negative = number.is_a?(String) ? number.start_with?("-") : number.negative?
+        sign_word = negative ? minus_word : ""
 
-        integer_string, fraction_string = number.abs.to_s.split('.', 2)
+        absolute_number = number.is_a?(String) ? number.sub(/\A-/, "").tr(",", ".") : number.abs.to_s
+        integer_string, fraction_string = absolute_number.split('.', 2)
         integer_value = integer_string.to_i
 
         return to_words_integer(integer_value, locale, feminine, locale_data) if fraction_string.to_i.zero?
@@ -270,7 +272,7 @@ module Num2words
         when DateTime then :datetime
         when String
           return :integer if value.match?(/\A-?\d+\z/)
-          return :float if value.match?(/\A-?\d+\.\d+\z/)
+          return :float if value.match?(/\A-?\d+[\.,]\d+\z/)
           return :time if value.match?(/\A\d{1,2}:\d{2}(:\d{2})?\z/)
 
           # Форматы даты
