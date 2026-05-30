@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "bigdecimal"
 require "num2words"
 
 RSpec.describe Num2words do
@@ -33,6 +34,17 @@ RSpec.describe Num2words do
     expect(described_class.to_currency(1, :ru, minor: :nonzero)).to eq("один рубль")
     expect(described_class.to_currency(1.25, :ru, minor: :nonzero)).to eq("один рубль двадцать пять копеек")
     expect(described_class.to_currency(1.25, :ru, minor: :never)).to eq("один рубль")
+  end
+
+  it "handles string and BigDecimal currency amounts" do
+    expect(described_class.to_currency("21.05", :ru)).to eq("двадцать один рубль пять копеек")
+    expect(described_class.to_currency("21,05", :ru)).to eq("двадцать один рубль пять копеек")
+    expect(described_class.to_currency("-1,25", :ru)).to eq("минус один рубль двадцать пять копеек")
+    expect(described_class.to_currency(BigDecimal("32.02"), :ru)).to eq("тридцать два рубля две копейки")
+  end
+
+  it "raises for unsupported currency amount" do
+    expect { described_class.to_currency("not-a-number", :ru) }.to raise_error(ArgumentError, 'Unsupported currency amount: "not-a-number"')
   end
 
   it "raises for unsupported minor currency option" do

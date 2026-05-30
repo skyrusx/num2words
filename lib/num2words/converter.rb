@@ -2,6 +2,7 @@
 
 require "date"
 require "time"
+require "bigdecimal"
 
 module Num2words
   class Converter
@@ -53,7 +54,8 @@ module Num2words
         currency_data = I18n.t("num2words.currencies.#{currency}", locale: locale) or
           raise ArgumentError, "Currency #{currency} not defined in locale #{locale}"
 
-        major_value, minor_value = sprintf('%.2f', amount.abs).split('.').map(&:to_i)
+        decimal_amount = decimal_currency_amount(amount)
+        major_value, minor_value = format('%.2f', decimal_amount.abs).split('.').map(&:to_i)
 
         parts = [
           to_words(major_value, locale: locale),
@@ -68,12 +70,21 @@ module Num2words
           ])
         end
 
-        parts.unshift(Locales[locale]::GRAMMAR[:minus] || "minus") if amount.negative?
+        parts.unshift(Locales[locale]::GRAMMAR[:minus] || "minus") if decimal_amount.negative?
 
         apply_case(parts.join(" ").strip, word_case)
       end
 
       private
+
+      def decimal_currency_amount(amount)
+        return amount if amount.is_a?(BigDecimal)
+
+        normalized_amount = amount.is_a?(String) ? amount.tr(",", ".") : amount.to_s
+        BigDecimal(normalized_amount)
+      rescue ArgumentError
+        raise ArgumentError, "Unsupported currency amount: #{amount.inspect}"
+      end
 
       def pluralize(number, singular, few, plural)
         number = number.abs
