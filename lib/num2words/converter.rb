@@ -15,14 +15,15 @@ module Num2words
         style = opts[:style] || :fraction
         word_case = opts[:word_case] || :default
         date_format = opts[:format] || :default
+        date_case = opts[:date_case] || :default
 
         locale_data = Locales[locale]
 
         result = case detect_type(number)
                  when :float then to_words_fractional(number, locale, feminine, locale_data, style: style)
                  when :integer then to_words_integer(number, locale, feminine, locale_data)
-                 when :datetime then to_words_datetime(number, locale, locale_data, format: date_format, only: type_only, short: type_short)
-                 when :date then to_words_date(number, locale, locale_data, format: date_format)
+                 when :datetime then to_words_datetime(number, locale, locale_data, format: date_format, only: type_only, short: type_short, date_case: date_case)
+                 when :date then to_words_date(number, locale, locale_data, format: date_format, date_case: date_case)
                  when :time then to_words_time(number, locale, locale_data, short: type_short)
                  else nil
                  end
@@ -153,7 +154,7 @@ module Num2words
         words.join(" ")
       end
 
-      def to_words_date(date, locale, locale_data, format: :default)
+      def to_words_date(date, locale, locale_data, format: :default, date_case: :default)
         date = Date.parse(date.to_s) unless date.is_a?(Date)
 
         day, month, year = [date.day, date.month, date.year]
@@ -166,7 +167,8 @@ module Num2words
         raise ArgumentError, "Months not found for locale #{locale}" unless months
         raise ArgumentError, "Template not found for locale #{locale}" unless template
 
-        day_words = to_words_ordinal(day, locale, format, locale_data, gender: :neuter)
+        day_gender = date_case.to_sym == :genitive ? :masculine : :neuter
+        day_words = to_words_ordinal(day, locale, format, locale_data, gender: day_gender)
         month_words = months[month - 1]
         year_words = to_words_ordinal(year, locale, format, locale_data)
 
@@ -180,7 +182,7 @@ module Num2words
         gender_data = ordinals[gender] || ordinals[:masculine]
         raise ArgumentError, "Gender #{gender} not found for locale #{locale}, format #{format}" unless gender_data
 
-        return gender_data[value - 1] if gender_data[value]
+        return gender_data[value - 1] if value.between?(1, gender_data.length)
 
         if value > 31
           thousands = (value / 100) * 100
@@ -235,13 +237,13 @@ module Num2words
         end
       end
 
-      def to_words_datetime(datetime, locale, locale_data, format: :default, only: nil, short: false)
+      def to_words_datetime(datetime, locale, locale_data, format: :default, only: nil, short: false, date_case: :default)
         datetime = DateTime.parse(datetime) if datetime.is_a?(String)
 
         date_format = short && only == :date ? :short : format
         time_format = short && only == :time ? :short : :default
 
-        date_part = to_words_date(datetime.to_date, locale, locale_data, format: date_format)
+        date_part = to_words_date(datetime.to_date, locale, locale_data, format: date_format, date_case: date_case)
         time_part = to_words_time(datetime.to_time, locale, locale_data, format: time_format, short: short)
 
         return date_part if only == :date
@@ -267,9 +269,9 @@ module Num2words
         case value
         when Integer then :integer
         when Float then :float
+        when DateTime then :datetime
         when Date then :date
         when Time then :time
-        when DateTime then :datetime
         when String
           return :integer if value.match?(/\A-?\d+\z/)
           return :float if value.match?(/\A-?\d+[\.,]\d+\z/)

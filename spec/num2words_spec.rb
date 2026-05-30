@@ -27,4 +27,18 @@ RSpec.describe Num2words do
     expect(described_class.to_currency(1001.05)).to eq("одна тысяча один рубль пять копеек")
     expect(described_class.to_currency(1_234_567.89)).to eq("один миллион двести тридцать четыре тысячи пятьсот шестьдесят семь рублей восемьдесят девять копеек")
   end
+
+  it "converts Russian dates with nominative day and genitive year by default" do
+    expect(described_class.to_words("2024-08-21", :ru)).to eq("двадцать первое августа две тысячи двадцать четвёртого года")
+    expect(described_class.to_words("2024-08-21 14:35:42", :ru)).to eq(
+      "двадцать первое августа две тысячи двадцать четвёртого года, четырнадцать часов тридцать пять минут сорок две секунды"
+    )
+  end
+
+  it "converts Russian dates with genitive day when requested" do
+    expect(described_class.to_words("2024-08-21", :ru, date_case: :genitive)).to eq("двадцать первого августа две тысячи двадцать четвёртого года")
+    expect(described_class.to_words("2024-08-21 14:35:42", :ru, date_case: :genitive)).to eq(
+      "двадцать первого августа две тысячи двадцать четвёртого года, четырнадцать часов тридцать пять минут сорок две секунды"
+    )
+  end
 end
