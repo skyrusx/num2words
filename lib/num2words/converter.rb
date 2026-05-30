@@ -38,6 +38,11 @@ module Num2words
         locale = args.first.is_a?(Symbol) ? args.first : opts[:locale] || I18n.default_locale
         word_case = opts[:word_case] || :downcase
         currency = (opts[:code] || Num2words.default_currency(locale)).to_s.upcase.to_sym
+        minor = opts[:minor] || :always
+
+        unless %i[always nonzero never].include?(minor)
+          raise ArgumentError, "Unsupported minor option: #{minor.inspect}"
+        end
 
         unless Num2words.available_currencies(locale).include?(currency)
           warn I18n.t("num2words.warnings.currency_not_available",
@@ -52,10 +57,16 @@ module Num2words
 
         parts = [
           to_words(major_value, locale: locale),
-          pluralize(major_value, *currency_data[:major_unit]),
-          to_words(minor_value, locale: locale, feminine: true),
-          pluralize(minor_value, *currency_data[:minor_unit])
+          pluralize(major_value, *currency_data[:major_unit])
         ]
+
+        include_minor = minor == :always || (minor == :nonzero && minor_value.positive?)
+        if include_minor
+          parts.concat([
+            to_words(minor_value, locale: locale, feminine: true),
+            pluralize(minor_value, *currency_data[:minor_unit])
+          ])
+        end
 
         parts.unshift(Locales[locale]::GRAMMAR[:minus] || "minus") if amount.negative?
 

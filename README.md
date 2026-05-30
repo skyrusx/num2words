@@ -61,6 +61,8 @@ require "num2words"
 ### 💰 Валюта
 ```ruby
 21.05.to_currency(:ru)     # => "двадцать один рубль пять копеек"
+1.to_currency(:ru, minor: :nonzero) # => "один рубль"
+1.25.to_currency(:ru, minor: :never) # => "один рубль"
 12.5.to_currency(:en)      # => "twelve dollars fifty cents"
 ```
 
