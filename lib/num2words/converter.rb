@@ -19,6 +19,9 @@ module Num2words
         date_case = opts[:date_case] || :default
         joiner = opts[:joiner] || :default
 
+        validate_option!(:date_case, date_case, %i[default genitive])
+        validate_option!(:joiner, joiner, %i[default and])
+
         locale_data = Locales[locale]
 
         result = case detect_type(number)
@@ -41,9 +44,7 @@ module Num2words
         currency = (opts[:code] || Num2words.default_currency(locale)).to_s.upcase.to_sym
         minor = opts[:minor] || :always
 
-        unless %i[always nonzero never].include?(minor)
-          raise ArgumentError, "Unsupported minor option: #{minor.inspect}"
-        end
+        validate_option!(:minor, minor, %i[always nonzero never])
 
         unless Num2words.available_currencies(locale).include?(currency)
           warn I18n.t("num2words.warnings.currency_not_available",
@@ -76,6 +77,12 @@ module Num2words
       end
 
       private
+
+      def validate_option!(name, value, allowed_values)
+        return if allowed_values.include?(value)
+
+        raise ArgumentError, "Unsupported #{name} option: #{value.inspect}"
+      end
 
       def decimal_currency_amount(amount)
         return amount if amount.is_a?(BigDecimal)

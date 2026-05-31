@@ -51,6 +51,14 @@ RSpec.describe Num2words do
     expect { described_class.to_currency(1, :ru, minor: :sometimes) }.to raise_error(ArgumentError, "Unsupported minor option: :sometimes")
   end
 
+  it "raises for unsupported date case option" do
+    expect { described_class.to_words("2024-08-21", :ru, date_case: :instrumental) }.to raise_error(ArgumentError, "Unsupported date_case option: :instrumental")
+  end
+
+  it "raises for unsupported fraction joiner option" do
+    expect { described_class.to_words(0.5, :ru, joiner: :plus) }.to raise_error(ArgumentError, "Unsupported joiner option: :plus")
+  end
+
   it "converts Russian dates with nominative day and genitive year by default" do
     expect(described_class.to_words("2024-08-21", :ru)).to eq("двадцать первое августа две тысячи двадцать четвёртого года")
     expect(described_class.to_words("2024-08-21 14:35:42", :ru)).to eq(
