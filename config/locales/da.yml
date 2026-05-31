@@ -88,6 +88,10 @@ da:
         major_unit: [ "pund", "pund", "pund" ]
         minor_unit: [ "penny", "pence", "pence" ]
         symbol: "£"
+      BRL:
+        major_unit: [ "brasiliansk real", "brasilianske real", "brasilianske real" ]
+        minor_unit: [ "centavo", "centavo", "centavo" ]
+        symbol: "R$"
       CNY:
         major_unit: [ "yuan", "yuan", "yuan" ]
         minor_unit: [ "fen", "fen", "fen" ]
