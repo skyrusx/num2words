@@ -106,8 +106,13 @@ module Num2words
 
       # n — 0..999, scale_idx — индекс разряда (0 — единицы, 1 — тысячи, ...)
       # feminine: true — использовать женский род для единиц (нужно для тысяч/копеек)
-      def triple_to_words(n, scale_idx, local_data, feminine: false)
+      def triple_to_words(n, scale_idx, local_data, feminine: false, locale: nil)
         return [] if n.zero?
+
+        if local_data.respond_to?(:triple_to_words)
+          return local_data.triple_to_words(n, scale_idx, feminine: feminine)
+        end
+
         words = []
 
         words << local_data::HUNDREDS[n / 100] if n >= 100
@@ -146,13 +151,14 @@ module Num2words
 
         integer_words = to_words_integer(integer_value, locale, feminine, locale_data)
 
-        if locale.to_sym == :en && style == :decimal
-          fraction_digits = fraction_string.chars.map { |d| to_words_integer(d.to_i, locale, feminine, locale_data) }
-          full_string = [sign_word, integer_words, "point", fraction_digits.join(" ")].reject(&:empty?).join(" ")
+        if style == :decimal && locale_data.respond_to?(:decimal_fraction_words)
+          fraction_digits = locale_data.decimal_fraction_words(fraction_string)
+          full_string = [sign_word, integer_words, "point", fraction_digits].reject(&:empty?).join(" ")
           return full_string
         end
 
-        numerator_words = to_words_integer(numerator, locale, (locale.to_sym == :ru ? true : feminine), locale_data)
+        numerator_feminine = locale_data.respond_to?(:fraction_numerator_feminine?) ? locale_data.fraction_numerator_feminine? : feminine
+        numerator_words = to_words_integer(numerator, locale, numerator_feminine, locale_data)
 
         denom_forms = fractions_data[denominator] || fractions_data[denominator.to_s] # массив склонений
         denominator_words = denom_forms.is_a?(Array) ? pluralize(numerator, *denom_forms) : default_fraction
@@ -176,8 +182,8 @@ module Num2words
         words = []
         groups.each_with_index do |group_value, index|
           scale_index = groups.size - index - 1
-          group_feminine = (scale_index == 1) || feminine
-          words.concat triple_to_words(group_value, scale_index, locale_data, feminine: group_feminine)
+          group_feminine = (locale_data.respond_to?(:feminine_group?) && locale_data.feminine_group?(scale_index)) || feminine
+          words.concat triple_to_words(group_value, scale_index, locale_data, feminine: group_feminine, locale: locale)
         end
 
         words.unshift(minus_word) if negative
@@ -198,9 +204,17 @@ module Num2words
         raise ArgumentError, "Template not found for locale #{locale}" unless template
 
         day_gender = date_case.to_sym == :genitive ? :masculine : :neuter
-        day_words = to_words_ordinal(day, locale, format, locale_data, gender: day_gender)
+        day_words = if locale_data.respond_to?(:date_day)
+                      locale_data.date_day(day, format: format, date_case: date_case)
+                    else
+                      to_words_ordinal(day, locale, format, locale_data, gender: day_gender)
+                    end
         month_words = months[month - 1]
-        year_words = to_words_ordinal(year, locale, format, locale_data)
+        year_words = if locale_data.respond_to?(:date_year)
+                       locale_data.date_year(year, format: format)
+                     else
+                       to_words_ordinal(year, locale, format, locale_data)
+                     end
 
         template % { day: day_words, month: month_words, year: year_words }
       end

@@ -20,6 +20,87 @@ module Num2words
       DATETIME_TEMPLATE = I18n.t("num2words.datetime.template", locale: :fr)
 
       ORDINALS = I18n.t("num2words.numbers.ordinals", locale: :fr)
+
+      module_function
+
+      def triple_to_words(number, scale_idx, feminine: false)
+        words = scale_idx == 1 && number == 1 ? [] : under_thousand(number, feminine: feminine).split
+
+        unless scale_idx.zero?
+          scale_forms = SCALES[scale_idx]
+          words << (number == 1 ? scale_forms[0] : scale_forms[2])
+        end
+
+        words
+      end
+
+      def date_day(day, format:, date_case:)
+        return "premier" if day == 1
+
+        under_thousand(day)
+      end
+
+      def date_year(year, format:)
+        groups = year.to_s
+                     .chars.reverse.each_slice(3).map(&:reverse)
+                     .map(&:join).map!(&:to_i).reverse
+
+        words = []
+        groups.each_with_index do |group_value, index|
+          scale_index = groups.size - index - 1
+          words.concat triple_to_words(group_value, scale_index)
+        end
+
+        words.join(" ")
+      end
+
+      def under_thousand(number, feminine: false)
+        hundreds = number / 100
+        rest = number % 100
+
+        return under_hundred(rest, feminine: feminine) if hundreds.zero?
+
+        hundred_words = if hundreds == 1
+                          HUNDREDS[1]
+                        elsif rest.zero?
+                          HUNDREDS[hundreds]
+                        else
+                          HUNDREDS[hundreds].sub(/s\z/, "")
+                        end
+
+        return hundred_words if rest.zero?
+
+        [hundred_words, under_hundred(rest, feminine: feminine)].join(" ")
+      end
+
+      def under_hundred(number, feminine: false)
+        ones_data = feminine ? ONES_FEM : ONES_MASC
+
+        return ones_data[number] if number < 10
+        return TEENS[number - 10] if number < 20
+
+        case number
+        when 20..69
+          tens = number / 10
+          ones = number % 10
+          return TENS[tens] if ones.zero?
+          return "#{TENS[tens]} et #{ones_data[ones]}" if ones == 1
+
+          "#{TENS[tens]} #{ones_data[ones]}"
+        when 70..79
+          teen = number - 60
+          return "soixante et #{TEENS[1]}" if teen == 11
+
+          "soixante #{under_hundred(teen, feminine: feminine)}"
+        when 80
+          "quatre-vingts"
+        else
+          rest = number - 80
+          return "quatre-vingt" if rest.zero?
+
+          "quatre-vingt #{under_hundred(rest, feminine: feminine)}"
+        end
+      end
     end
 
     register :fr, FR
