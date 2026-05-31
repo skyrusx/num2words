@@ -48,24 +48,45 @@ require "num2words"
 ### 🔢 Числа
 ```ruby
 # Integer
-123.to_words(:ru)          # => "сто двадцать три"
-123.to_words(:en)          # => "one hundred twenty three"
+123.to_words(:ru)
+# => "сто двадцать три"
+
+123.to_words(:en)
+# => "one hundred twenty three"
 
 # Float
-45.67.to_words(:ru)               # => "сорок пять целых шестьдесят семь сотых"
-"45,67".to_words(:ru)             # => "сорок пять целых шестьдесят семь сотых"
-45.67.to_words(:ru, joiner: :and) # => "сорок пять и шестьдесят семь сотых"
-45.67.to_words(:en)               # => "forty five and sixty seven hundredths"
+45.67.to_words(:ru)
+# => "сорок пять целых шестьдесят семь сотых"
+
+"45,67".to_words(:ru)
+# => "сорок пять целых шестьдесят семь сотых"
+
+45.67.to_words(:ru, joiner: :and)
+# => "сорок пять и шестьдесят семь сотых"
+
+45.67.to_words(:en)
+# => "forty five and sixty seven hundredths"
 ```
 
 ### 💰 Валюта
 ```ruby
-21.05.to_currency(:ru)     # => "двадцать один рубль пять копеек"
-"21,05".to_currency(:ru)   # => "двадцать один рубль пять копеек"
-Num2words.to_currency(BigDecimal("21.05"), :ru) # => "двадцать один рубль пять копеек"
-1.to_currency(:ru, minor: :nonzero) # => "один рубль"
-1.25.to_currency(:ru, minor: :never) # => "один рубль"
-12.5.to_currency(:en)      # => "twelve dollars fifty cents"
+21.05.to_currency(:ru)
+# => "двадцать один рубль пять копеек"
+
+"21,05".to_currency(:ru)
+# => "двадцать один рубль пять копеек"
+
+Num2words.to_currency(BigDecimal("21.05"), :ru)
+# => "двадцать один рубль пять копеек"
+
+1.to_currency(:ru, minor: :nonzero)
+# => "один рубль"
+
+1.25.to_currency(:ru, minor: :never)
+# => "один рубль"
+
+12.5.to_currency(:en)
+# => "twelve dollars fifty cents"
 ```
 
 ### 📅 Дата
