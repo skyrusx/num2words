@@ -68,6 +68,10 @@ en:
         major_unit: ["pound", "pounds", "pounds"]
         minor_unit: ["penny", "pence", "pence"]
         symbol: "£"
+      BRL:
+        major_unit: ["Brazilian real", "Brazilian reals", "Brazilian reals"]
+        minor_unit: ["centavo", "centavos", "centavos"]
+        symbol: "R$"
       RUB:
         major_unit: ["ruble", "rubles", "rubles"]
         minor_unit: ["kopek", "kopeks", "kopeks"]

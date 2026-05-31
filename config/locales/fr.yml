@@ -88,6 +88,10 @@ fr:
         major_unit: ["livre", "livres", "livres"]
         minor_unit: ["penny", "pence", "pence"]
         symbol: "£"
+      BRL:
+        major_unit: ["réal brésilien", "réals brésiliens", "réals brésiliens"]
+        minor_unit: ["centavo", "centavos", "centavos"]
+        symbol: "R$"
       CNY:
         major_unit: ["yuan", "yuans", "yuans"]
         minor_unit: ["fen", "fens", "fens"]
