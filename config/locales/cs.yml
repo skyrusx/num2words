@@ -53,8 +53,8 @@ cs:
       template: "%{date}, %{time}"
     date:
       template:
-        default: "%{day}. %{month} %{year}"
-        nominative: "%{day}. %{month} %{year}"
+        default: "%{day} %{month} %{year}"
+        nominative: "%{day} %{month} %{year}"
       months:
         default: ["ledna", "února", "března", "dubna", "května", "června", "července", "srpna", "září", "října", "listopadu", "prosince"]
         nominative: ["leden", "únor", "březen", "duben", "květen", "červen", "červenec", "srpen", "září", "říjen", "listopad", "prosinec"]
@@ -88,6 +88,10 @@ cs:
         major_unit: [ "libra", "libry", "liber" ]
         minor_unit: [ "pence", "pence", "pencí" ]
         symbol: "£"
+      BRL:
+        major_unit: [ "brazilský real", "brazilské realy", "brazilských realů" ]
+        minor_unit: [ "centavo", "centava", "centav" ]
+        symbol: "R$"
       CNY:
         major_unit: [ "juan", "juanu", "juanů" ]
         minor_unit: [ "fen", "fenu", "fenů" ]

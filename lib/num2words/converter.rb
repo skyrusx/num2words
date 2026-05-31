@@ -57,16 +57,18 @@ module Num2words
 
         decimal_amount = decimal_currency_amount(amount)
         major_value, minor_value = format('%.2f', decimal_amount.abs).split('.').map(&:to_i)
+        major_feminine = locale_currency_major_feminine?(Locales[locale], currency)
+        minor_feminine = locale_currency_minor_feminine?(Locales[locale], currency)
 
         parts = [
-          to_words(major_value, locale: locale),
+          to_words(major_value, locale: locale, feminine: major_feminine),
           locale_pluralize(Locales[locale], major_value, currency_data[:major_unit])
         ]
 
         include_minor = minor == :always || (minor == :nonzero && minor_value.positive?)
         if include_minor
           parts.concat([
-            to_words(minor_value, locale: locale, feminine: true),
+            to_words(minor_value, locale: locale, feminine: minor_feminine),
             locale_pluralize(Locales[locale], minor_value, currency_data[:minor_unit])
           ])
         end
@@ -108,6 +110,18 @@ module Num2words
         return locale_data.pluralize(number, *forms) if locale_data.respond_to?(:pluralize)
 
         pluralize(number, *forms)
+      end
+
+      def locale_currency_major_feminine?(locale_data, currency)
+        return locale_data.currency_major_feminine?(currency) if locale_data.respond_to?(:currency_major_feminine?)
+
+        false
+      end
+
+      def locale_currency_minor_feminine?(locale_data, currency)
+        return locale_data.currency_minor_feminine?(currency) if locale_data.respond_to?(:currency_minor_feminine?)
+
+        true
       end
 
       def locale_minus_word(locale_data)
