@@ -6,8 +6,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Ruslan Fedotov"]
   spec.email         = ["progruson@gmail.com"]
 
-  spec.summary       = %q{Russian number-to-words with currency (руб/коп) and correct declensions}
-  spec.description   = %q{Converts integers and amounts to Russian words with proper gender and plural forms.}
+  spec.summary       = %q{Convert numbers, amounts, dates, and times to words}
+  spec.description   = %q{Converts numbers, currency amounts, dates, and times to words with locale-aware grammar. Russian is the primary fully supported locale.}
   spec.homepage      = "https://github.com/skyrusx/num2words"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
