@@ -60,14 +60,14 @@ module Num2words
 
         parts = [
           to_words(major_value, locale: locale),
-          pluralize(major_value, *currency_data[:major_unit])
+          locale_pluralize(Locales[locale], major_value, currency_data[:major_unit])
         ]
 
         include_minor = minor == :always || (minor == :nonzero && minor_value.positive?)
         if include_minor
           parts.concat([
             to_words(minor_value, locale: locale, feminine: true),
-            pluralize(minor_value, *currency_data[:minor_unit])
+            locale_pluralize(Locales[locale], minor_value, currency_data[:minor_unit])
           ])
         end
 
@@ -104,6 +104,12 @@ module Num2words
         end
       end
 
+      def locale_pluralize(locale_data, number, forms)
+        return locale_data.pluralize(number, *forms) if locale_data.respond_to?(:pluralize)
+
+        pluralize(number, *forms)
+      end
+
       def locale_minus_word(locale_data)
         return locale_data.minus_word if locale_data.respond_to?(:minus_word)
 
@@ -128,6 +134,12 @@ module Num2words
         locale_data::GRAMMAR[:decimal_separator]
       end
 
+      def locale_join_fraction_words(locale_data, words)
+        return locale_data.join_fraction_words(words) if locale_data.respond_to?(:join_fraction_words)
+
+        words.reject(&:empty?).join(" ")
+      end
+
       # n — 0..999, scale_idx — индекс разряда (0 — единицы, 1 — тысячи, ...)
       # feminine: true — использовать женский род для единиц (нужно для тысяч/копеек)
       def triple_to_words(n, scale_idx, local_data, feminine: false, locale: nil)
@@ -150,7 +162,7 @@ module Num2words
           words << (feminine ? local_data::ONES_FEM[ones] : local_data::ONES_MASC[ones]) if ones.positive?
         end
 
-        words << pluralize(n, *local_data::SCALES[scale_idx]) unless scale_idx.zero?
+        words << locale_pluralize(local_data, n, local_data::SCALES[scale_idx]) unless scale_idx.zero?
         words.compact
       end
 
@@ -185,12 +197,14 @@ module Num2words
         numerator_words = to_words_integer(numerator, locale, numerator_feminine, locale_data)
 
         denom_forms = fractions_data[denominator] || fractions_data[denominator.to_s] # массив склонений
-        denominator_words = denom_forms.is_a?(Array) ? pluralize(numerator, *denom_forms) : default_fraction
+        denominator_words = denom_forms.is_a?(Array) ? locale_pluralize(locale_data, numerator, denom_forms) : default_fraction
 
-        [sign_word, integer_words, conjunction_word, numerator_words, denominator_words].reject(&:empty?).join(" ")
+        locale_join_fraction_words(locale_data, [sign_word, integer_words, conjunction_word, numerator_words, denominator_words])
       end
 
       def to_words_integer(number, locale, feminine, locale_data)
+        return locale_data.integer_to_words(number, feminine: feminine) if locale_data.respond_to?(:integer_to_words)
+
         integer_value = Integer(number)
 
         minus_word = locale_minus_word(locale_data)
@@ -276,15 +290,15 @@ module Num2words
 
         hours = [
           to_words_integer(time.hour, locale, false, locale_data),
-          pluralize(time.hour, *words[:hour])
+          locale_pluralize(locale_data, time.hour, words[:hour])
         ].join(" ")
         minutes = [
           to_words_integer(time.min, locale, true, locale_data),
-          pluralize(time.min, *words[:minute])
+          locale_pluralize(locale_data, time.min, words[:minute])
         ].join(" ")
         seconds = [
           to_words_integer(time.sec, locale, true, locale_data),
-          pluralize(time.sec, *words[:second])
+          locale_pluralize(locale_data, time.sec, words[:second])
         ].join(" ")
 
         format = if short
