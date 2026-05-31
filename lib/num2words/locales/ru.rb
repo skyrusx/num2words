@@ -31,6 +31,18 @@ module Num2words
         true
       end
 
+      def minus_word
+        GRAMMAR[:minus]
+      end
+
+      def fraction_joiner(joiner)
+        joiner.to_sym == :and ? "и" : GRAMMAR[:conjunction]
+      end
+
+      def default_fraction_word
+        GRAMMAR[:default_fraction]
+      end
+
       def triple_to_words(number, scale_idx, feminine: false)
         words = []
 
@@ -94,7 +106,7 @@ module Num2words
           words.concat triple_to_words(group_value, scale_idx, feminine: group_feminine)
         end
 
-        words.unshift(GRAMMAR[:minus] || "minus") if negative
+        words.unshift(minus_word) if negative
         words.join(" ")
       end
 

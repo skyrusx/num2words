@@ -23,6 +23,18 @@ module Num2words
 
       module_function
 
+      def minus_word
+        GRAMMAR[:minus]
+      end
+
+      def fraction_joiner(_joiner)
+        GRAMMAR[:conjunction]
+      end
+
+      def default_fraction_word
+        GRAMMAR[:default_fraction]
+      end
+
       def triple_to_words(number, scale_idx, feminine: false)
         words = scale_idx == 1 && number == 1 ? [] : under_thousand(number, feminine: feminine).split
 

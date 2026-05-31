@@ -31,6 +31,22 @@ module Num2words
         false
       end
 
+      def minus_word
+        GRAMMAR[:minus]
+      end
+
+      def fraction_joiner(_joiner)
+        GRAMMAR[:conjunction]
+      end
+
+      def default_fraction_word
+        GRAMMAR[:default_fraction]
+      end
+
+      def decimal_separator_word
+        "point"
+      end
+
       def decimal_fraction_words(fraction_string)
         fraction_string.chars.map { |digit| cardinal(digit.to_i) }.join(" ")
       end
@@ -87,7 +103,7 @@ module Num2words
           words.concat triple_to_words(group_value, scale_idx, feminine: feminine)
         end
 
-        words.unshift(GRAMMAR[:minus] || "minus") if negative
+        words.unshift(minus_word) if negative
         words.join(" ")
       end
 

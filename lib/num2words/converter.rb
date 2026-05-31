@@ -71,7 +71,7 @@ module Num2words
           ])
         end
 
-        parts.unshift(Locales[locale]::GRAMMAR[:minus] || "minus") if decimal_amount.negative?
+        parts.unshift(locale_minus_word(Locales[locale])) if decimal_amount.negative?
 
         apply_case(parts.join(" ").strip, word_case)
       end
@@ -104,6 +104,30 @@ module Num2words
         end
       end
 
+      def locale_minus_word(locale_data)
+        return locale_data.minus_word if locale_data.respond_to?(:minus_word)
+
+        locale_data::GRAMMAR[:minus]
+      end
+
+      def locale_fraction_joiner(locale_data, joiner)
+        return locale_data.fraction_joiner(joiner) if locale_data.respond_to?(:fraction_joiner)
+
+        locale_data::GRAMMAR[:conjunction]
+      end
+
+      def locale_default_fraction_word(locale_data)
+        return locale_data.default_fraction_word if locale_data.respond_to?(:default_fraction_word)
+
+        locale_data::GRAMMAR[:default_fraction]
+      end
+
+      def locale_decimal_separator_word(locale_data)
+        return locale_data.decimal_separator_word if locale_data.respond_to?(:decimal_separator_word)
+
+        locale_data::GRAMMAR[:decimal_separator]
+      end
+
       # n — 0..999, scale_idx — индекс разряда (0 — единицы, 1 — тысячи, ...)
       # feminine: true — использовать женский род для единиц (нужно для тысяч/копеек)
       def triple_to_words(n, scale_idx, local_data, feminine: false, locale: nil)
@@ -131,9 +155,9 @@ module Num2words
       end
 
       def to_words_fractional(number, locale, feminine, locale_data, style: :fraction, joiner: :default)
-        minus_word = locale_data::GRAMMAR[:minus] || "minus"
-        conjunction_word = joiner.to_sym == :and ? "и" : locale_data::GRAMMAR[:conjunction] || "and"
-        default_fraction = locale_data::GRAMMAR[:default_fraction] || "parts"
+        minus_word = locale_minus_word(locale_data)
+        conjunction_word = locale_fraction_joiner(locale_data, joiner)
+        default_fraction = locale_default_fraction_word(locale_data)
         fractions_data = locale_data::FRACTIONS || {}
 
         negative = number.is_a?(String) ? number.start_with?("-") : number.negative?
@@ -153,7 +177,7 @@ module Num2words
 
         if style == :decimal && locale_data.respond_to?(:decimal_fraction_words)
           fraction_digits = locale_data.decimal_fraction_words(fraction_string)
-          full_string = [sign_word, integer_words, "point", fraction_digits].reject(&:empty?).join(" ")
+          full_string = [sign_word, integer_words, locale_decimal_separator_word(locale_data), fraction_digits].compact.reject(&:empty?).join(" ")
           return full_string
         end
 
@@ -169,7 +193,7 @@ module Num2words
       def to_words_integer(number, locale, feminine, locale_data)
         integer_value = Integer(number)
 
-        minus_word = locale_data::GRAMMAR[:minus] || "minus"
+        minus_word = locale_minus_word(locale_data)
         negative = integer_value.negative?
         integer_value = integer_value.abs
 
