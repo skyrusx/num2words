@@ -61,14 +61,14 @@ module Num2words
         minor_feminine = locale_currency_minor_feminine?(Locales[locale], currency)
 
         parts = [
-          to_words(major_value, locale: locale, feminine: major_feminine),
+          locale_currency_number_words(Locales[locale], major_value, currency, unit: :major, locale: locale, feminine: major_feminine),
           locale_pluralize(Locales[locale], major_value, currency_data[:major_unit])
         ]
 
         include_minor = minor == :always || (minor == :nonzero && minor_value.positive?)
         if include_minor
           parts.concat([
-            to_words(minor_value, locale: locale, feminine: minor_feminine),
+            locale_currency_number_words(Locales[locale], minor_value, currency, unit: :minor, locale: locale, feminine: minor_feminine),
             locale_pluralize(Locales[locale], minor_value, currency_data[:minor_unit])
           ])
         end
@@ -122,6 +122,20 @@ module Num2words
         return locale_data.currency_minor_feminine?(currency) if locale_data.respond_to?(:currency_minor_feminine?)
 
         true
+      end
+
+      def locale_currency_number_words(locale_data, number, currency, unit:, locale:, feminine:)
+        if locale_data.respond_to?(:currency_number_words)
+          return locale_data.currency_number_words(number, currency, unit: unit)
+        end
+
+        to_words(number, locale: locale, feminine: feminine)
+      end
+
+      def locale_time_unit_feminine?(locale_data, unit, default)
+        return locale_data.time_unit_feminine?(unit) if locale_data.respond_to?(:time_unit_feminine?)
+
+        default
       end
 
       def locale_minus_word(locale_data)
@@ -303,15 +317,15 @@ module Num2words
         template = locale_data::TIME_TEMPLATE
 
         hours = [
-          to_words_integer(time.hour, locale, false, locale_data),
+          to_words_integer(time.hour, locale, locale_time_unit_feminine?(locale_data, :hour, false), locale_data),
           locale_pluralize(locale_data, time.hour, words[:hour])
         ].join(" ")
         minutes = [
-          to_words_integer(time.min, locale, true, locale_data),
+          to_words_integer(time.min, locale, locale_time_unit_feminine?(locale_data, :minute, true), locale_data),
           locale_pluralize(locale_data, time.min, words[:minute])
         ].join(" ")
         seconds = [
-          to_words_integer(time.sec, locale, true, locale_data),
+          to_words_integer(time.sec, locale, locale_time_unit_feminine?(locale_data, :second, true), locale_data),
           locale_pluralize(locale_data, time.sec, words[:second])
         ].join(" ")
 
