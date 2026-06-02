@@ -23,12 +23,28 @@ module Num2words
 
       module_function
 
+      def minus_word
+        GRAMMAR[:minus]
+      end
+
       def fraction_joiner(joiner)
         joiner.to_sym == :and ? "og" : GRAMMAR[:conjunction]
       end
 
+      def default_fraction_word
+        GRAMMAR[:default_fraction]
+      end
+
+      def fraction_numerator_feminine?
+        false
+      end
+
       def integer_to_words(number, feminine: false)
         cardinal(number, feminine: feminine)
+      end
+
+      def date_day(day, format:, date_case:)
+        ordinal(day, :nominative)
       end
 
       def triple_to_words(number, scale_idx, feminine: false)
@@ -39,6 +55,15 @@ module Num2words
 
       def date_year(year, format:)
         cardinal(year)
+      end
+
+      def ordinal(value, format, gender: :masculine)
+        ordinals = ORDINALS[format] || ORDINALS[:nominative]
+        gender_data = ordinals[gender] || ordinals[:masculine]
+
+        return gender_data[value - 1] if value.between?(1, gender_data.length)
+
+        cardinal(value)
       end
 
       def pluralize(number, singular, few, plural)
@@ -67,7 +92,7 @@ module Num2words
           words.concat(group_words)
         end
 
-        words.unshift(GRAMMAR[:minus]) if negative
+        words.unshift(minus_word) if negative
         words.join(" ")
       end
 

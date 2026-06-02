@@ -53,16 +53,16 @@ de:
       template: "%{date}, %{time}"
     date:
       template:
-        default: "%{day}. %{month} %{year}"
-        nominative: "%{day}. %{month} %{year}"
+        default: "%{day} %{month} %{year}"
+        nominative: "%{day} %{month} %{year}"
       months:
         default: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]
         nominative: ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"]
     time:
       template:
         hours_only: "%{hours}"
-        hours_minutes: "%{hours}:%{minutes}"
-        hours_minutes_seconds: "%{hours}:%{minutes}:%{seconds}"
+        hours_minutes: "%{hours} %{minutes}"
+        hours_minutes_seconds: "%{hours} %{minutes} %{seconds}"
       words:
         hour: ["Stunde", "Stunden", "Stunden"]
         minute: ["Minute", "Minuten", "Minuten"]
@@ -84,6 +84,10 @@ de:
         major_unit: [ "Pfund", "Pfund", "Pfund" ]
         minor_unit: [ "Penny", "Pence", "Pence" ]
         symbol: "£"
+      BRL:
+        major_unit: [ "brasilianischer Real", "brasilianische Real", "brasilianische Real" ]
+        minor_unit: [ "Centavo", "Centavo", "Centavo" ]
+        symbol: "R$"
       JPY:
         major_unit: [ "Yen", "Yen", "Yen" ]
         minor_unit: [ "Sen", "Sen", "Sen" ]
