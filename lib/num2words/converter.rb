@@ -138,6 +138,14 @@ module Num2words
         default
       end
 
+      def locale_time_number_words(locale_data, number, unit, locale, feminine)
+        if locale_data.respond_to?(:time_number_words)
+          return locale_data.time_number_words(number, unit: unit)
+        end
+
+        to_words_integer(number, locale, feminine, locale_data)
+      end
+
       def locale_minus_word(locale_data)
         return locale_data.minus_word if locale_data.respond_to?(:minus_word)
 
@@ -316,16 +324,20 @@ module Num2words
         words = locale_data::TIME[:words]
         template = locale_data::TIME_TEMPLATE
 
+        hour_feminine = locale_time_unit_feminine?(locale_data, :hour, false)
+        minute_feminine = locale_time_unit_feminine?(locale_data, :minute, true)
+        second_feminine = locale_time_unit_feminine?(locale_data, :second, true)
+
         hours = [
-          to_words_integer(time.hour, locale, locale_time_unit_feminine?(locale_data, :hour, false), locale_data),
+          locale_time_number_words(locale_data, time.hour, :hour, locale, hour_feminine),
           locale_pluralize(locale_data, time.hour, words[:hour])
         ].join(" ")
         minutes = [
-          to_words_integer(time.min, locale, locale_time_unit_feminine?(locale_data, :minute, true), locale_data),
+          locale_time_number_words(locale_data, time.min, :minute, locale, minute_feminine),
           locale_pluralize(locale_data, time.min, words[:minute])
         ].join(" ")
         seconds = [
-          to_words_integer(time.sec, locale, locale_time_unit_feminine?(locale_data, :second, true), locale_data),
+          locale_time_number_words(locale_data, time.sec, :second, locale, second_feminine),
           locale_pluralize(locale_data, time.sec, words[:second])
         ].join(" ")
 
