@@ -108,14 +108,7 @@ module Num2words
       end
 
       def pluralize(number, singular, few, plural)
-        number = number.abs
-        return plural if (11..14).include?(number % 100)
-
-        case number % 10
-        when 1 then singular
-        when 2..4 then few
-        else plural
-        end
+        number.abs == 1 ? singular : plural
       end
     end
 

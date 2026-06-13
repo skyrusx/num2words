@@ -96,6 +96,7 @@ RSpec.describe "English locale" do
       expect(Num2words.to_words(2.25, :en)).to eq("two and twenty five hundredths")
       expect(Num2words.to_words(3.01, :en)).to eq("three and one hundredth")
       expect(Num2words.to_words(-1.2, :en)).to eq("minus one and two tenths")
+      expect(Num2words.to_words(2.21, :en)).to eq("two and twenty one hundredths")
     end
 
     it "converts decimal style" do
@@ -132,6 +133,7 @@ RSpec.describe "English locale" do
       expect(Num2words.to_currency(1, :en)).to eq("one dollar zero cents")
       expect(Num2words.to_currency(2, :en)).to eq("two dollars zero cents")
       expect(Num2words.to_currency("12.50", :en)).to eq("twelve dollars fifty cents")
+      expect(Num2words.to_currency("21.21", :en)).to eq("twenty one dollars twenty one cents")
       expect(Num2words.to_currency(12, :en, minor: :nonzero)).to eq("twelve dollars")
       expect(Num2words.to_currency(12.5, :en, minor: :never)).to eq("twelve dollars")
     end
@@ -141,6 +143,7 @@ RSpec.describe "English locale" do
     it "converts date, time and datetime" do
       expect(Num2words.to_words("2024-08-21", :en)).to eq("the twenty-first of August, two thousand twenty four")
       expect(Num2words.to_words("14:35:42", :en)).to eq("fourteen hours thirty five minutes forty two seconds")
+      expect(Num2words.to_words("21:21:21", :en)).to eq("twenty one hours twenty one minutes twenty one seconds")
       expect(Num2words.to_words("2024-08-21 14:35:42", :en)).to eq(
         "the twenty-first of August, two thousand twenty four at fourteen hours thirty five minutes forty two seconds"
       )
