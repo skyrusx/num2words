@@ -53,8 +53,8 @@ et:
       template: "%{date}, %{time}"
     date:
       template:
-        default: "%{day}. %{month} %{year}"
-        nominative: "%{day}. %{month} %{year}"
+        default: "%{day} %{month} %{year}"
+        nominative: "%{day} %{month} %{year}"
       months:
         default: ["jaanuar", "veebruar", "märts", "aprill", "mai", "juuni", "juuli", "august", "september", "oktoober", "november", "detsember"]
         nominative: ["jaanuar", "veebruar", "märts", "aprill", "mai", "juuni", "juuli", "august", "september", "oktoober", "november", "detsember"]
@@ -74,16 +74,20 @@ et:
     currencies:
       EUR:
         major_unit: [ "euro", "euro", "eurot" ]
-        minor_unit: [ "sent", "senti", "sente" ]
+        minor_unit: [ "sent", "senti", "senti" ]
         symbol: "€"
       USD:
         major_unit: [ "dollar", "dollari", "dollarit" ]
-        minor_unit: [ "sent", "senti", "sente" ]
+        minor_unit: [ "sent", "senti", "senti" ]
         symbol: "$"
       GBP:
         major_unit: [ "nael", "naela", "naela" ]
         minor_unit: [ "penn", "penni", "penni" ]
         symbol: "£"
+      BRL:
+        major_unit: [ "Brasiilia reaal", "Brasiilia reaali", "Brasiilia reaali" ]
+        minor_unit: [ "sentavo", "sentavot", "sentavot" ]
+        symbol: "R$"
       CNY:
         major_unit: [ "yuan", "yuani", "yuani" ]
         minor_unit: [ "fen", "feni", "feni" ]
@@ -194,5 +198,5 @@ et:
         symbol: "₨"
       KES:
         major_unit: [ "šilling", "šillingi", "šillingit" ]
-        minor_unit: [ "sent", "senti", "sente" ]
+        minor_unit: [ "sent", "senti", "senti" ]
         symbol: "Sh"
