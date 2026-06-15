@@ -84,6 +84,10 @@ it:
         major_unit: [ "sterlina", "sterline", "sterline" ]
         minor_unit: [ "penny", "pence", "pence" ]
         symbol: "£"
+      BRL:
+        major_unit: [ "real brasiliano", "real brasiliani", "real brasiliani" ]
+        minor_unit: [ "centavo", "centavos", "centavos" ]
+        symbol: "R$"
       RUB:
         major_unit: [ "rublo", "rubli", "rubli" ]
         minor_unit: [ "kopeck", "kopeck", "kopeck" ]
