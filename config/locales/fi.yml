@@ -53,16 +53,16 @@ fi:
       template: "%{date}, %{time}"
     date:
       template:
-        default: "%{day}. %{month} %{year}"
-        nominative: "%{day}. %{month} %{year}"
+        default: "%{day} %{month} %{year}"
+        nominative: "%{day} %{month} %{year}"
       months:
         default: ["tammikuuta", "helmikuuta", "maaliskuuta", "huhtikuuta", "toukokuuta", "kesäkuuta", "heinäkuuta", "elokuuta", "syyskuuta", "lokakuuta", "marraskuuta", "joulukuuta"]
         nominative: ["tammikuu", "helmikuu", "maaliskuu", "huhtikuu", "toukokuu", "kesäkuu", "heinäkuu", "elokuu", "syyskuu", "lokakuu", "marraskuu", "joulukuu"]
     time:
       template:
         hours_only: "%{hours}"
-        hours_minutes: "%{hours}.%{minutes}"
-        hours_minutes_seconds: "%{hours}.%{minutes}.%{seconds}"
+        hours_minutes: "%{hours} %{minutes}"
+        hours_minutes_seconds: "%{hours} %{minutes} %{seconds}"
       words:
         hour: ["tunti", "tuntia", "tuntia"]
         minute: ["minuutti", "minuuttia", "minuuttia"]
@@ -84,6 +84,10 @@ fi:
         major_unit: ["punta", "puntaa", "puntaa"]
         minor_unit: ["penny", "penceä", "penceä"]
         symbol: "£"
+      BRL:
+        major_unit: ["brasilian real", "brasilian realia", "brasilian realia"]
+        minor_unit: ["sentavo", "sentavoa", "sentavoa"]
+        symbol: "R$"
       JPY:
         major_unit: ["jeni", "jeniä", "jeniä"]
         minor_unit: ["sen", "sen", "sen"]
