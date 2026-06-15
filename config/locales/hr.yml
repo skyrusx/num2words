@@ -53,16 +53,16 @@ hr:
       template: "%{date}, %{time}"
     date:
       template:
-        default: "%{day}. %{month} %{year}."
-        nominative: "%{day}. %{month} %{year}."
+        default: "%{day} %{month} %{year}"
+        nominative: "%{day} %{month} %{year}"
       months:
         default: ["siječnja", "veljače", "ožujka", "travnja", "svibnja", "lipnja", "srpnja", "kolovoza", "rujna", "listopada", "studenoga", "prosinca"]
         nominative: ["siječanj", "veljača", "ožujak", "travanj", "svibanj", "lipanj", "srpanj", "kolovoz", "rujan", "listopad", "studeni", "prosinac"]
     time:
       template:
         hours_only: "%{hours}"
-        hours_minutes: "%{hours}:%{minutes}"
-        hours_minutes_seconds: "%{hours}:%{minutes}:%{seconds}"
+        hours_minutes: "%{hours} %{minutes}"
+        hours_minutes_seconds: "%{hours} %{minutes} %{seconds}"
       words:
         hour: ["sat", "sata", "sati"]
         minute: ["minuta", "minute", "minuta"]
@@ -84,6 +84,10 @@ hr:
         major_unit: [ "funta", "funte", "funti" ]
         minor_unit: [ "penny", "pennya", "pennyja" ]
         symbol: "£"
+      BRL:
+        major_unit: [ "brazilski real", "brazilska reala", "brazilskih reala" ]
+        minor_unit: [ "centavo", "centava", "centava" ]
+        symbol: "R$"
       RUB:
         major_unit: [ "rublja", "rublje", "rublji" ]
         minor_unit: [ "kopjejka", "kopjejke", "kopjejki" ]
