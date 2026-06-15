@@ -61,8 +61,8 @@ he:
     time:
       template:
         hours_only: "%{hours}"
-        hours_minutes: "%{hours}:%{minutes}"
-        hours_minutes_seconds: "%{hours}:%{minutes}:%{seconds}"
+        hours_minutes: "%{hours} %{minutes}"
+        hours_minutes_seconds: "%{hours} %{minutes} %{seconds}"
       words:
         hour: ["שעה", "שעות", "שעות"]
         minute: ["דקה", "דקות", "דקות"]
@@ -88,6 +88,10 @@ he:
         major_unit: ["פאונד", "פאונדים", "פאונדים"]
         minor_unit: ["פני", "פנסים", "פנסים"]
         symbol: "£"
+      BRL:
+        major_unit: ["ריאל ברזילאי", "ריאלים ברזילאיים", "ריאלים ברזילאיים"]
+        minor_unit: ["סנטאבו", "סנטאבואים", "סנטאבואים"]
+        symbol: "R$"
       RUB:
         major_unit: ["רובל", "רובלים", "רובלים"]
         minor_unit: ["קופייקה", "קופייקות", "קופייקות"]
