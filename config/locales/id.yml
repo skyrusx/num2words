@@ -88,6 +88,10 @@ id:
         major_unit: [ "pound", "pound", "pound" ]
         minor_unit: [ "pence", "pence", "pence" ]
         symbol: "£"
+      BRL:
+        major_unit: [ "real Brasil", "real Brasil", "real Brasil" ]
+        minor_unit: [ "centavo", "centavo", "centavo" ]
+        symbol: "R$"
       RUB:
         major_unit: [ "ruble", "ruble", "ruble" ]
         minor_unit: [ "kopeck", "kopeck", "kopeck" ]
