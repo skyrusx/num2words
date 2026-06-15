@@ -35,6 +35,30 @@ module Num2words
         GRAMMAR[:default_fraction]
       end
 
+      def fraction_numerator_feminine?
+        false
+      end
+
+      def decimal_separator_word
+        "virgule"
+      end
+
+      def decimal_fraction_words(fraction_string)
+        fraction_string.chars.map { |digit| under_thousand(digit.to_i) }.join(" ")
+      end
+
+      def time_unit_feminine?(unit)
+        unit == :hour || unit == :minute || unit == :second
+      end
+
+      def currency_major_feminine?(currency)
+        %i[GBP TRY UAH CZK SEK NOK DKK INR IDR PKR].include?(currency)
+      end
+
+      def currency_minor_feminine?(currency)
+        %i[ILS BGN SAR].include?(currency)
+      end
+
       def triple_to_words(number, scale_idx, feminine: false)
         words = scale_idx == 1 && number == 1 ? [] : under_thousand(number, feminine: feminine).split
 
@@ -112,6 +136,10 @@ module Num2words
 
           "quatre-vingt #{under_hundred(rest, feminine: feminine)}"
         end
+      end
+
+      def pluralize(number, singular, _few, plural)
+        number.abs == 1 ? singular : plural
       end
     end
 

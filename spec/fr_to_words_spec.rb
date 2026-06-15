@@ -103,6 +103,11 @@ RSpec.describe "French locale" do
       expect(Num2words.to_words(3.01, :fr)).to eq("trois et un centième")
       expect(Num2words.to_words(-1.2, :fr)).to eq("moins un et deux dixièmes")
     end
+
+    it "converts decimal style" do
+      expect(Num2words.to_words(12.12, :fr, style: :decimal)).to eq("douze virgule un deux")
+      expect(Num2words.to_words("3,05", :fr, style: :decimal)).to eq("trois virgule zéro cinq")
+    end
   end
 
   context "range edges and large numbers" do
@@ -133,6 +138,9 @@ RSpec.describe "French locale" do
       expect(Num2words.to_currency(1, :fr)).to eq("un euro zéro centimes")
       expect(Num2words.to_currency(2, :fr)).to eq("deux euros zéro centimes")
       expect(Num2words.to_currency("12.50", :fr)).to eq("douze euros cinquante centimes")
+      expect(Num2words.to_currency("21.21", :fr)).to eq("vingt et un euros vingt et un centimes")
+      expect(Num2words.to_currency("1.01", :fr, code: :GBP)).to eq("une livre un penny")
+      expect(Num2words.to_currency("12.50", :fr, code: :BRL)).to eq("douze réals brésiliens cinquante centavos")
       expect(Num2words.to_currency(12, :fr, minor: :nonzero)).to eq("douze euros")
       expect(Num2words.to_currency(12.5, :fr, minor: :never)).to eq("douze euros")
     end
@@ -142,7 +150,9 @@ RSpec.describe "French locale" do
     it "converts date, time and datetime" do
       expect(Num2words.to_words("2024-08-01", :fr)).to eq("premier août deux mille vingt quatre")
       expect(Num2words.to_words("2024-08-21", :fr)).to eq("vingt et un août deux mille vingt quatre")
+      expect(Num2words.to_words("01:01:01", :fr)).to eq("une heure une minute une seconde")
       expect(Num2words.to_words("14:35:42", :fr)).to eq("quatorze heures trente cinq minutes quarante deux secondes")
+      expect(Num2words.to_words("21:21:21", :fr)).to eq("vingt et une heures vingt et une minutes vingt et une secondes")
       expect(Num2words.to_words("2024-08-21 14:35:42", :fr)).to eq(
         "vingt et un août deux mille vingt quatre, quatorze heures trente cinq minutes quarante deux secondes"
       )
