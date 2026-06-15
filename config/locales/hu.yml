@@ -61,8 +61,8 @@ hu:
     time:
       template:
         hours_only: "%{hours}"
-        hours_minutes: "%{hours}:%{minutes}"
-        hours_minutes_seconds: "%{hours}:%{minutes}:%{seconds}"
+        hours_minutes: "%{hours} %{minutes}"
+        hours_minutes_seconds: "%{hours} %{minutes} %{seconds}"
       words:
         hour: ["óra", "óra", "óra"]
         minute: ["perc", "perc", "perc"]
@@ -88,6 +88,10 @@ hu:
         major_unit: [ "font", "font", "font" ]
         minor_unit: [ "penny", "penny", "penny" ]
         symbol: "£"
+      BRL:
+        major_unit: [ "brazil real", "brazil real", "brazil real" ]
+        minor_unit: [ "centavo", "centavo", "centavo" ]
+        symbol: "R$"
       RUB:
         major_unit: [ "rubel", "rubel", "rubel" ]
         minor_unit: [ "kopejka", "kopejka", "kopejka" ]
