@@ -75,7 +75,7 @@ module Num2words
 
         parts.unshift(locale_minus_word(Locales[locale])) if decimal_amount.negative?
 
-        apply_case(parts.join(" ").strip, word_case)
+        apply_case(locale_join_currency_parts(Locales[locale], parts), word_case)
       end
 
       private
@@ -132,6 +132,12 @@ module Num2words
         to_words(number, locale: locale, feminine: feminine)
       end
 
+      def locale_join_currency_parts(locale_data, parts)
+        return locale_data.join_currency_parts(parts) if locale_data.respond_to?(:join_currency_parts)
+
+        parts.join(" ").strip
+      end
+
       def locale_time_unit_feminine?(locale_data, unit, default)
         return locale_data.time_unit_feminine?(unit) if locale_data.respond_to?(:time_unit_feminine?)
 
@@ -144,6 +150,12 @@ module Num2words
         end
 
         to_words_integer(number, locale, feminine, locale_data)
+      end
+
+      def locale_join_time_words(locale_data, number_words, unit_words)
+        return locale_data.join_time_words(number_words, unit_words) if locale_data.respond_to?(:join_time_words)
+
+        [number_words, unit_words].join(" ")
       end
 
       def locale_minus_word(locale_data)
@@ -168,6 +180,12 @@ module Num2words
         return locale_data.decimal_separator_word if locale_data.respond_to?(:decimal_separator_word)
 
         locale_data::GRAMMAR[:decimal_separator]
+      end
+
+      def locale_join_decimal_words(locale_data, words)
+        return locale_data.join_decimal_words(words) if locale_data.respond_to?(:join_decimal_words)
+
+        words.compact.reject(&:empty?).join(" ")
       end
 
       def locale_join_fraction_words(locale_data, words)
@@ -225,8 +243,7 @@ module Num2words
 
         if style == :decimal && locale_data.respond_to?(:decimal_fraction_words)
           fraction_digits = locale_data.decimal_fraction_words(fraction_string)
-          full_string = [sign_word, integer_words, locale_decimal_separator_word(locale_data), fraction_digits].compact.reject(&:empty?).join(" ")
-          return full_string
+          return locale_join_decimal_words(locale_data, [sign_word, integer_words, locale_decimal_separator_word(locale_data), fraction_digits])
         end
 
         numerator_feminine = locale_data.respond_to?(:fraction_numerator_feminine?) ? locale_data.fraction_numerator_feminine? : feminine
@@ -328,18 +345,18 @@ module Num2words
         minute_feminine = locale_time_unit_feminine?(locale_data, :minute, true)
         second_feminine = locale_time_unit_feminine?(locale_data, :second, true)
 
-        hours = [
+        hours = locale_join_time_words(locale_data,
           locale_time_number_words(locale_data, time.hour, :hour, locale, hour_feminine),
           locale_pluralize(locale_data, time.hour, words[:hour])
-        ].join(" ")
-        minutes = [
+        )
+        minutes = locale_join_time_words(locale_data,
           locale_time_number_words(locale_data, time.min, :minute, locale, minute_feminine),
           locale_pluralize(locale_data, time.min, words[:minute])
-        ].join(" ")
-        seconds = [
+        )
+        seconds = locale_join_time_words(locale_data,
           locale_time_number_words(locale_data, time.sec, :second, locale, second_feminine),
           locale_pluralize(locale_data, time.sec, words[:second])
-        ].join(" ")
+        )
 
         format = if short
                    time.min.zero? && time.sec.zero? ? :hours_only : :hours_minutes

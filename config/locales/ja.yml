@@ -15,7 +15,8 @@ ja:
 
     grammar:
       minus: "マイナス"
-      conjunction: "てん"
+      conjunction: "と"
+      decimal_separator: "てん"
       default_fraction: "ぶんの"
     fractions:
       10: ["じゅうぶんのいち", "じゅうぶんの", "じゅうぶんの"]
@@ -60,11 +61,11 @@ ja:
         nominative: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"]
     time:
       template:
-        hours_only: "%{hours}時"
-        hours_minutes: "%{hours}時%{minutes}分"
-        hours_minutes_seconds: "%{hours}時%{minutes}分%{seconds}秒"
+        hours_only: "%{hours}"
+        hours_minutes: "%{hours}%{minutes}"
+        hours_minutes_seconds: "%{hours}%{minutes}%{seconds}"
       words:
-        hour: ["時間", "時間", "時間"]
+        hour: ["時", "時", "時"]
         minute: ["分", "分", "分"]
         second: ["秒", "秒", "秒"]
 
@@ -196,3 +197,7 @@ ja:
         major_unit: [ "シリング", "シリング", "シリング" ]
         minor_unit: [ "セント", "セント", "セント" ]
         symbol: "Sh"
+      BRL:
+        major_unit: [ "ブラジルレアル", "ブラジルレアル", "ブラジルレアル" ]
+        minor_unit: [ "センターボ", "センターボ", "センターボ" ]
+        symbol: "R$"
