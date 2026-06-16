@@ -13,14 +13,190 @@ sk:
       - ["miliarda", "miliardy", "miliárd"]
       - ["bilión", "bilióny", "biliónov"]
 
+    grammar:
+      minus: "mínus"
+      conjunction: "celých"
+      default_fraction: "desatinných"
+    fractions:
+      10: ["desatina", "desatiny", "desatín"]
+      100: ["stotina", "stotiny", "stotín"]
+      1000: ["tisícina", "tisíciny", "tisícin"]
+      10000: ["desaťtisícina", "desaťtisíciny", "desaťtisícin"]
+      100000: ["stotisícina", "stotisíciny", "stotisícin"]
+      1000000: ["milióntina", "milióntiny", "milióntin"]
+      10000000: ["desaťmilióntina", "desaťmilióntiny", "desaťmilióntin"]
+      100000000: ["stomilióntina", "stomilióntiny", "stomilióntin"]
+      1000000000: ["miliardtina", "miliardtiny", "miliardtín"]
+
+    numbers:
+      ordinals:
+        nominative:
+          masculine: ["prvý", "druhý", "tretí", "štvrtý", "piaty", "šiesty", "siedmy", "ôsmy", "deviaty", "desiaty",
+                      "jedenásty", "dvanásty", "trinásty", "štrnásty", "pätnásty", "šestnásty", "sedemnásty", "osemnásty", "devätnásty",
+                      "dvadsiaty", "dvadsiaty prvý", "dvadsiaty druhý", "dvadsiaty tretí", "dvadsiaty štvrtý", "dvadsiaty piaty", "dvadsiaty šiesty", "dvadsiaty siedmy", "dvadsiaty ôsmy", "dvadsiaty deviaty",
+                      "tridsiaty", "tridsiaty prvý"]
+          feminine: ["prvá", "druhá", "tretia", "štvrtá", "piata", "šiesta", "siedma", "ôsma", "deviata", "desiata",
+                     "jedenásta", "dvanásta", "trinásta", "štrnásta", "pätnásta", "šestnásta", "sedemnásta", "osemnásta", "devätnásta",
+                     "dvadsiata", "dvadsiata prvá", "dvadsiata druhá", "dvadsiata tretia", "dvadsiata štvrtá", "dvadsiata piata", "dvadsiata šiesta", "dvadsiata siedma", "dvadsiata ôsma", "dvadsiata deviata",
+                     "tridsiata", "tridsiata prvá"]
+          neuter: ["prvé", "druhé", "tretie", "štvrté", "piate", "šieste", "siedme", "ôsme", "deviate", "desiate",
+                   "jedenáste", "dvanáste", "trináste", "štrnáste", "pätnáste", "šestnáste", "sedemnáste", "osemnáste", "devätnáste",
+                   "dvadsiate", "dvadsiate prvé", "dvadsiate druhé", "dvadsiate tretie", "dvadsiate štvrté", "dvadsiate piate", "dvadsiate šieste", "dvadsiate siedme", "dvadsiate ôsme", "dvadsiate deviate",
+                   "tridsiate", "tridsiate prvé"]
+        default:
+          masculine: ["prvého", "druhého", "tretieho", "štvrtého", "piateho", "šiesteho", "siedmeho", "ôsmeho", "deviateho", "desiateho",
+                      "jedenásteho", "dvanásteho", "trinásteho", "štrnásteho", "pätnásteho", "šestnásteho", "sedemnásteho", "osemnásteho", "devätnásteho",
+                      "dvadsiateho", "dvadsiateho prvého", "dvadsiateho druhého", "dvadsiateho tretieho", "dvadsiateho štvrtého", "dvadsiateho piateho", "dvadsiateho šiesteho", "dvadsiateho siedmeho", "dvadsiateho ôsmeho", "dvadsiateho deviateho",
+                      "tridsiateho", "tridsiateho prvého"]
+
+    datetime:
+      template: "%{date}, %{time}"
+    date:
+      template:
+        default: "%{day} %{month} %{year}"
+        nominative: "%{day} %{month} %{year}"
+      months:
+        default: ["januára", "februára", "marca", "apríla", "mája", "júna", "júla", "augusta", "septembra", "októbra", "novembra", "decembra"]
+        nominative: ["január", "február", "marec", "apríl", "máj", "jún", "júl", "august", "september", "október", "november", "december"]
+    time:
+      template:
+        hours_only: "%{hours}"
+        hours_minutes: "%{hours} %{minutes}"
+        hours_minutes_seconds: "%{hours} %{minutes} %{seconds}"
+      words:
+        hour: ["hodina", "hodiny", "hodín"]
+        minute: ["minúta", "minúty", "minút"]
+        second: ["sekunda", "sekundy", "sekúnd"]
+
+    warnings:
+      currency_not_available: "Mena %{currency} nie je dostupná pre jazyk %{lang}, používa sa aktuálna."
+
     currencies:
       EUR:
-        name: ["euro", "eurá", "eur"]
-        fractional:
-          name: ["cent", "centy", "centov"]
-          feminine: false
+        major_unit: ["euro", "eurá", "eur"]
+        minor_unit: ["cent", "centy", "centov"]
+        symbol: "€"
       USD:
-        name: ["dolár", "doláre", "dolárov"]
-        fractional:
-          name: ["cent", "centy", "centov"]
-          feminine: false
+        major_unit: ["dolár", "doláre", "dolárov"]
+        minor_unit: ["cent", "centy", "centov"]
+        symbol: "$"
+      GBP:
+        major_unit: ["libra", "libry", "libier"]
+        minor_unit: ["penca", "pence", "pencí"]
+        symbol: "£"
+      BRL:
+        major_unit: ["brazílsky real", "brazílske realy", "brazílskych realov"]
+        minor_unit: ["centavo", "centava", "centavov"]
+        symbol: "R$"
+      CNY:
+        major_unit: ["juan", "juany", "juanov"]
+        minor_unit: ["fen", "feny", "fenov"]
+        symbol: "¥"
+      JPY:
+        major_unit: ["jen", "jeny", "jenov"]
+        minor_unit: ["sen", "seny", "senov"]
+        symbol: "¥"
+      RUB:
+        major_unit: ["rubeľ", "ruble", "rubľov"]
+        minor_unit: ["kopejka", "kopejky", "kopejok"]
+        symbol: "₽"
+      UAH:
+        major_unit: ["hrivna", "hrivny", "hrivien"]
+        minor_unit: ["kopejka", "kopejky", "kopejok"]
+        symbol: "₴"
+      PLN:
+        major_unit: ["zlotý", "zloté", "zlotých"]
+        minor_unit: ["groš", "groše", "grošov"]
+        symbol: "zł"
+      CZK:
+        major_unit: ["koruna", "koruny", "korún"]
+        minor_unit: ["halier", "haliere", "halierov"]
+        symbol: "Kč"
+      RON:
+        major_unit: ["leu", "lei", "lei"]
+        minor_unit: ["ban", "bany", "banov"]
+        symbol: "lei"
+      BGN:
+        major_unit: ["lev", "levy", "levov"]
+        minor_unit: ["stotinka", "stotinky", "stotiniek"]
+        symbol: "лв"
+      BYN:
+        major_unit: ["bieloruský rubeľ", "bieloruské ruble", "bieloruských rubľov"]
+        minor_unit: ["kopejka", "kopejky", "kopejok"]
+        symbol: "Br"
+      KZT:
+        major_unit: ["tenge", "tenge", "tenge"]
+        minor_unit: ["tiyn", "tiyny", "tiynov"]
+        symbol: "₸"
+      ILS:
+        major_unit: ["šekel", "šekely", "šekelov"]
+        minor_unit: ["agora", "agory", "agorot"]
+        symbol: "₪"
+      SEK:
+        major_unit: ["koruna", "koruny", "korún"]
+        minor_unit: ["öre", "öre", "öre"]
+        symbol: "kr"
+      NOK:
+        major_unit: ["koruna", "koruny", "korún"]
+        minor_unit: ["øre", "øre", "øre"]
+        symbol: "kr"
+      DKK:
+        major_unit: ["koruna", "koruny", "korún"]
+        minor_unit: ["øre", "øre", "øre"]
+        symbol: "kr"
+      HUF:
+        major_unit: ["forint", "forinty", "forintov"]
+        minor_unit: ["filler", "fillery", "fillerov"]
+        symbol: "Ft"
+      SAR:
+        major_unit: ["riál", "riály", "riálov"]
+        minor_unit: ["halala", "halaly", "halal"]
+        symbol: "﷼"
+      INR:
+        major_unit: ["rupia", "rupie", "rupií"]
+        minor_unit: ["paise", "paise", "paise"]
+        symbol: "₹"
+      THB:
+        major_unit: ["baht", "bahty", "bahtov"]
+        minor_unit: ["satang", "satangy", "satangov"]
+        symbol: "฿"
+      VND:
+        major_unit: ["dong", "dongy", "dongov"]
+        minor_unit: ["xu", "xu", "xu"]
+        symbol: "₫"
+      IDR:
+        major_unit: ["rupia", "rupie", "rupií"]
+        minor_unit: ["sen", "seny", "senov"]
+        symbol: "Rp"
+      IRR:
+        major_unit: ["riál", "riály", "riálov"]
+        minor_unit: ["dinár", "dináre", "dinárov"]
+        symbol: "﷼"
+      RSD:
+        major_unit: ["dinár", "dináre", "dinárov"]
+        minor_unit: ["para", "pary", "para"]
+        symbol: "дин"
+      MYR:
+        major_unit: ["ringgit", "ringgity", "ringgitov"]
+        minor_unit: ["sen", "seny", "senov"]
+        symbol: "RM"
+      BDT:
+        major_unit: ["taka", "taky", "tak"]
+        minor_unit: ["poisha", "poishy", "poish"]
+        symbol: "৳"
+      PKR:
+        major_unit: ["rupia", "rupie", "rupií"]
+        minor_unit: ["paise", "paise", "paise"]
+        symbol: "₨"
+      KES:
+        major_unit: ["šiling", "šilingy", "šilingov"]
+        minor_unit: ["cent", "centy", "centov"]
+        symbol: "Sh"
+      TRY:
+        major_unit: ["líra", "líry", "lír"]
+        minor_unit: ["kuruš", "kuruše", "kurušov"]
+        symbol: "₺"
+      KRW:
+        major_unit: ["won", "wony", "wonov"]
+        minor_unit: ["jeon", "jeony", "jeonov"]
+        symbol: "₩"
