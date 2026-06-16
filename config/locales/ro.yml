@@ -13,19 +13,190 @@ ro:
       - ["miliard", "miliarde", "miliarde"]
       - ["bilion", "bilioane", "bilioane"]
 
+    grammar:
+      minus: "minus"
+      conjunction: "întregi"
+      default_fraction: "părți"
+    fractions:
+      10: ["zecime", "zecimi", "zecimi"]
+      100: ["sutime", "sutimi", "sutimi"]
+      1000: ["miime", "miimi", "miimi"]
+      10000: ["zecime de miime", "zecimi de miime", "zecimi de miime"]
+      100000: ["sutime de miime", "sutimi de miime", "sutimi de miime"]
+      1000000: ["milionime", "milionimi", "milionimi"]
+      10000000: ["zecime de milionime", "zecimi de milionime", "zecimi de milionime"]
+      100000000: ["sutime de milionime", "sutimi de milionime", "sutimi de milionime"]
+      1000000000: ["miliardime", "miliardimi", "miliardimi"]
+
+    numbers:
+      ordinals:
+        nominative:
+          masculine: ["primul", "al doilea", "al treilea", "al patrulea", "al cincilea", "al șaselea", "al șaptelea", "al optulea", "al nouălea", "al zecelea",
+                      "al unsprezecelea", "al doisprezecelea", "al treisprezecelea", "al paisprezecelea", "al cincisprezecelea", "al șaisprezecelea", "al șaptesprezecelea", "al optsprezecelea", "al nouăsprezecelea",
+                      "al douăzecilea", "al douăzeci și unulea", "al douăzeci și doilea", "al douăzeci și treilea", "al douăzeci și patrulea", "al douăzeci și cincilea", "al douăzeci și șaselea", "al douăzeci și șaptelea", "al douăzeci și optulea", "al douăzeci și nouălea",
+                      "al treizecilea", "al treizeci și unulea"]
+          feminine: ["prima", "a doua", "a treia", "a patra", "a cincea", "a șasea", "a șaptea", "a opta", "a noua", "a zecea",
+                     "a unsprezecea", "a douăsprezecea", "a treisprezecea", "a paisprezecea", "a cincisprezecea", "a șaisprezecea", "a șaptesprezecea", "a optsprezecea", "a nouăsprezecea",
+                     "a douăzecea", "a douăzeci și una", "a douăzeci și doua", "a douăzeci și treia", "a douăzeci și patra", "a douăzeci și cincea", "a douăzeci și șasea", "a douăzeci și șaptea", "a douăzeci și opta", "a douăzeci și noua",
+                     "a treizecea", "a treizeci și una"]
+          neuter: ["primul", "al doilea", "al treilea", "al patrulea", "al cincilea", "al șaselea", "al șaptelea", "al optulea", "al nouălea", "al zecelea",
+                   "al unsprezecelea", "al doisprezecelea", "al treisprezecelea", "al paisprezecelea", "al cincisprezecelea", "al șaisprezecelea", "al șaptesprezecelea", "al optsprezecelea", "al nouăsprezecelea",
+                   "al douăzecilea", "al douăzeci și unulea", "al douăzeci și doilea", "al douăzeci și treilea", "al douăzeci și patrulea", "al douăzeci și cincilea", "al douăzeci și șaselea", "al douăzeci și șaptelea", "al douăzeci și optulea", "al douăzeci și nouălea",
+                   "al treizecilea", "al treizeci și unulea"]
+        default:
+          masculine: ["întâi", "doi", "trei", "patru", "cinci", "șase", "șapte", "opt", "nouă", "zece",
+                      "unsprezece", "doisprezece", "treisprezece", "paisprezece", "cincisprezece", "șaisprezece", "șaptesprezece", "optsprezece", "nouăsprezece",
+                      "douăzeci", "douăzeci și unu", "douăzeci și doi", "douăzeci și trei", "douăzeci și patru", "douăzeci și cinci", "douăzeci și șase", "douăzeci și șapte", "douăzeci și opt", "douăzeci și nouă",
+                      "treizeci", "treizeci și unu"]
+
+    datetime:
+      template: "%{date}, %{time}"
+    date:
+      template:
+        default: "%{day} %{month} %{year}"
+        nominative: "%{day} %{month} %{year}"
+      months:
+        default: ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"]
+        nominative: ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"]
+    time:
+      template:
+        hours_only: "%{hours}"
+        hours_minutes: "%{hours} %{minutes}"
+        hours_minutes_seconds: "%{hours} %{minutes} %{seconds}"
+      words:
+        hour: ["oră", "ore", "ore"]
+        minute: ["minut", "minute", "minute"]
+        second: ["secundă", "secunde", "secunde"]
+
+    warnings:
+      currency_not_available: "Moneda %{currency} nu este disponibilă pentru limba %{lang}; se folosește cea curentă."
+
     currencies:
       RON:
-        name: ["leu", "lei", "lei"]
-        fractional:
-          name: ["ban", "bani", "bani"]
-          feminine: false
+        major_unit: ["leu", "lei", "lei"]
+        minor_unit: ["ban", "bani", "bani"]
+        symbol: "lei"
       EUR:
-        name: ["euro", "euro", "euro"]
-        fractional:
-          name: ["cent", "cenți", "cenți"]
-          feminine: false
+        major_unit: ["euro", "euro", "euro"]
+        minor_unit: ["cent", "cenți", "cenți"]
+        symbol: "€"
       USD:
-        name: ["dolar", "dolari", "dolari"]
-        fractional:
-          name: ["cent", "cenți", "cenți"]
-          feminine: false
+        major_unit: ["dolar", "dolari", "dolari"]
+        minor_unit: ["cent", "cenți", "cenți"]
+        symbol: "$"
+      GBP:
+        major_unit: ["liră", "lire", "lire"]
+        minor_unit: ["penny", "pence", "pence"]
+        symbol: "£"
+      BRL:
+        major_unit: ["real brazilian", "reali brazilieni", "reali brazilieni"]
+        minor_unit: ["centavo", "centavo", "centavo"]
+        symbol: "R$"
+      RUB:
+        major_unit: ["rublă", "ruble", "ruble"]
+        minor_unit: ["copeică", "copeici", "copeici"]
+        symbol: "₽"
+      CNY:
+        major_unit: ["yuan", "yuani", "yuani"]
+        minor_unit: ["fen", "feni", "feni"]
+        symbol: "¥"
+      JPY:
+        major_unit: ["yen", "yeni", "yeni"]
+        minor_unit: ["sen", "seni", "seni"]
+        symbol: "¥"
+      KRW:
+        major_unit: ["won", "woni", "woni"]
+        minor_unit: ["jeon", "jeoni", "jeoni"]
+        symbol: "₩"
+      TRY:
+        major_unit: ["liră", "lire", "lire"]
+        minor_unit: ["kuruș", "kuruși", "kuruși"]
+        symbol: "₺"
+      PLN:
+        major_unit: ["zlot", "zloți", "zloți"]
+        minor_unit: ["groș", "groși", "groși"]
+        symbol: "zł"
+      UAH:
+        major_unit: ["hrivnă", "hrivne", "hrivne"]
+        minor_unit: ["copeică", "copeici", "copeici"]
+        symbol: "₴"
+      CZK:
+        major_unit: ["coroană", "coroane", "coroane"]
+        minor_unit: ["haler", "haleri", "haleri"]
+        symbol: "Kč"
+      BGN:
+        major_unit: ["lev", "leva", "leva"]
+        minor_unit: ["stotinka", "stotinki", "stotinki"]
+        symbol: "лв"
+      BYN:
+        major_unit: ["rublă belarusă", "ruble belaruse", "ruble belaruse"]
+        minor_unit: ["copeică", "copeici", "copeici"]
+        symbol: "Br"
+      KZT:
+        major_unit: ["tenge", "tenge", "tenge"]
+        minor_unit: ["tiyn", "tiyni", "tiyni"]
+        symbol: "₸"
+      ILS:
+        major_unit: ["șechel", "șecheli", "șecheli"]
+        minor_unit: ["agora", "agorot", "agorot"]
+        symbol: "₪"
+      SEK:
+        major_unit: ["coroană", "coroane", "coroane"]
+        minor_unit: ["öre", "öre", "öre"]
+        symbol: "kr"
+      NOK:
+        major_unit: ["coroană", "coroane", "coroane"]
+        minor_unit: ["øre", "øre", "øre"]
+        symbol: "kr"
+      DKK:
+        major_unit: ["coroană", "coroane", "coroane"]
+        minor_unit: ["øre", "øre", "øre"]
+        symbol: "kr"
+      HUF:
+        major_unit: ["forint", "forinți", "forinți"]
+        minor_unit: ["fillér", "filléri", "filléri"]
+        symbol: "Ft"
+      SAR:
+        major_unit: ["rial", "riali", "riali"]
+        minor_unit: ["halala", "halale", "halale"]
+        symbol: "﷼"
+      INR:
+        major_unit: ["rupie", "rupii", "rupii"]
+        minor_unit: ["paisa", "paise", "paise"]
+        symbol: "₹"
+      THB:
+        major_unit: ["baht", "bahți", "bahți"]
+        minor_unit: ["satang", "satangi", "satangi"]
+        symbol: "฿"
+      VND:
+        major_unit: ["dong", "dongi", "dongi"]
+        minor_unit: ["xu", "xu", "xu"]
+        symbol: "₫"
+      IDR:
+        major_unit: ["rupie", "rupii", "rupii"]
+        minor_unit: ["sen", "seni", "seni"]
+        symbol: "Rp"
+      IRR:
+        major_unit: ["rial", "riali", "riali"]
+        minor_unit: ["dinar", "dinari", "dinari"]
+        symbol: "﷼"
+      RSD:
+        major_unit: ["dinar", "dinari", "dinari"]
+        minor_unit: ["para", "para", "para"]
+        symbol: "дин"
+      MYR:
+        major_unit: ["ringgit", "ringgiți", "ringgiți"]
+        minor_unit: ["sen", "seni", "seni"]
+        symbol: "RM"
+      BDT:
+        major_unit: ["taka", "taka", "taka"]
+        minor_unit: ["poisha", "poisha", "poisha"]
+        symbol: "৳"
+      PKR:
+        major_unit: ["rupie", "rupii", "rupii"]
+        minor_unit: ["paisa", "paise", "paise"]
+        symbol: "₨"
+      KES:
+        major_unit: ["șiling", "șilingi", "șilingi"]
+        minor_unit: ["cent", "cenți", "cenți"]
+        symbol: "Sh"
