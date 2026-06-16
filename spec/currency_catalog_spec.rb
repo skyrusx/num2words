@@ -10,7 +10,7 @@ RSpec.describe "currency catalog" do
     ]
   end
 
-  %w[ru en fr ar be bg bn cs da de el es et fa fi gu he hi hr hu id it ja kn ko kz lt lv].each do |locale|
+  %w[ru en fr ar be bg bn cs da de el es et fa fi gu he hi hr hu id it ja kn ko kz lt lv ml].each do |locale|
     it "has a complete unique currency list for #{locale}" do
       data = YAML.load_file(File.expand_path("../config/locales/#{locale}.yml", __dir__))
       currencies = data.dig(locale, "num2words", "currencies")
