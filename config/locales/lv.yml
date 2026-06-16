@@ -8,19 +8,195 @@ lv:
 
     scales:
       - ["", "", ""]
-      - ["tūkstotis", "tūkstoši", "tūkstošu"]
-      - ["miljons", "miljoni", "miljonu"]
-      - ["miljards", "miljardi", "miljardu"]
-      - ["triljons", "triljoni", "triljonu"]
+      - ["tūkstotis", "tūkstoši", "tūkstoši"]
+      - ["miljons", "miljoni", "miljoni"]
+      - ["miljards", "miljardi", "miljardi"]
+      - ["triljons", "triljoni", "triljoni"]
+
+    grammar:
+      minus: "mīnus"
+      conjunction: "veseli"
+      default_fraction: "daļa"
+    fractions:
+      10: ["desmitdaļa", "desmitdaļas", "desmitdaļu"]
+      100: ["simtdaļa", "simtdaļas", "simtdaļu"]
+      1000: ["tūkstošdaļa", "tūkstošdaļas", "tūkstošdaļu"]
+      10000: ["desmittūkstošdaļa", "desmittūkstošdaļas", "desmittūkstošdaļu"]
+      100000: ["simttūkstošdaļa", "simttūkstošdaļas", "simttūkstošdaļu"]
+      1000000: ["miljondaļa", "miljondaļas", "miljondaļu"]
+      10000000: ["desmitmiljondaļa", "desmitmiljondaļas", "desmitmiljondaļu"]
+      100000000: ["simtmiljondaļa", "simtmiljondaļas", "simtmiljondaļu"]
+      1000000000: ["miljarddaļa", "miljarddaļas", "miljarddaļu"]
+
+    numbers:
+      ordinals:
+        nominative:
+          masculine: ["pirmais", "otrais", "trešais", "ceturtais", "piektais", "sestais", "septītais", "astotais", "devītais", "desmitais",
+                      "vienpadsmitais", "divpadsmitais", "trīspadsmitais", "četrpadsmitais", "piecpadsmitais", "sešpadsmitais", "septiņpadsmitais", "astoņpadsmitais", "deviņpadsmitais",
+                      "divdesmitais", "divdesmit pirmais", "divdesmit otrais", "divdesmit trešais", "divdesmit ceturtais", "divdesmit piektais", "divdesmit sestais", "divdesmit septītais", "divdesmit astotais", "divdesmit devītais",
+                      "trīsdesmitais", "trīsdesmit pirmais"]
+          feminine: ["pirmā", "otrā", "trešā", "ceturtā", "piektā", "sestā", "septītā", "astotā", "devītā", "desmitā",
+                     "vienpadsmitā", "divpadsmitā", "trīspadsmitā", "četrpadsmitā", "piecpadsmitā", "sešpadsmitā", "septiņpadsmitā", "astoņpadsmitā", "deviņpadsmitā",
+                     "divdesmitā", "divdesmit pirmā", "divdesmit otrā", "divdesmit trešā", "divdesmit ceturtā", "divdesmit piektā", "divdesmit sestā", "divdesmit septītā", "divdesmit astotā", "divdesmit devītā",
+                     "trīsdesmitā", "trīsdesmit pirmā"]
+          neuter: ["pirmā", "otrā", "trešā", "ceturtā", "piektā", "sestā", "septītā", "astotā", "devītā", "desmitā",
+                   "vienpadsmitā", "divpadsmitā", "trīspadsmitā", "četrpadsmitā", "piecpadsmitā", "sešpadsmitā", "septiņpadsmitā", "astoņpadsmitā", "deviņpadsmitā",
+                   "divdesmitā", "divdesmit pirmā", "divdesmit otrā", "divdesmit trešā", "divdesmit ceturtā", "divdesmit piektā", "divdesmit sestā", "divdesmit septītā", "divdesmit astotā", "divdesmit devītā",
+                   "trīsdesmitā", "trīsdesmit pirmā"]
+        default:
+          masculine: ["pirmā", "otrā", "trešā", "ceturtā", "piektā", "sestā", "septītā", "astotā", "devītā", "desmitā",
+                      "vienpadsmitā", "divpadsmitā", "trīspadsmitā", "četrpadsmitā", "piecpadsmitā", "sešpadsmitā", "septiņpadsmitā", "astoņpadsmitā", "deviņpadsmitā",
+                      "divdesmitā", "divdesmit pirmā", "divdesmit otrā", "divdesmit trešā", "divdesmit ceturtā", "divdesmit piektā", "divdesmit sestā", "divdesmit septītā", "divdesmit astotā", "divdesmit devītā",
+                      "trīsdesmitā", "trīsdesmit pirmā"]
+
+    datetime:
+      template: "%{date}, %{time}"
+    date:
+      template:
+        default: "%{day} %{month} %{year}"
+        nominative: "%{day} %{month} %{year}"
+      months:
+        default: ["janvāris", "februāris", "marts", "aprīlis", "maijs", "jūnijs", "jūlijs", "augusts", "septembris", "oktobris", "novembris", "decembris"]
+        nominative: ["janvāris", "februāris", "marts", "aprīlis", "maijs", "jūnijs", "jūlijs", "augusts", "septembris", "oktobris", "novembris", "decembris"]
+    time:
+      template:
+        hours_only: "%{hours}"
+        hours_minutes: "%{hours} %{minutes}"
+        hours_minutes_seconds: "%{hours} %{minutes} %{seconds}"
+      words:
+        hour: ["stunda", "stundas", "stundu"]
+        minute: ["minūte", "minūtes", "minūšu"]
+        second: ["sekunde", "sekundes", "sekunžu"]
+
+    warnings:
+      currency_not_available: "Valūta %{currency} nav pieejama lokalē %{lang}; tiek izmantota noklusējuma valūta."
 
     currencies:
       EUR:
-        name: ["eiro", "eiro", "eiro"]
-        fractional:
-          name: ["cents", "centi", "centu"]
-          feminine: false
+        major_unit: [ "eiro", "eiro", "eiro" ]
+        minor_unit: [ "cents", "centi", "centu" ]
+        symbol: "€"
+      BDT:
+        major_unit: [ "taka", "takas", "taku" ]
+        minor_unit: [ "poiša", "poišas", "poišu" ]
+        symbol: "৳"
+      BGN:
+        major_unit: [ "leva", "levas", "levu" ]
+        minor_unit: [ "stotinka", "stotinkas", "stotinku" ]
+        symbol: "лв"
+      BRL:
+        major_unit: [ "Brazīlijas reāls", "Brazīlijas reāli", "Brazīlijas reālu" ]
+        minor_unit: [ "sentavo", "sentavo", "sentavo" ]
+        symbol: "R$"
+      BYN:
+        major_unit: [ "Baltkrievijas rublis", "Baltkrievijas rubļi", "Baltkrievijas rubļu" ]
+        minor_unit: [ "kapeika", "kapeikas", "kapeiku" ]
+        symbol: "Br"
+      CNY:
+        major_unit: [ "juaņa", "juaņas", "juaņu" ]
+        minor_unit: [ "fens", "feni", "fenu" ]
+        symbol: "¥"
+      CZK:
+        major_unit: [ "krona", "kronas", "kronu" ]
+        minor_unit: [ "halers", "haleri", "haleru" ]
+        symbol: "Kč"
+      DKK:
+        major_unit: [ "krona", "kronas", "kronu" ]
+        minor_unit: [ "ēre", "ēres", "ēru" ]
+        symbol: "kr"
+      GBP:
+        major_unit: [ "mārciņa", "mārciņas", "mārciņu" ]
+        minor_unit: [ "penss", "pensi", "pensu" ]
+        symbol: "£"
+      HUF:
+        major_unit: [ "forints", "forinti", "forintu" ]
+        minor_unit: [ "fillērs", "fillēri", "fillēru" ]
+        symbol: "Ft"
+      IDR:
+        major_unit: [ "rūpija", "rūpijas", "rūpiju" ]
+        minor_unit: [ "sens", "seni", "senu" ]
+        symbol: "Rp"
+      ILS:
+        major_unit: [ "šekelis", "šekeļi", "šekeļu" ]
+        minor_unit: [ "agora", "agoras", "agoru" ]
+        symbol: "₪"
+      INR:
+        major_unit: [ "rūpija", "rūpijas", "rūpiju" ]
+        minor_unit: [ "paiss", "paisi", "paisu" ]
+        symbol: "₹"
+      IRR:
+        major_unit: [ "riāls", "riāli", "riālu" ]
+        minor_unit: [ "dinārs", "dināri", "dināru" ]
+        symbol: "﷼"
+      JPY:
+        major_unit: [ "jena", "jenas", "jenu" ]
+        minor_unit: [ "sens", "seni", "senu" ]
+        symbol: "¥"
+      KES:
+        major_unit: [ "šiliņš", "šiliņi", "šiliņu" ]
+        minor_unit: [ "cents", "centi", "centu" ]
+        symbol: "Sh"
+      KRW:
+        major_unit: [ "vons", "voni", "vonu" ]
+        minor_unit: [ "čons", "čoni", "čonu" ]
+        symbol: "₩"
+      KZT:
+        major_unit: [ "tenge", "tenges", "tengu" ]
+        minor_unit: [ "tiins", "tiini", "tiinu" ]
+        symbol: "₸"
+      MYR:
+        major_unit: [ "ringits", "ringiti", "ringitu" ]
+        minor_unit: [ "sens", "seni", "senu" ]
+        symbol: "RM"
+      NOK:
+        major_unit: [ "krona", "kronas", "kronu" ]
+        minor_unit: [ "ēre", "ēres", "ēru" ]
+        symbol: "kr"
+      PKR:
+        major_unit: [ "rūpija", "rūpijas", "rūpiju" ]
+        minor_unit: [ "paiss", "paisi", "paisu" ]
+        symbol: "₨"
+      PLN:
+        major_unit: [ "zlots", "zloti", "zlotu" ]
+        minor_unit: [ "grošs", "groši", "grošu" ]
+        symbol: "zł"
+      RON:
+        major_unit: [ "leja", "lejas", "leju" ]
+        minor_unit: [ "bans", "bani", "banu" ]
+        symbol: "lei"
+      RSD:
+        major_unit: [ "dinārs", "dināri", "dināru" ]
+        minor_unit: [ "para", "paras", "paru" ]
+        symbol: "дин"
+      RUB:
+        major_unit: [ "rublis", "rubļi", "rubļu" ]
+        minor_unit: [ "kapeika", "kapeikas", "kapeiku" ]
+        symbol: "₽"
+      SAR:
+        major_unit: [ "riāls", "riāli", "riālu" ]
+        minor_unit: [ "halala", "halalas", "halalu" ]
+        symbol: "﷼"
+      SEK:
+        major_unit: [ "krona", "kronas", "kronu" ]
+        minor_unit: [ "ēre", "ēres", "ēru" ]
+        symbol: "kr"
+      THB:
+        major_unit: [ "bāts", "bāti", "bātu" ]
+        minor_unit: [ "satangs", "satangi", "satangu" ]
+        symbol: "฿"
+      TRY:
+        major_unit: [ "lira", "liras", "liru" ]
+        minor_unit: [ "kurušs", "kuruši", "kurušu" ]
+        symbol: "₺"
+      UAH:
+        major_unit: [ "grivna", "grivnas", "grivnu" ]
+        minor_unit: [ "kapeika", "kapeikas", "kapeiku" ]
+        symbol: "₴"
       USD:
-        name: ["dolārs", "dolāri", "dolāru"]
-        fractional:
-          name: ["cents", "centi", "centu"]
-          feminine: false
+        major_unit: [ "dolārs", "dolāri", "dolāru" ]
+        minor_unit: [ "cents", "centi", "centu" ]
+        symbol: "$"
+      VND:
+        major_unit: [ "dongs", "dongi", "dongu" ]
+        minor_unit: [ "su", "su", "su" ]
+        symbol: "₫"
