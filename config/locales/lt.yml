@@ -13,14 +13,190 @@ lt:
       - ["milijardas", "milijardai", "milijardų"]
       - ["trilijonas", "trilijonai", "trilijonų"]
 
+    grammar:
+      minus: "minus"
+      conjunction: "sveikųjų"
+      default_fraction: "dalis"
+    fractions:
+      10: ["dešimtoji", "dešimtosios", "dešimtųjų"]
+      100: ["šimtoji", "šimtosios", "šimtųjų"]
+      1000: ["tūkstantoji", "tūkstantosios", "tūkstantųjų"]
+      10000: ["dešimttūkstantoji", "dešimttūkstantosios", "dešimttūkstantųjų"]
+      100000: ["šimtatūkstantoji", "šimtatūkstantosios", "šimtatūkstantųjų"]
+      1000000: ["milijonoji", "milijonosios", "milijonųjų"]
+      10000000: ["dešimtmilijonoji", "dešimtmilijonosios", "dešimtmilijonųjų"]
+      100000000: ["šimtmilijonoji", "šimtmilijonosios", "šimtmilijonųjų"]
+      1000000000: ["milijardoji", "milijardosios", "milijardųjų"]
+
+    numbers:
+      ordinals:
+        nominative:
+          masculine: ["pirmas", "antras", "trečias", "ketvirtas", "penktas", "šeštas", "septintas", "aštuntas", "devintas", "dešimtas",
+                      "vienuoliktas", "dvyliktas", "tryliktas", "keturioliktas", "penkioliktas", "šešioliktas", "septynioliktas", "aštuonioliktas", "devynioliktas",
+                      "dvidešimtas", "dvidešimt pirmas", "dvidešimt antras", "dvidešimt trečias", "dvidešimt ketvirtas", "dvidešimt penktas", "dvidešimt šeštas", "dvidešimt septintas", "dvidešimt aštuntas", "dvidešimt devintas",
+                      "trisdešimtas", "trisdešimt pirmas"]
+          feminine: ["pirmoji", "antroji", "trečioji", "ketvirtoji", "penktoji", "šeštoji", "septintoji", "aštuntoji", "devintoji", "dešimtoji",
+                     "vienuoliktoji", "dvyliktoji", "tryliktoji", "keturioliktoji", "penkioliktoji", "šešioliktoji", "septynioliktoji", "aštuonioliktoji", "devynioliktoji",
+                     "dvidešimtoji", "dvidešimt pirmoji", "dvidešimt antroji", "dvidešimt trečioji", "dvidešimt ketvirtoji", "dvidešimt penktoji", "dvidešimt šeštoji", "dvidešimt septintoji", "dvidešimt aštuntoji", "dvidešimt devintoji",
+                     "trisdešimtoji", "trisdešimt pirmoji"]
+          neuter: ["pirmoji", "antroji", "trečioji", "ketvirtoji", "penktoji", "šeštoji", "septintoji", "aštuntoji", "devintoji", "dešimtoji",
+                   "vienuoliktoji", "dvyliktoji", "tryliktoji", "keturioliktoji", "penkioliktoji", "šešioliktoji", "septynioliktoji", "aštuonioliktoji", "devynioliktoji",
+                   "dvidešimtoji", "dvidešimt pirmoji", "dvidešimt antroji", "dvidešimt trečioji", "dvidešimt ketvirtoji", "dvidešimt penktoji", "dvidešimt šeštoji", "dvidešimt septintoji", "dvidešimt aštuntoji", "dvidešimt devintoji",
+                   "trisdešimtoji", "trisdešimt pirmoji"]
+        default:
+          masculine: ["pirmoji", "antroji", "trečioji", "ketvirtoji", "penktoji", "šeštoji", "septintoji", "aštuntoji", "devintoji", "dešimtoji",
+                      "vienuoliktoji", "dvyliktoji", "tryliktoji", "keturioliktoji", "penkioliktoji", "šešioliktoji", "septynioliktoji", "aštuonioliktoji", "devynioliktoji",
+                      "dvidešimtoji", "dvidešimt pirmoji", "dvidešimt antroji", "dvidešimt trečioji", "dvidešimt ketvirtoji", "dvidešimt penktoji", "dvidešimt šeštoji", "dvidešimt septintoji", "dvidešimt aštuntoji", "dvidešimt devintoji",
+                      "trisdešimtoji", "trisdešimt pirmoji"]
+
+    datetime:
+      template: "%{date}, %{time}"
+    date:
+      template:
+        default: "%{day} %{month} %{year}"
+        nominative: "%{day} %{month} %{year}"
+      months:
+        default: ["sausio", "vasario", "kovo", "balandžio", "gegužės", "birželio", "liepos", "rugpjūčio", "rugsėjo", "spalio", "lapkričio", "gruodžio"]
+        nominative: ["sausis", "vasaris", "kovas", "balandis", "gegužė", "birželis", "liepa", "rugpjūtis", "rugsėjis", "spalis", "lapkritis", "gruodis"]
+    time:
+      template:
+        hours_only: "%{hours}"
+        hours_minutes: "%{hours} %{minutes}"
+        hours_minutes_seconds: "%{hours} %{minutes} %{seconds}"
+      words:
+        hour: ["valanda", "valandos", "valandų"]
+        minute: ["minutė", "minutės", "minučių"]
+        second: ["sekundė", "sekundės", "sekundžių"]
+
+    warnings:
+      currency_not_available: "Valiuta %{currency} neprieinama lokalėje %{lang}, naudojama numatytoji."
+
     currencies:
       EUR:
-        name: ["euras", "eurai", "eurų"]
-        fractional:
-          name: ["centas", "centai", "centų"]
-          feminine: false
+        major_unit: [ "euras", "eurai", "eurų" ]
+        minor_unit: [ "centas", "centai", "centų" ]
+        symbol: "€"
+      BDT:
+        major_unit: [ "taka", "takos", "takų" ]
+        minor_unit: [ "poiša", "poišos", "poišų" ]
+        symbol: "৳"
+      BGN:
+        major_unit: [ "levas", "levai", "levų" ]
+        minor_unit: [ "stotinka", "stotinkos", "stotinkų" ]
+        symbol: "лв"
+      BRL:
+        major_unit: [ "Brazilijos realas", "Brazilijos realai", "Brazilijos realų" ]
+        minor_unit: [ "sentavas", "sentavai", "sentavų" ]
+        symbol: "R$"
+      BYN:
+        major_unit: [ "Baltarusijos rublis", "Baltarusijos rubliai", "Baltarusijos rublių" ]
+        minor_unit: [ "kapeika", "kapeikos", "kapeikų" ]
+        symbol: "Br"
+      CNY:
+        major_unit: [ "juanis", "juaniai", "juanių" ]
+        minor_unit: [ "fenis", "feniai", "fenių" ]
+        symbol: "¥"
+      CZK:
+        major_unit: [ "krona", "kronos", "kronų" ]
+        minor_unit: [ "haleris", "haleriai", "halerių" ]
+        symbol: "Kč"
+      DKK:
+        major_unit: [ "krona", "kronos", "kronų" ]
+        minor_unit: [ "erė", "erės", "erių" ]
+        symbol: "kr"
+      GBP:
+        major_unit: [ "svaras", "svarai", "svarų" ]
+        minor_unit: [ "pensas", "pensai", "pensų" ]
+        symbol: "£"
+      HUF:
+        major_unit: [ "forintas", "forintai", "forintų" ]
+        minor_unit: [ "fileris", "fileriai", "filerių" ]
+        symbol: "Ft"
+      IDR:
+        major_unit: [ "rupija", "rupijos", "rupijų" ]
+        minor_unit: [ "senas", "senai", "senų" ]
+        symbol: "Rp"
+      ILS:
+        major_unit: [ "šekelis", "šekeliai", "šekelių" ]
+        minor_unit: [ "agora", "agoros", "agorų" ]
+        symbol: "₪"
+      INR:
+        major_unit: [ "rupija", "rupijos", "rupijų" ]
+        minor_unit: [ "paisa", "paisos", "paisų" ]
+        symbol: "₹"
+      IRR:
+        major_unit: [ "rialas", "rialai", "rialų" ]
+        minor_unit: [ "dinaras", "dinarai", "dinarų" ]
+        symbol: "﷼"
+      JPY:
+        major_unit: [ "jena", "jenos", "jenų" ]
+        minor_unit: [ "senas", "senai", "senų" ]
+        symbol: "¥"
+      KES:
+        major_unit: [ "šilingas", "šilingai", "šilingų" ]
+        minor_unit: [ "centas", "centai", "centų" ]
+        symbol: "Sh"
+      KRW:
+        major_unit: [ "vonas", "vonai", "vonų" ]
+        minor_unit: [ "čonas", "čonai", "čonų" ]
+        symbol: "₩"
+      KZT:
+        major_unit: [ "tengė", "tengės", "tengių" ]
+        minor_unit: [ "tijinas", "tijinai", "tijinų" ]
+        symbol: "₸"
+      MYR:
+        major_unit: [ "ringitas", "ringitai", "ringitų" ]
+        minor_unit: [ "senas", "senai", "senų" ]
+        symbol: "RM"
+      NOK:
+        major_unit: [ "krona", "kronos", "kronų" ]
+        minor_unit: [ "erė", "erės", "erių" ]
+        symbol: "kr"
+      PKR:
+        major_unit: [ "rupija", "rupijos", "rupijų" ]
+        minor_unit: [ "paisa", "paisos", "paisų" ]
+        symbol: "₨"
+      PLN:
+        major_unit: [ "zlotas", "zlotai", "zlotų" ]
+        minor_unit: [ "grašis", "grašiai", "grašių" ]
+        symbol: "zł"
+      RON:
+        major_unit: [ "lėja", "lėjos", "lėjų" ]
+        minor_unit: [ "banas", "banai", "banų" ]
+        symbol: "lei"
+      RSD:
+        major_unit: [ "dinaras", "dinarai", "dinarų" ]
+        minor_unit: [ "para", "paros", "parų" ]
+        symbol: "дин"
+      RUB:
+        major_unit: [ "rublis", "rubliai", "rublių" ]
+        minor_unit: [ "kapeika", "kapeikos", "kapeikų" ]
+        symbol: "₽"
+      SAR:
+        major_unit: [ "rialas", "rialai", "rialų" ]
+        minor_unit: [ "halala", "halalos", "halalų" ]
+        symbol: "﷼"
+      SEK:
+        major_unit: [ "krona", "kronos", "kronų" ]
+        minor_unit: [ "erė", "erės", "erių" ]
+        symbol: "kr"
+      THB:
+        major_unit: [ "batas", "batai", "batų" ]
+        minor_unit: [ "satangas", "satangai", "satangų" ]
+        symbol: "฿"
+      TRY:
+        major_unit: [ "lira", "liros", "lirų" ]
+        minor_unit: [ "kurušas", "kurušai", "kurušų" ]
+        symbol: "₺"
+      UAH:
+        major_unit: [ "grivina", "grivinos", "grivinų" ]
+        minor_unit: [ "kapeika", "kapeikos", "kapeikų" ]
+        symbol: "₴"
       USD:
-        name: ["doleris", "doleriai", "dolerių"]
-        fractional:
-          name: ["centas", "centai", "centų"]
-          feminine: false
+        major_unit: [ "doleris", "doleriai", "dolerių" ]
+        minor_unit: [ "centas", "centai", "centų" ]
+        symbol: "$"
+      VND:
+        major_unit: [ "dongas", "dongai", "dongų" ]
+        minor_unit: [ "su", "su", "su" ]
+        symbol: "₫"
