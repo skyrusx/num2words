@@ -8,7 +8,6 @@ RSpec.describe "locale smoke coverage" do
             .sort
 
   known_broken_locales = {
-    sw: "legacy locale wrapper missing GRAMMAR",
     ta: "legacy locale wrapper missing GRAMMAR",
     te: "legacy locale wrapper missing GRAMMAR",
     th: "legacy locale wrapper missing GRAMMAR",

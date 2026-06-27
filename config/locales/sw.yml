@@ -13,14 +13,190 @@ sw:
       - ["bilioni", "bilioni", "bilioni"]
       - ["trilioni", "trilioni", "trilioni"]
 
+    grammar:
+      minus: "minus"
+      conjunction: "koma"
+      default_fraction: "sehemu"
+    fractions:
+      10: ["sehemu ya kumi", "sehemu ya kumi", "sehemu ya kumi"]
+      100: ["sehemu ya mia", "sehemu ya mia", "sehemu ya mia"]
+      1000: ["sehemu ya elfu", "sehemu ya elfu", "sehemu ya elfu"]
+      10000: ["sehemu ya elfu kumi", "sehemu ya elfu kumi", "sehemu ya elfu kumi"]
+      100000: ["sehemu ya laki", "sehemu ya laki", "sehemu ya laki"]
+      1000000: ["sehemu ya milioni", "sehemu ya milioni", "sehemu ya milioni"]
+      10000000: ["sehemu ya milioni kumi", "sehemu ya milioni kumi", "sehemu ya milioni kumi"]
+      100000000: ["sehemu ya milioni mia", "sehemu ya milioni mia", "sehemu ya milioni mia"]
+      1000000000: ["sehemu ya bilioni", "sehemu ya bilioni", "sehemu ya bilioni"]
+
+    numbers:
+      ordinals:
+        nominative:
+          masculine: ["kwanza", "pili", "tatu", "nne", "tano", "sita", "saba", "nane", "tisa", "kumi",
+                      "kumi na moja", "kumi na mbili", "kumi na tatu", "kumi na nne", "kumi na tano", "kumi na sita", "kumi na saba", "kumi na nane", "kumi na tisa",
+                      "ishirini", "ishirini na moja", "ishirini na mbili", "ishirini na tatu", "ishirini na nne", "ishirini na tano", "ishirini na sita", "ishirini na saba", "ishirini na nane", "ishirini na tisa",
+                      "thelathini", "thelathini na moja"]
+          feminine: ["kwanza", "pili", "tatu", "nne", "tano", "sita", "saba", "nane", "tisa", "kumi",
+                     "kumi na moja", "kumi na mbili", "kumi na tatu", "kumi na nne", "kumi na tano", "kumi na sita", "kumi na saba", "kumi na nane", "kumi na tisa",
+                     "ishirini", "ishirini na moja", "ishirini na mbili", "ishirini na tatu", "ishirini na nne", "ishirini na tano", "ishirini na sita", "ishirini na saba", "ishirini na nane", "ishirini na tisa",
+                     "thelathini", "thelathini na moja"]
+          neuter: ["kwanza", "pili", "tatu", "nne", "tano", "sita", "saba", "nane", "tisa", "kumi",
+                   "kumi na moja", "kumi na mbili", "kumi na tatu", "kumi na nne", "kumi na tano", "kumi na sita", "kumi na saba", "kumi na nane", "kumi na tisa",
+                   "ishirini", "ishirini na moja", "ishirini na mbili", "ishirini na tatu", "ishirini na nne", "ishirini na tano", "ishirini na sita", "ishirini na saba", "ishirini na nane", "ishirini na tisa",
+                   "thelathini", "thelathini na moja"]
+        default:
+          masculine: ["kwanza", "pili", "tatu", "nne", "tano", "sita", "saba", "nane", "tisa", "kumi",
+                      "kumi na moja", "kumi na mbili", "kumi na tatu", "kumi na nne", "kumi na tano", "kumi na sita", "kumi na saba", "kumi na nane", "kumi na tisa",
+                      "ishirini", "ishirini na moja", "ishirini na mbili", "ishirini na tatu", "ishirini na nne", "ishirini na tano", "ishirini na sita", "ishirini na saba", "ishirini na nane", "ishirini na tisa",
+                      "thelathini", "thelathini na moja"]
+
+    datetime:
+      template: "%{date}, %{time}"
+    date:
+      template:
+        default: "%{day} %{month} %{year}"
+        nominative: "%{day} %{month} %{year}"
+      months:
+        default: ["Januari", "Februari", "Machi", "Aprili", "Mei", "Juni", "Julai", "Agosti", "Septemba", "Oktoba", "Novemba", "Desemba"]
+        nominative: ["Januari", "Februari", "Machi", "Aprili", "Mei", "Juni", "Julai", "Agosti", "Septemba", "Oktoba", "Novemba", "Desemba"]
+    time:
+      template:
+        hours_only: "%{hours}"
+        hours_minutes: "%{hours} %{minutes}"
+        hours_minutes_seconds: "%{hours} %{minutes} %{seconds}"
+      words:
+        hour: ["saa", "saa", "saa"]
+        minute: ["dakika", "dakika", "dakika"]
+        second: ["sekunde", "sekunde", "sekunde"]
+
+    warnings:
+      currency_not_available: "Sarafu %{currency} haipatikani kwa lugha %{lang}, inatumika ya sasa."
+
     currencies:
       KES:
-        name: ["shilingi", "shilingi", "shilingi"]
-        fractional:
-          name: ["senti", "senti", "senti"]
-          feminine: false
+        major_unit: ["shilingi", "shilingi", "shilingi"]
+        minor_unit: ["senti", "senti", "senti"]
+        symbol: "Sh"
       USD:
-        name: ["dola", "dola", "dola"]
-        fractional:
-          name: ["senti", "senti", "senti"]
-          feminine: false
+        major_unit: ["dola", "dola", "dola"]
+        minor_unit: ["senti", "senti", "senti"]
+        symbol: "$"
+      EUR:
+        major_unit: ["euro", "euro", "euro"]
+        minor_unit: ["senti", "senti", "senti"]
+        symbol: "€"
+      GBP:
+        major_unit: ["pauni", "pauni", "pauni"]
+        minor_unit: ["peni", "peni", "peni"]
+        symbol: "£"
+      BRL:
+        major_unit: ["reali ya Brazili", "reali ya Brazili", "reali ya Brazili"]
+        minor_unit: ["sentavo", "sentavo", "sentavo"]
+        symbol: "R$"
+      RUB:
+        major_unit: ["rubli", "rubli", "rubli"]
+        minor_unit: ["kopeki", "kopeki", "kopeki"]
+        symbol: "₽"
+      CNY:
+        major_unit: ["yuan", "yuan", "yuan"]
+        minor_unit: ["fen", "fen", "fen"]
+        symbol: "¥"
+      JPY:
+        major_unit: ["yen", "yen", "yen"]
+        minor_unit: ["sen", "sen", "sen"]
+        symbol: "¥"
+      KRW:
+        major_unit: ["won", "won", "won"]
+        minor_unit: ["jeon", "jeon", "jeon"]
+        symbol: "₩"
+      TRY:
+        major_unit: ["lira", "lira", "lira"]
+        minor_unit: ["kurush", "kurush", "kurush"]
+        symbol: "₺"
+      PLN:
+        major_unit: ["zloty", "zloty", "zloty"]
+        minor_unit: ["grosz", "grosz", "grosz"]
+        symbol: "zł"
+      UAH:
+        major_unit: ["hryvnia", "hryvnia", "hryvnia"]
+        minor_unit: ["kopeki", "kopeki", "kopeki"]
+        symbol: "₴"
+      CZK:
+        major_unit: ["koruna", "koruna", "koruna"]
+        minor_unit: ["haler", "haler", "haler"]
+        symbol: "Kč"
+      RON:
+        major_unit: ["leu", "lei", "lei"]
+        minor_unit: ["ban", "bani", "bani"]
+        symbol: "lei"
+      BGN:
+        major_unit: ["lev", "leva", "leva"]
+        minor_unit: ["stotinka", "stotinki", "stotinki"]
+        symbol: "лв"
+      BYN:
+        major_unit: ["rubli ya Belarusi", "rubli ya Belarusi", "rubli ya Belarusi"]
+        minor_unit: ["kopeki", "kopeki", "kopeki"]
+        symbol: "Br"
+      KZT:
+        major_unit: ["tenge", "tenge", "tenge"]
+        minor_unit: ["tiyn", "tiyn", "tiyn"]
+        symbol: "₸"
+      ILS:
+        major_unit: ["shekeli", "shekeli", "shekeli"]
+        minor_unit: ["agora", "agorot", "agorot"]
+        symbol: "₪"
+      SEK:
+        major_unit: ["krona", "krona", "krona"]
+        minor_unit: ["ore", "ore", "ore"]
+        symbol: "kr"
+      NOK:
+        major_unit: ["krona ya Norway", "krona ya Norway", "krona ya Norway"]
+        minor_unit: ["ore", "ore", "ore"]
+        symbol: "kr"
+      DKK:
+        major_unit: ["krona ya Denmark", "krona ya Denmark", "krona ya Denmark"]
+        minor_unit: ["ore", "ore", "ore"]
+        symbol: "kr"
+      HUF:
+        major_unit: ["forinti", "forinti", "forinti"]
+        minor_unit: ["filler", "filler", "filler"]
+        symbol: "Ft"
+      SAR:
+        major_unit: ["riyal", "riyal", "riyal"]
+        minor_unit: ["halala", "halala", "halala"]
+        symbol: "﷼"
+      INR:
+        major_unit: ["rupia", "rupia", "rupia"]
+        minor_unit: ["paisa", "paisa", "paisa"]
+        symbol: "₹"
+      THB:
+        major_unit: ["baht", "baht", "baht"]
+        minor_unit: ["satang", "satang", "satang"]
+        symbol: "฿"
+      VND:
+        major_unit: ["dong", "dong", "dong"]
+        minor_unit: ["xu", "xu", "xu"]
+        symbol: "₫"
+      IDR:
+        major_unit: ["rupiah", "rupiah", "rupiah"]
+        minor_unit: ["sen", "sen", "sen"]
+        symbol: "Rp"
+      IRR:
+        major_unit: ["riyal", "riyal", "riyal"]
+        minor_unit: ["dinari", "dinari", "dinari"]
+        symbol: "﷼"
+      RSD:
+        major_unit: ["dinari", "dinari", "dinari"]
+        minor_unit: ["para", "para", "para"]
+        symbol: "дин"
+      MYR:
+        major_unit: ["ringgit", "ringgit", "ringgit"]
+        minor_unit: ["sen", "sen", "sen"]
+        symbol: "RM"
+      BDT:
+        major_unit: ["taka", "taka", "taka"]
+        minor_unit: ["poisha", "poisha", "poisha"]
+        symbol: "৳"
+      PKR:
+        major_unit: ["rupia", "rupia", "rupia"]
+        minor_unit: ["paisa", "paisa", "paisa"]
+        symbol: "₨"
