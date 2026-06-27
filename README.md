@@ -203,7 +203,10 @@ KZT MYR NOK PKR PLN RON RSD RUB SAR SEK THB TRY UAH USD VND
 
 После добавления локали стоит покрыть ее отдельным spec и добавить в `spec/currency_catalog_spec.rb`.
 
-Подробная инструкция: [docs/locale_development.md](docs/locale_development.md).
+Подробная инструкция:
+
+- [English](docs/locale_development.md)
+- [Русский](docs/locale_development.ru.md)
 
 ---
 
