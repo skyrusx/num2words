@@ -7,12 +7,8 @@ RSpec.describe "locale smoke coverage" do
             .map { |file| File.basename(file, ".yml").to_sym }
             .sort
 
-  known_broken_locales = {}
-
   locales.each do |locale|
     it "converts a basic integer for #{locale}" do
-      pending known_broken_locales.fetch(locale) if known_broken_locales.key?(locale)
-
       result = Num2words.to_words(123, locale)
 
       expect(result).to be_a(String)

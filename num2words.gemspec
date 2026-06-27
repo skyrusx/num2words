@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["progruson@gmail.com"]
 
   spec.summary       = %q{Convert numbers, amounts, dates, and times to words}
-  spec.description   = %q{Converts numbers, currency amounts, dates, and times to words with locale-aware grammar. Russian is the primary fully supported locale.}
+  spec.description   = %q{Converts numbers, currency amounts, dates, and times to words with locale-aware grammar across supported locales.}
   spec.homepage      = "https://github.com/skyrusx/num2words"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
