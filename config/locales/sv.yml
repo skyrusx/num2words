@@ -13,21 +13,190 @@ sv:
       - ["miljard", "miljarder", "miljarder"]
       - ["biljon", "biljoner", "biljoner"]
 
+    grammar:
+      minus: "minus"
+      conjunction: "komma"
+      default_fraction: "delar"
+    fractions:
+      10: ["tiondel", "tiondelar", "tiondelar"]
+      100: ["hundradel", "hundradelar", "hundradelar"]
+      1000: ["tusendel", "tusendelar", "tusendelar"]
+      10000: ["tiotusendel", "tiotusendelar", "tiotusendelar"]
+      100000: ["hundratusendel", "hundratusendelar", "hundratusendelar"]
+      1000000: ["miljondel", "miljondelar", "miljondelar"]
+      10000000: ["tiomiljondel", "tiomiljondelar", "tiomiljondelar"]
+      100000000: ["hundramiljondel", "hundramiljondelar", "hundramiljondelar"]
+      1000000000: ["miljarddel", "miljarddelar", "miljarddelar"]
+
+    numbers:
+      ordinals:
+        nominative:
+          masculine: ["första", "andra", "tredje", "fjärde", "femte", "sjätte", "sjunde", "åttonde", "nionde", "tionde",
+                      "elfte", "tolfte", "trettonde", "fjortonde", "femtonde", "sextonde", "sjuttonde", "artonde", "nittonde",
+                      "tjugonde", "tjugoförsta", "tjugoandra", "tjugotredje", "tjugofjärde", "tjugofemte", "tjugosjätte", "tjugosjunde", "tjugoåttonde", "tjugonionde",
+                      "trettionde", "trettioförsta"]
+          feminine: ["första", "andra", "tredje", "fjärde", "femte", "sjätte", "sjunde", "åttonde", "nionde", "tionde",
+                     "elfte", "tolfte", "trettonde", "fjortonde", "femtonde", "sextonde", "sjuttonde", "artonde", "nittonde",
+                     "tjugonde", "tjugoförsta", "tjugoandra", "tjugotredje", "tjugofjärde", "tjugofemte", "tjugosjätte", "tjugosjunde", "tjugoåttonde", "tjugonionde",
+                     "trettionde", "trettioförsta"]
+          neuter: ["första", "andra", "tredje", "fjärde", "femte", "sjätte", "sjunde", "åttonde", "nionde", "tionde",
+                   "elfte", "tolfte", "trettonde", "fjortonde", "femtonde", "sextonde", "sjuttonde", "artonde", "nittonde",
+                   "tjugonde", "tjugoförsta", "tjugoandra", "tjugotredje", "tjugofjärde", "tjugofemte", "tjugosjätte", "tjugosjunde", "tjugoåttonde", "tjugonionde",
+                   "trettionde", "trettioförsta"]
+        default:
+          masculine: ["första", "andra", "tredje", "fjärde", "femte", "sjätte", "sjunde", "åttonde", "nionde", "tionde",
+                      "elfte", "tolfte", "trettonde", "fjortonde", "femtonde", "sextonde", "sjuttonde", "artonde", "nittonde",
+                      "tjugonde", "tjugoförsta", "tjugoandra", "tjugotredje", "tjugofjärde", "tjugofemte", "tjugosjätte", "tjugosjunde", "tjugoåttonde", "tjugonionde",
+                      "trettionde", "trettioförsta"]
+
+    datetime:
+      template: "%{date}, %{time}"
+    date:
+      template:
+        default: "%{day} %{month} %{year}"
+        nominative: "%{day} %{month} %{year}"
+      months:
+        default: ["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december"]
+        nominative: ["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december"]
+    time:
+      template:
+        hours_only: "%{hours}"
+        hours_minutes: "%{hours} %{minutes}"
+        hours_minutes_seconds: "%{hours} %{minutes} %{seconds}"
+      words:
+        hour: ["timme", "timmar", "timmar"]
+        minute: ["minut", "minuter", "minuter"]
+        second: ["sekund", "sekunder", "sekunder"]
+
+    warnings:
+      currency_not_available: "Valuta %{currency} är inte tillgänglig för språket %{lang}; aktuell valuta används."
+
     currencies:
       SEK:
-        name: ["krona", "kronor", "kronor"]
-        fractional:
-          name: ["öre", "öre", "öre"]
-          feminine: false
+        major_unit: ["krona", "kronor", "kronor"]
+        minor_unit: ["öre", "öre", "öre"]
+        symbol: "kr"
       EUR:
-        name: ["euro", "euro", "euro"]
-        fractional:
-          name: ["cent", "cent", "cent"]
-          feminine: false
+        major_unit: ["euro", "euro", "euro"]
+        minor_unit: ["cent", "cent", "cent"]
+        symbol: "€"
       USD:
-        name: ["dollar", "dollar", "dollar"]
-        fractional:
-          name: ["cent", "cent", "cent"]
-          feminine: false
+        major_unit: ["dollar", "dollar", "dollar"]
+        minor_unit: ["cent", "cent", "cent"]
+        symbol: "$"
       GBP:
-        n
+        major_unit: ["pund", "pund", "pund"]
+        minor_unit: ["penny", "pence", "pence"]
+        symbol: "£"
+      BRL:
+        major_unit: ["brasiliansk real", "brasilianska real", "brasilianska real"]
+        minor_unit: ["centavo", "centavo", "centavo"]
+        symbol: "R$"
+      RUB:
+        major_unit: ["rubel", "rubel", "rubel"]
+        minor_unit: ["kopek", "kopek", "kopek"]
+        symbol: "₽"
+      CNY:
+        major_unit: ["yuan", "yuan", "yuan"]
+        minor_unit: ["fen", "fen", "fen"]
+        symbol: "¥"
+      JPY:
+        major_unit: ["yen", "yen", "yen"]
+        minor_unit: ["sen", "sen", "sen"]
+        symbol: "¥"
+      KRW:
+        major_unit: ["won", "won", "won"]
+        minor_unit: ["jeon", "jeon", "jeon"]
+        symbol: "₩"
+      TRY:
+        major_unit: ["lira", "lira", "lira"]
+        minor_unit: ["kuruş", "kuruş", "kuruş"]
+        symbol: "₺"
+      PLN:
+        major_unit: ["zloty", "zloty", "zloty"]
+        minor_unit: ["grosz", "grosz", "grosz"]
+        symbol: "zł"
+      UAH:
+        major_unit: ["hryvnia", "hryvnia", "hryvnia"]
+        minor_unit: ["kopek", "kopek", "kopek"]
+        symbol: "₴"
+      CZK:
+        major_unit: ["koruna", "korunor", "korunor"]
+        minor_unit: ["haler", "haler", "haler"]
+        symbol: "Kč"
+      RON:
+        major_unit: ["leu", "lei", "lei"]
+        minor_unit: ["ban", "bani", "bani"]
+        symbol: "lei"
+      BGN:
+        major_unit: ["lev", "leva", "leva"]
+        minor_unit: ["stotinka", "stotinki", "stotinki"]
+        symbol: "лв"
+      BYN:
+        major_unit: ["belarusisk rubel", "belarusiska rubel", "belarusiska rubel"]
+        minor_unit: ["kopek", "kopek", "kopek"]
+        symbol: "Br"
+      KZT:
+        major_unit: ["tenge", "tenge", "tenge"]
+        minor_unit: ["tiyn", "tiyn", "tiyn"]
+        symbol: "₸"
+      ILS:
+        major_unit: ["shekel", "shekel", "shekel"]
+        minor_unit: ["agora", "agorot", "agorot"]
+        symbol: "₪"
+      NOK:
+        major_unit: ["norsk krona", "norska kronor", "norska kronor"]
+        minor_unit: ["øre", "øre", "øre"]
+        symbol: "kr"
+      DKK:
+        major_unit: ["dansk krona", "danska kronor", "danska kronor"]
+        minor_unit: ["øre", "øre", "øre"]
+        symbol: "kr"
+      HUF:
+        major_unit: ["forint", "forint", "forint"]
+        minor_unit: ["filler", "filler", "filler"]
+        symbol: "Ft"
+      SAR:
+        major_unit: ["riyal", "riyal", "riyal"]
+        minor_unit: ["halala", "halala", "halala"]
+        symbol: "﷼"
+      INR:
+        major_unit: ["rupie", "rupier", "rupier"]
+        minor_unit: ["paise", "paise", "paise"]
+        symbol: "₹"
+      THB:
+        major_unit: ["baht", "baht", "baht"]
+        minor_unit: ["satang", "satang", "satang"]
+        symbol: "฿"
+      VND:
+        major_unit: ["dong", "dong", "dong"]
+        minor_unit: ["xu", "xu", "xu"]
+        symbol: "₫"
+      IDR:
+        major_unit: ["rupiah", "rupiah", "rupiah"]
+        minor_unit: ["sen", "sen", "sen"]
+        symbol: "Rp"
+      IRR:
+        major_unit: ["rial", "rial", "rial"]
+        minor_unit: ["dinar", "dinar", "dinar"]
+        symbol: "﷼"
+      RSD:
+        major_unit: ["dinar", "dinar", "dinar"]
+        minor_unit: ["para", "para", "para"]
+        symbol: "дин"
+      MYR:
+        major_unit: ["ringgit", "ringgit", "ringgit"]
+        minor_unit: ["sen", "sen", "sen"]
+        symbol: "RM"
+      BDT:
+        major_unit: ["taka", "taka", "taka"]
+        minor_unit: ["poisha", "poisha", "poisha"]
+        symbol: "৳"
+      PKR:
+        major_unit: ["rupie", "rupier", "rupier"]
+        minor_unit: ["paisa", "paise", "paise"]
+        symbol: "₨"
+      KES:
+        major_unit: ["shilling", "shilling", "shilling"]
+        minor_unit: ["cent", "cent", "cent"]
+        symbol: "Sh"
