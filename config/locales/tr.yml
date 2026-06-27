@@ -13,19 +13,190 @@ tr:
       - ["milyar", "milyar", "milyar"]
       - ["trilyon", "trilyon", "trilyon"]
 
+    grammar:
+      minus: "eksi"
+      conjunction: "tam"
+      default_fraction: "parça"
+    fractions:
+      10: ["onda bir", "onda bir", "onda bir"]
+      100: ["yüzde bir", "yüzde bir", "yüzde bir"]
+      1000: ["binde bir", "binde bir", "binde bir"]
+      10000: ["on binde bir", "on binde bir", "on binde bir"]
+      100000: ["yüz binde bir", "yüz binde bir", "yüz binde bir"]
+      1000000: ["milyonda bir", "milyonda bir", "milyonda bir"]
+      10000000: ["on milyonda bir", "on milyonda bir", "on milyonda bir"]
+      100000000: ["yüz milyonda bir", "yüz milyonda bir", "yüz milyonda bir"]
+      1000000000: ["milyarda bir", "milyarda bir", "milyarda bir"]
+
+    numbers:
+      ordinals:
+        nominative:
+          masculine: ["birinci", "ikinci", "üçüncü", "dördüncü", "beşinci", "altıncı", "yedinci", "sekizinci", "dokuzuncu", "onuncu",
+                      "on birinci", "on ikinci", "on üçüncü", "on dördüncü", "on beşinci", "on altıncı", "on yedinci", "on sekizinci", "on dokuzuncu",
+                      "yirminci", "yirmi birinci", "yirmi ikinci", "yirmi üçüncü", "yirmi dördüncü", "yirmi beşinci", "yirmi altıncı", "yirmi yedinci", "yirmi sekizinci", "yirmi dokuzuncu",
+                      "otuzuncu", "otuz birinci"]
+          feminine: ["birinci", "ikinci", "üçüncü", "dördüncü", "beşinci", "altıncı", "yedinci", "sekizinci", "dokuzuncu", "onuncu",
+                     "on birinci", "on ikinci", "on üçüncü", "on dördüncü", "on beşinci", "on altıncı", "on yedinci", "on sekizinci", "on dokuzuncu",
+                     "yirminci", "yirmi birinci", "yirmi ikinci", "yirmi üçüncü", "yirmi dördüncü", "yirmi beşinci", "yirmi altıncı", "yirmi yedinci", "yirmi sekizinci", "yirmi dokuzuncu",
+                     "otuzuncu", "otuz birinci"]
+          neuter: ["birinci", "ikinci", "üçüncü", "dördüncü", "beşinci", "altıncı", "yedinci", "sekizinci", "dokuzuncu", "onuncu",
+                   "on birinci", "on ikinci", "on üçüncü", "on dördüncü", "on beşinci", "on altıncı", "on yedinci", "on sekizinci", "on dokuzuncu",
+                   "yirminci", "yirmi birinci", "yirmi ikinci", "yirmi üçüncü", "yirmi dördüncü", "yirmi beşinci", "yirmi altıncı", "yirmi yedinci", "yirmi sekizinci", "yirmi dokuzuncu",
+                   "otuzuncu", "otuz birinci"]
+        default:
+          masculine: ["birinci", "ikinci", "üçüncü", "dördüncü", "beşinci", "altıncı", "yedinci", "sekizinci", "dokuzuncu", "onuncu",
+                      "on birinci", "on ikinci", "on üçüncü", "on dördüncü", "on beşinci", "on altıncı", "on yedinci", "on sekizinci", "on dokuzuncu",
+                      "yirminci", "yirmi birinci", "yirmi ikinci", "yirmi üçüncü", "yirmi dördüncü", "yirmi beşinci", "yirmi altıncı", "yirmi yedinci", "yirmi sekizinci", "yirmi dokuzuncu",
+                      "otuzuncu", "otuz birinci"]
+
+    datetime:
+      template: "%{date}, %{time}"
+    date:
+      template:
+        default: "%{day} %{month} %{year}"
+        nominative: "%{day} %{month} %{year}"
+      months:
+        default: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
+        nominative: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"]
+    time:
+      template:
+        hours_only: "%{hours}"
+        hours_minutes: "%{hours} %{minutes}"
+        hours_minutes_seconds: "%{hours} %{minutes} %{seconds}"
+      words:
+        hour: ["saat", "saat", "saat"]
+        minute: ["dakika", "dakika", "dakika"]
+        second: ["saniye", "saniye", "saniye"]
+
+    warnings:
+      currency_not_available: "%{currency} para birimi %{lang} dili için mevcut değil, geçerli olan kullanılıyor."
+
     currencies:
       TRY:
-        name: ["lira", "lira", "lira"]
-        fractional:
-          name: ["kuruş", "kuruş", "kuruş"]
-          feminine: false
+        major_unit: ["lira", "lira", "lira"]
+        minor_unit: ["kuruş", "kuruş", "kuruş"]
+        symbol: "₺"
       USD:
-        name: ["dolar", "dolar", "dolar"]
-        fractional:
-          name: ["sent", "sent", "sent"]
-          feminine: false
+        major_unit: ["dolar", "dolar", "dolar"]
+        minor_unit: ["sent", "sent", "sent"]
+        symbol: "$"
       EUR:
-        name: ["euro", "euro", "euro"]
-        fractional:
-          name: ["sent", "sent", "sent"]
-          feminine: false
+        major_unit: ["euro", "euro", "euro"]
+        minor_unit: ["sent", "sent", "sent"]
+        symbol: "€"
+      GBP:
+        major_unit: ["sterlin", "sterlin", "sterlin"]
+        minor_unit: ["peni", "peni", "peni"]
+        symbol: "£"
+      BRL:
+        major_unit: ["Brezilya reali", "Brezilya reali", "Brezilya reali"]
+        minor_unit: ["centavo", "centavo", "centavo"]
+        symbol: "R$"
+      RUB:
+        major_unit: ["ruble", "ruble", "ruble"]
+        minor_unit: ["kopek", "kopek", "kopek"]
+        symbol: "₽"
+      CNY:
+        major_unit: ["yuan", "yuan", "yuan"]
+        minor_unit: ["fen", "fen", "fen"]
+        symbol: "¥"
+      JPY:
+        major_unit: ["yen", "yen", "yen"]
+        minor_unit: ["sen", "sen", "sen"]
+        symbol: "¥"
+      KRW:
+        major_unit: ["won", "won", "won"]
+        minor_unit: ["jeon", "jeon", "jeon"]
+        symbol: "₩"
+      PLN:
+        major_unit: ["zloti", "zloti", "zloti"]
+        minor_unit: ["grosz", "grosz", "grosz"]
+        symbol: "zł"
+      UAH:
+        major_unit: ["grivna", "grivna", "grivna"]
+        minor_unit: ["kopek", "kopek", "kopek"]
+        symbol: "₴"
+      CZK:
+        major_unit: ["koruna", "koruna", "koruna"]
+        minor_unit: ["haler", "haler", "haler"]
+        symbol: "Kč"
+      RON:
+        major_unit: ["ley", "ley", "ley"]
+        minor_unit: ["ban", "ban", "ban"]
+        symbol: "lei"
+      BGN:
+        major_unit: ["lev", "lev", "lev"]
+        minor_unit: ["stotinka", "stotinka", "stotinka"]
+        symbol: "лв"
+      BYN:
+        major_unit: ["Belarus rublesi", "Belarus rublesi", "Belarus rublesi"]
+        minor_unit: ["kopek", "kopek", "kopek"]
+        symbol: "Br"
+      KZT:
+        major_unit: ["tenge", "tenge", "tenge"]
+        minor_unit: ["tiyn", "tiyn", "tiyn"]
+        symbol: "₸"
+      ILS:
+        major_unit: ["şekel", "şekel", "şekel"]
+        minor_unit: ["agora", "agora", "agora"]
+        symbol: "₪"
+      SEK:
+        major_unit: ["kron", "kron", "kron"]
+        minor_unit: ["öre", "öre", "öre"]
+        symbol: "kr"
+      NOK:
+        major_unit: ["Norveç kronu", "Norveç kronu", "Norveç kronu"]
+        minor_unit: ["öre", "öre", "öre"]
+        symbol: "kr"
+      DKK:
+        major_unit: ["Danimarka kronu", "Danimarka kronu", "Danimarka kronu"]
+        minor_unit: ["öre", "öre", "öre"]
+        symbol: "kr"
+      HUF:
+        major_unit: ["forint", "forint", "forint"]
+        minor_unit: ["filler", "filler", "filler"]
+        symbol: "Ft"
+      SAR:
+        major_unit: ["riyal", "riyal", "riyal"]
+        minor_unit: ["halala", "halala", "halala"]
+        symbol: "﷼"
+      INR:
+        major_unit: ["rupi", "rupi", "rupi"]
+        minor_unit: ["paisa", "paisa", "paisa"]
+        symbol: "₹"
+      THB:
+        major_unit: ["baht", "baht", "baht"]
+        minor_unit: ["satang", "satang", "satang"]
+        symbol: "฿"
+      VND:
+        major_unit: ["dong", "dong", "dong"]
+        minor_unit: ["xu", "xu", "xu"]
+        symbol: "₫"
+      IDR:
+        major_unit: ["rupiah", "rupiah", "rupiah"]
+        minor_unit: ["sen", "sen", "sen"]
+        symbol: "Rp"
+      IRR:
+        major_unit: ["riyal", "riyal", "riyal"]
+        minor_unit: ["dinar", "dinar", "dinar"]
+        symbol: "﷼"
+      RSD:
+        major_unit: ["dinar", "dinar", "dinar"]
+        minor_unit: ["para", "para", "para"]
+        symbol: "дин"
+      MYR:
+        major_unit: ["ringgit", "ringgit", "ringgit"]
+        minor_unit: ["sen", "sen", "sen"]
+        symbol: "RM"
+      BDT:
+        major_unit: ["taka", "taka", "taka"]
+        minor_unit: ["poisha", "poisha", "poisha"]
+        symbol: "৳"
+      PKR:
+        major_unit: ["rupi", "rupi", "rupi"]
+        minor_unit: ["paisa", "paisa", "paisa"]
+        symbol: "₨"
+      KES:
+        major_unit: ["şilin", "şilin", "şilin"]
+        minor_unit: ["sent", "sent", "sent"]
+        symbol: "Sh"
