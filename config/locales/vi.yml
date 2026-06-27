@@ -13,19 +13,190 @@ vi:
       - ["tỷ", "tỷ", "tỷ"]
       - ["nghìn tỷ", "nghìn tỷ", "nghìn tỷ"]
 
+    grammar:
+      minus: "âm"
+      conjunction: "phẩy"
+      default_fraction: "phần"
+    fractions:
+      10: ["phần mười", "phần mười", "phần mười"]
+      100: ["phần trăm", "phần trăm", "phần trăm"]
+      1000: ["phần nghìn", "phần nghìn", "phần nghìn"]
+      10000: ["phần mười nghìn", "phần mười nghìn", "phần mười nghìn"]
+      100000: ["phần trăm nghìn", "phần trăm nghìn", "phần trăm nghìn"]
+      1000000: ["phần triệu", "phần triệu", "phần triệu"]
+      10000000: ["phần mười triệu", "phần mười triệu", "phần mười triệu"]
+      100000000: ["phần trăm triệu", "phần trăm triệu", "phần trăm triệu"]
+      1000000000: ["phần tỷ", "phần tỷ", "phần tỷ"]
+
+    numbers:
+      ordinals:
+        nominative:
+          masculine: ["thứ nhất", "thứ hai", "thứ ba", "thứ tư", "thứ năm", "thứ sáu", "thứ bảy", "thứ tám", "thứ chín", "thứ mười",
+                      "thứ mười một", "thứ mười hai", "thứ mười ba", "thứ mười bốn", "thứ mười lăm", "thứ mười sáu", "thứ mười bảy", "thứ mười tám", "thứ mười chín",
+                      "thứ hai mươi", "thứ hai mươi mốt", "thứ hai mươi hai", "thứ hai mươi ba", "thứ hai mươi tư", "thứ hai mươi lăm", "thứ hai mươi sáu", "thứ hai mươi bảy", "thứ hai mươi tám", "thứ hai mươi chín",
+                      "thứ ba mươi", "thứ ba mươi mốt"]
+          feminine: ["thứ nhất", "thứ hai", "thứ ba", "thứ tư", "thứ năm", "thứ sáu", "thứ bảy", "thứ tám", "thứ chín", "thứ mười",
+                     "thứ mười một", "thứ mười hai", "thứ mười ba", "thứ mười bốn", "thứ mười lăm", "thứ mười sáu", "thứ mười bảy", "thứ mười tám", "thứ mười chín",
+                     "thứ hai mươi", "thứ hai mươi mốt", "thứ hai mươi hai", "thứ hai mươi ba", "thứ hai mươi tư", "thứ hai mươi lăm", "thứ hai mươi sáu", "thứ hai mươi bảy", "thứ hai mươi tám", "thứ hai mươi chín",
+                     "thứ ba mươi", "thứ ba mươi mốt"]
+          neuter: ["thứ nhất", "thứ hai", "thứ ba", "thứ tư", "thứ năm", "thứ sáu", "thứ bảy", "thứ tám", "thứ chín", "thứ mười",
+                   "thứ mười một", "thứ mười hai", "thứ mười ba", "thứ mười bốn", "thứ mười lăm", "thứ mười sáu", "thứ mười bảy", "thứ mười tám", "thứ mười chín",
+                   "thứ hai mươi", "thứ hai mươi mốt", "thứ hai mươi hai", "thứ hai mươi ba", "thứ hai mươi tư", "thứ hai mươi lăm", "thứ hai mươi sáu", "thứ hai mươi bảy", "thứ hai mươi tám", "thứ hai mươi chín",
+                   "thứ ba mươi", "thứ ba mươi mốt"]
+        default:
+          masculine: ["một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín", "mười",
+                      "mười một", "mười hai", "mười ba", "mười bốn", "mười lăm", "mười sáu", "mười bảy", "mười tám", "mười chín",
+                      "hai mươi", "hai mươi mốt", "hai mươi hai", "hai mươi ba", "hai mươi tư", "hai mươi lăm", "hai mươi sáu", "hai mươi bảy", "hai mươi tám", "hai mươi chín",
+                      "ba mươi", "ba mươi mốt"]
+
+    datetime:
+      template: "%{date}, %{time}"
+    date:
+      template:
+        default: "%{day} tháng %{month} năm %{year}"
+        nominative: "%{day} tháng %{month} năm %{year}"
+      months:
+        default: ["một", "hai", "ba", "tư", "năm", "sáu", "bảy", "tám", "chín", "mười", "mười một", "mười hai"]
+        nominative: ["một", "hai", "ba", "tư", "năm", "sáu", "bảy", "tám", "chín", "mười", "mười một", "mười hai"]
+    time:
+      template:
+        hours_only: "%{hours}"
+        hours_minutes: "%{hours} %{minutes}"
+        hours_minutes_seconds: "%{hours} %{minutes} %{seconds}"
+      words:
+        hour: ["giờ", "giờ", "giờ"]
+        minute: ["phút", "phút", "phút"]
+        second: ["giây", "giây", "giây"]
+
+    warnings:
+      currency_not_available: "Tiền tệ %{currency} không khả dụng cho locale %{locale}, đang dùng tiền tệ hiện tại."
+
     currencies:
       VND:
-        name: ["đồng", "đồng", "đồng"]
-        fractional:
-          name: ["hào", "hào", "hào"]
-          feminine: false
+        major_unit: ["đồng", "đồng", "đồng"]
+        minor_unit: ["hào", "hào", "hào"]
+        symbol: "₫"
       USD:
-        name: ["đô la", "đô la", "đô la"]
-        fractional:
-          name: ["xu", "xu", "xu"]
-          feminine: false
+        major_unit: ["đô la Mỹ", "đô la Mỹ", "đô la Mỹ"]
+        minor_unit: ["xu", "xu", "xu"]
+        symbol: "$"
       EUR:
-        name: ["euro", "euro", "euro"]
-        fractional:
-          name: ["xu", "xu", "xu"]
-          feminine: false
+        major_unit: ["euro", "euro", "euro"]
+        minor_unit: ["xu", "xu", "xu"]
+        symbol: "€"
+      GBP:
+        major_unit: ["bảng Anh", "bảng Anh", "bảng Anh"]
+        minor_unit: ["pence", "pence", "pence"]
+        symbol: "£"
+      BRL:
+        major_unit: ["real Brazil", "real Brazil", "real Brazil"]
+        minor_unit: ["centavo", "centavo", "centavo"]
+        symbol: "R$"
+      CNY:
+        major_unit: ["nhân dân tệ", "nhân dân tệ", "nhân dân tệ"]
+        minor_unit: ["phân", "phân", "phân"]
+        symbol: "¥"
+      JPY:
+        major_unit: ["yên", "yên", "yên"]
+        minor_unit: ["sen", "sen", "sen"]
+        symbol: "¥"
+      RUB:
+        major_unit: ["rúp Nga", "rúp Nga", "rúp Nga"]
+        minor_unit: ["kopeck", "kopeck", "kopeck"]
+        symbol: "₽"
+      UAH:
+        major_unit: ["hryvnia", "hryvnia", "hryvnia"]
+        minor_unit: ["kopiyka", "kopiyka", "kopiyka"]
+        symbol: "₴"
+      PLN:
+        major_unit: ["zloty", "zloty", "zloty"]
+        minor_unit: ["grosz", "grosz", "grosz"]
+        symbol: "zł"
+      CZK:
+        major_unit: ["koruna Séc", "koruna Séc", "koruna Séc"]
+        minor_unit: ["haler", "haler", "haler"]
+        symbol: "Kč"
+      RON:
+        major_unit: ["leu Romania", "leu Romania", "leu Romania"]
+        minor_unit: ["ban", "ban", "ban"]
+        symbol: "lei"
+      BGN:
+        major_unit: ["lev Bulgaria", "lev Bulgaria", "lev Bulgaria"]
+        minor_unit: ["stotinka", "stotinka", "stotinka"]
+        symbol: "лв"
+      BYN:
+        major_unit: ["rúp Belarus", "rúp Belarus", "rúp Belarus"]
+        minor_unit: ["kopeck", "kopeck", "kopeck"]
+        symbol: "Br"
+      KZT:
+        major_unit: ["tenge", "tenge", "tenge"]
+        minor_unit: ["tiyn", "tiyn", "tiyn"]
+        symbol: "₸"
+      ILS:
+        major_unit: ["shekel", "shekel", "shekel"]
+        minor_unit: ["agora", "agora", "agora"]
+        symbol: "₪"
+      SEK:
+        major_unit: ["krona Thụy Điển", "krona Thụy Điển", "krona Thụy Điển"]
+        minor_unit: ["ore", "ore", "ore"]
+        symbol: "kr"
+      NOK:
+        major_unit: ["krone Na Uy", "krone Na Uy", "krone Na Uy"]
+        minor_unit: ["ore", "ore", "ore"]
+        symbol: "kr"
+      DKK:
+        major_unit: ["krone Đan Mạch", "krone Đan Mạch", "krone Đan Mạch"]
+        minor_unit: ["ore", "ore", "ore"]
+        symbol: "kr"
+      HUF:
+        major_unit: ["forint", "forint", "forint"]
+        minor_unit: ["filler", "filler", "filler"]
+        symbol: "Ft"
+      SAR:
+        major_unit: ["riyal Ả Rập Xê Út", "riyal Ả Rập Xê Út", "riyal Ả Rập Xê Út"]
+        minor_unit: ["halala", "halala", "halala"]
+        symbol: "﷼"
+      INR:
+        major_unit: ["rupee Ấn Độ", "rupee Ấn Độ", "rupee Ấn Độ"]
+        minor_unit: ["paise", "paise", "paise"]
+        symbol: "₹"
+      THB:
+        major_unit: ["baht", "baht", "baht"]
+        minor_unit: ["satang", "satang", "satang"]
+        symbol: "฿"
+      IDR:
+        major_unit: ["rupiah Indonesia", "rupiah Indonesia", "rupiah Indonesia"]
+        minor_unit: ["sen", "sen", "sen"]
+        symbol: "Rp"
+      IRR:
+        major_unit: ["rial Iran", "rial Iran", "rial Iran"]
+        minor_unit: ["dinar", "dinar", "dinar"]
+        symbol: "﷼"
+      RSD:
+        major_unit: ["dinar Serbia", "dinar Serbia", "dinar Serbia"]
+        minor_unit: ["para", "para", "para"]
+        symbol: "дин"
+      MYR:
+        major_unit: ["ringgit Malaysia", "ringgit Malaysia", "ringgit Malaysia"]
+        minor_unit: ["sen", "sen", "sen"]
+        symbol: "RM"
+      BDT:
+        major_unit: ["taka Bangladesh", "taka Bangladesh", "taka Bangladesh"]
+        minor_unit: ["poisha", "poisha", "poisha"]
+        symbol: "৳"
+      PKR:
+        major_unit: ["rupee Pakistan", "rupee Pakistan", "rupee Pakistan"]
+        minor_unit: ["paisa", "paisa", "paisa"]
+        symbol: "₨"
+      KES:
+        major_unit: ["shilling Kenya", "shilling Kenya", "shilling Kenya"]
+        minor_unit: ["xu", "xu", "xu"]
+        symbol: "Sh"
+      TRY:
+        major_unit: ["lira Thổ Nhĩ Kỳ", "lira Thổ Nhĩ Kỳ", "lira Thổ Nhĩ Kỳ"]
+        minor_unit: ["kurus", "kurus", "kurus"]
+        symbol: "₺"
+      KRW:
+        major_unit: ["won Hàn Quốc", "won Hàn Quốc", "won Hàn Quốc"]
+        minor_unit: ["jeon", "jeon", "jeon"]
+        symbol: "₩"
