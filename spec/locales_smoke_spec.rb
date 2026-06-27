@@ -7,9 +7,7 @@ RSpec.describe "locale smoke coverage" do
             .map { |file| File.basename(file, ".yml").to_sym }
             .sort
 
-  known_broken_locales = {
-    zh: "legacy locale wrapper missing GRAMMAR"
-  }
+  known_broken_locales = {}
 
   locales.each do |locale|
     it "converts a basic integer for #{locale}" do
